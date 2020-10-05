@@ -5,8 +5,6 @@ import theme from './theme';
 import { ThemeProvider } from 'emotion-theming';
 import Header from './components/header/Header';
 import { Flex, Box, Button } from 'rebass';
-import { Label, Input } from '@rebass/forms';
-import LabelTextField from './components/LabelTextField';
 
 function App() {
   return (

@@ -40,8 +40,20 @@ export default {
   input: {
     border: "none",
     borderBottom: "1px solid #d3d8dd",
-    radii: "0xp",
+    radii: "0px",
     padding: "12px 0px",
     outlineWidth: "0px",
   },
+  select: {
+    border: "none",
+    borderBottom: "1px solid #d3d8dd",
+    radii: "0px",
+    padding: "12px 0px",
+    outlineWidth: "0px",
+  },
+  textarea: {
+    border: "none",
+    borderRadius: 4,
+    outlineWidth: "0px"
+  }
 };

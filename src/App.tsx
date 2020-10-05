@@ -1,26 +1,17 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import theme from './theme.js';
+import theme from './theme';
 import { ThemeProvider } from 'emotion-theming';
 import Header from './components/header/Header';
 import { Flex, Box, Button } from 'rebass';
 import { Label, Input } from '@rebass/forms';
+import LabelTextField from './components/LabelTextField';
 
 function App() {
   return (
     <ThemeProvider
-      theme={{
-        colors: {
-          background: 'black',
-          primary: 'tomato',
-        },
-        space: [0, 6, 12, 24, 48],
-        fontSizes: [14, 16, 18, 20, 24],
-        radii: {
-          default: 12,
-        }
-      }}>
+      theme={theme}>
       <Header />
       <Box
         as='form'

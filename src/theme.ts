@@ -37,4 +37,11 @@ export default {
       bg: "primary",
     },
   },
+  input: {
+    border: "none",
+    borderBottom: "1px solid #d3d8dd",
+    radii: "0xp",
+    padding: "12px 0px",
+    outlineWidth: "0px",
+  },
 };

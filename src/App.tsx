@@ -1,64 +1,38 @@
 import React from 'react';
-import logo from './logo.svg';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import './App.css';
 import theme from './theme';
 import { ThemeProvider } from 'emotion-theming';
 import Header from './components/header/Header';
 import { Flex, Box, Button } from 'rebass';
+import Login from './pages/Login';
+import Home from './pages/Home';
 
 function App() {
-  return (
-    <ThemeProvider
-      theme={theme}>
-      <Header />
-      <Box
-        as='form'
-        onSubmit={e => e.preventDefault()}
-        p={4}
-        mx='auto'
-        width={[1, 1, 1 / 3]}
-        bg='#C4C4C4'>
-        <Flex>
-          <Box 
-            width={1} 
-            p={3}
-            mb={4}
-            bg='#A6A6A6'>
-            Funeral 1
-          </Box>
-        </Flex>
-        <Flex>
-          <Box 
-            width={1} 
-            p={3}
-            mb={4}
-            bg='#A6A6A6'>
-            Funeral 2
-          </Box>
-        </Flex>
-        <Flex>
-          <Box 
-            width={1} 
-            p={3}
-            mb={4}
-            bg='#A6A6A6'>
-            Funeral 3
-          </Box>
-        </Flex>
-        <Flex>
-          <Box 
-            px={2}
-            mx='auto'>
-            <Button
-              bg='#A6A6A6'
-              color='black'>
-              Create new funeral
-            </Button>
-          </Box>
-        </Flex>
-      </Box>
-    </ThemeProvider>
-  );
+    return (
+        <Router>
+            <div>
+                <nav>
+                    <ul>
+                        <li>
+                            <Link to="/">Home</Link>
+                        </li>
+                        <li>
+                            <Link to="/login">Login</Link>
+                        </li>
+                    </ul>
+                </nav>
+                <Switch>
+                    <Route path="/login">
+                        <Login />
+                    </Route>
+                    <Route path="/">
+                        <Home />
+                    </Route>
+                </Switch>
+            </div>
+        </Router>
+    );
 }
 
 export default App;

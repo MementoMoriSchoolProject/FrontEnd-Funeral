@@ -112,7 +112,7 @@ const Login = () => {
   }, [state.username, state.password]);
 
   const handleLogin = () => {
-    if (state.username === 'abc@email.com' && state.password === 'password') {
+    if (state.username === 'Admin' && state.password === 'Admin') {
       dispatch({
         type: 'loginSuccess',
         payload: 'Login Successfully'
@@ -126,7 +126,7 @@ const Login = () => {
   };
 
   const handleKeyPress = (event: React.KeyboardEvent) => {
-    if (event.keyCode === 13 || event.which === 13) {
+    if (event.key === "Enter"){
       state.isButtonDisabled || handleLogin();
     }
   };

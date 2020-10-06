@@ -1,6 +1,6 @@
 import React from 'react';
 import '../App.css';
-import { Flex, Box, Heading } from 'rebass';
+import { Flex, Box, Heading, Button } from 'rebass';
 import LabelTextField from '../components/LabelTextField';
 import LabelSelectField from '../components/LabelSelectField';
 import Header from '../components/header/Header';
@@ -74,6 +74,40 @@ const Funeral = () => {
                 <Flex>
                     <LabelTextField id="plaats" label="Plaats" />
                 </Flex>
+                <Flex>
+                    <LabelTextField id="bsn" label="BSN" />
+                </Flex>
+                <Flex>
+                    <LabelTextField id="geboortedatum" label="Geboortedatum" placeholder="13-12-1901" />
+                </Flex>
+                <Flex>
+                    <LabelTextField id="geboorteplaats" label="Geboorteplaats" />
+                </Flex>
+                <Flex>
+                    <LabelTextField id="aantalkinderen" label="Aantal Kinderen" />
+                    <LabelTextField id="aantalminderjarig" label="Aantal minderjarig" />
+                </Flex>
+                <Flex>
+                    <LabelTextField id="burgelijkestaat" label="Burgelijke Staat" />
+                </Flex>
+                <Flex>
+                    <LabelTextField id="geloofsovertuiging" label="Geloofsovertuiging" />
+                </Flex>
+                <Heading fontSize={[1, 2, 3]} color="#000" mx="auto" mb="4">
+                    Verzekering
+                </Heading>
+                <Box p={4} mb={4} sx={{ boxShadow: '0 0 16px rgba(0, 0, 0, .25)' }}>
+                    <Flex>
+                        <LabelTextField id="maatschappij" label="Maatschappij" />
+                    </Flex>
+                    <Flex>
+                        <LabelTextField id="polisnummer" label="Polisnummer" />
+                    </Flex>
+                </Box>
+                <Button width={1} mb={4} py={3} sx={{ boxShadow: '0 0 16px rgba(0, 0, 0, .25)' }} bg="#A0BDE3">Voeg verzekering toe</Button>
+                <Heading fontSize={[1, 2, 3]} color="#000" mx="auto" mb="4">
+                    Overlijden
+                </Heading>
             </Box>
         </>
     );

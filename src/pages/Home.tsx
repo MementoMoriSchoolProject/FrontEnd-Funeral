@@ -1,6 +1,7 @@
 import React from 'react';
 import '../App.css';
 import { Flex, Box, Button } from 'rebass';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
     return (
@@ -30,7 +31,7 @@ const Home = () => {
             <Flex>
                 <Box px={2} mx="auto">
                     <Button bg="#A6A6A6" color="black">
-                        Create new funeral
+                        <Link to="/funeral" style={{ textDecoration: "none", color: "#000" }}>Create new funeral</Link>
                     </Button>
                 </Box>
             </Flex>

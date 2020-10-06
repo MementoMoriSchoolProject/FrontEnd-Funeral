@@ -4,7 +4,7 @@ import { Box } from "rebass";
 
 const LabelTextField = (props:LabelTextFieldProps) => {
     return (
-        <Box width={1}>
+        <Box width={1} mb={4}>
             <Label>
                 {props.label}
             </Label>

@@ -6,6 +6,7 @@ import { ThemeProvider } from 'emotion-theming';
 import Header from './components/header/Header';
 import Login from './pages/Login';
 import Home from './pages/Home';
+import Funeral from './pages/Funeral';
 
 function App() {
     return (
@@ -24,6 +25,9 @@ function App() {
                         </ul>
                     </nav>
                     <Switch>
+                        <Route path="/funeral">
+                          <Funeral />
+                        </Route>
                         <Route path="/login">
                             <Login />
                         </Route>

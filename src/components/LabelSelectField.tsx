@@ -4,7 +4,7 @@ import { Box } from "rebass";
 
 const LabelSelectField : React.FC<LabelSelectFieldProps> = (props) => {
     return (
-        <Box width={1}>
+        <Box width={1} mb={4}>
             <Label htmlFor={props.id}>
                 {props.label}
             </Label>

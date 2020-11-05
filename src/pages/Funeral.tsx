@@ -3,7 +3,7 @@ import '../App.css';
 import { Flex, Box, Heading, Button } from 'rebass';
 import LabelTextField from '../components/LabelTextField';
 import LabelSelectField from '../components/LabelSelectField';
-import Header from '../components/header/Header';
+import { Header } from '../components/header/Header';
 
 const ColoredLine = (props: ColoredLineProps) => (
     <hr

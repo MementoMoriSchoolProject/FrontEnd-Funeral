@@ -38,7 +38,7 @@ export const FuneralOverviewPage: React.FC<{}> = () => {
 						<Flex justifyContent='center'>
 							Loading...
 						</Flex>
-					) : data && data.funerals.map((funeral, index) => (
+					) : data && data.funerals.map(funeral => (
 							<Flex key={funeral.id}>
 								<Box
 									variant='listItem'

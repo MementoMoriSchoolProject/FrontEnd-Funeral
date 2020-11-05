@@ -1,75 +1,78 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import theme from './theme.js';
 import { ThemeProvider } from 'emotion-theming';
-import Header from './components/header/Header';
-import { Flex, Box, Button } from 'rebass';
-import { Label, Input } from '@rebass/forms';
+import { theme } from './utils/theme';
+import {
+	BrowserRouter,
+	Switch,
+} from 'react-router-dom';
+import { LoginPage } from './pages/login/login';
+import { FuneralOverviewPage } from './pages/funeral-overview/overview';
+import { ApolloClient, ApolloProvider, createHttpLink, InMemoryCache } from '@apollo/client';
+import { setContext } from '@apollo/client/link/context';
+import { AuthStateProvider, ConditionedRoute, NonPrivateRoute, PrivateRoute } from './utils/private-route';
+import { SelectedFuneralProvider, useSelectedFuneral } from './utils/selected-funeral';
+import { FuneralSpecificPage } from './pages/funeral-specific/specific';
 
-function App() {
-  return (
-    <ThemeProvider
-      theme={{
-        colors: {
-          background: 'black',
-          primary: 'tomato',
-        },
-        space: [0, 6, 12, 24, 48],
-        fontSizes: [14, 16, 18, 20, 24],
-        radii: {
-          default: 12,
-        }
-      }}>
-      <Header />
-      <Box
-        as='form'
-        onSubmit={e => e.preventDefault()}
-        p={4}
-        mx='auto'
-        width={[1, 1, 1 / 3]}
-        bg='#C4C4C4'>
-        <Flex>
-          <Box 
-            width={1} 
-            p={3}
-            mb={4}
-            bg='#A6A6A6'>
-            Funeral 1
-          </Box>
-        </Flex>
-        <Flex>
-          <Box 
-            width={1} 
-            p={3}
-            mb={4}
-            bg='#A6A6A6'>
-            Funeral 2
-          </Box>
-        </Flex>
-        <Flex>
-          <Box 
-            width={1} 
-            p={3}
-            mb={4}
-            bg='#A6A6A6'>
-            Funeral 3
-          </Box>
-        </Flex>
-        <Flex>
-          <Box 
-            px={2}
-            mx='auto'>
-            <Button
-              bg='#A6A6A6'
-              color='black'>
-              Create new funeral
-            </Button>
-          </Box>
-        </Flex>
-      </Box>
-    </ThemeProvider>
-  );
+const httpLink = createHttpLink({
+	uri: 'http://localhost:8000/graphql',
+});
+
+const authLink = setContext((_, { headers }) => {
+	const token = localStorage.getItem('token');
+	return {
+		headers: {
+			...headers,
+			authorization: token ? `Bearer ${token}` : '',
+		}
+	}
+});
+
+const client = new ApolloClient({
+	link: authLink.concat(httpLink),
+	cache: new InMemoryCache(),
+	defaultOptions: {
+		mutate: {
+			// prevent framework from taking over UI and showing error message
+			errorPolicy: 'all'
+		},
+		query: {
+			// prevent framework from taking over UI and showing error message
+			errorPolicy: 'all'
+		}
+	}
+});
+
+const App: React.FC<{}> = () => {
+	return (
+		<ThemeProvider theme={theme}>
+			<ApolloProvider client={client}>
+				<AuthStateProvider>
+					<SelectedFuneralProvider>
+						<BrowserRouter>
+							<Routes />
+						</BrowserRouter>
+					</SelectedFuneralProvider>
+				</AuthStateProvider>
+			</ApolloProvider>
+		</ThemeProvider>
+	);
+}
+
+const Routes: React.FC<{}> = () => {
+	const [selectedFuneral] = useSelectedFuneral();
+	return (
+		<Switch>
+			<NonPrivateRoute path='/login'>
+				<LoginPage />
+			</NonPrivateRoute>
+			<ConditionedRoute path='/overview' condition={!!selectedFuneral}>
+				<FuneralSpecificPage />
+			</ConditionedRoute>
+			<PrivateRoute path='/'>
+				<FuneralOverviewPage />
+			</PrivateRoute>
+		</Switch>
+	)
 }
 
 export default App;

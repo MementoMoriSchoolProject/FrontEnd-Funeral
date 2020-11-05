@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Box, Flex } from 'rebass';
+import { Heading } from '../../atoms/heading';
 import { ProgressButton } from '../../atoms/progress-button';
 import { Header } from '../../components/header/Header';
 import { useSelectedFuneral } from '../../utils/selected-funeral';
@@ -26,12 +27,13 @@ export const FuneralOverviewPage: React.FC<{}> = () => {
 			<Box
 				as='form'
 				onSubmit={e => e.preventDefault()}
-				p={4}
 				mx='auto'
+				pt={3}
 				width={[1, 1, 1 / 3]}
-				bg='#C4C4C4'
+				variant='box'
             >
-				<Box maxHeight='400px' overflowY='scroll'>
+				<Heading pl={3} level={1}>Funerals</Heading>
+				<Box variant='scrollList' maxHeight='400px'>
 					{loading ? (
 						<Flex justifyContent='center'>
 							Loading...
@@ -39,15 +41,18 @@ export const FuneralOverviewPage: React.FC<{}> = () => {
 					) : data && data.funerals.map((funeral, index) => (
 							<Flex key={funeral.id}>
 								<Box
+									variant='listItem'
 									onClick={async () => {
 										setSelectedFuneral(funeral.id);
 										await history.push(`/overview`);
 									}}
 									width={1}
 									p={3}
-									mb={index + 1 === data.funerals.length ? '0px' : 4}
-									bg='#A6A6A6'>
-									Funeral {funeral.id}
+									py={3}
+								>
+									<Heading level={3} fontWeight='normal'>
+										Funeral {funeral.id}
+									</Heading>
 								</Box>
 							</Flex>
 						))
@@ -55,13 +60,12 @@ export const FuneralOverviewPage: React.FC<{}> = () => {
 				</Box>
 				<Flex
 					px={2}
-					pt={3}
+					py={3}
 					justifyContent='center'
 				>
 					<ProgressButton
 						loading={createProgress.loading}
-						bg='#A6A6A6'
-						color='black'
+						variant='primary'
 						onClick={async () => createFuneral().then(async (result) => {
 							// a new funeral has been created!
 							const id = result.data?.createFuneral.id;

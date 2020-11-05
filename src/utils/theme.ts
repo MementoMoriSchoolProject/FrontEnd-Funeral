@@ -4,8 +4,8 @@ export const theme = {
 	colors: {
 		blue: "#07c",
 		primary: '#A0BDE3',
-		secondary: '#D3D8DD',
-		lightgray: "#f6f6ff",
+		secondary: '#B6B6B6',
+		highlight: "#DfDfDf",
 		background: '#F5F6F8',
         text: '#1E151B',
 	},
@@ -29,13 +29,27 @@ export const theme = {
 		large: "0 0 24px rgba(0, 0, 0, .125)",
 	},
 	variants: {
-		primary: {
-			color: "white",
-			bg: "black",
-		},
 		card: {
 			bg: 'white',
 			borderRadius: 3,
+		},
+		box: {
+			bg: 'background',
+		},
+		scrollList: {
+			overflowY: 'scroll',
+			'::-webkit-scrollbar': {
+				width: '10px'
+			},
+			'::-webkit-scrollbar-thumb': {
+				bg: 'secondary'
+			}
+		},
+		listItem: {
+			'&:hover': {
+				bg: 'highlight'
+			},
+			cursor: 'pointer'
 		}
 	},
 	text: {
@@ -80,10 +94,12 @@ export const theme = {
 	},
 	buttons: {
 		primary: {
-			color: "text",
+			color: 'text',
 			fontWeight: 'bold',
-			bg: "primary",
+			bg: 'primary',
 			outline: 'none',
+			cursor: 'pointer',
+			py: 2
 		},
 	},
 };

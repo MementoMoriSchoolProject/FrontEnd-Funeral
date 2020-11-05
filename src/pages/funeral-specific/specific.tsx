@@ -1,11 +1,9 @@
 import React from 'react';
 import { useSelectedFuneral } from '../../utils/selected-funeral';
+import { CreatingFuneral } from '../creation/creation-framework';
+import { FuneralSpecificOverview } from './overview';
 
 export const FuneralSpecificPage: React.FC<{}> = () => {
     const [funeral] = useSelectedFuneral();
-    return (
-        <>
-            Funeral specific page for ID {funeral?.id}.
-        </>
-    );
+    return funeral?.lastCreationStep !== undefined ? <CreatingFuneral /> : <FuneralSpecificOverview />;
 };

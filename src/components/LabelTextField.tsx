@@ -1,19 +1,26 @@
 import React from "react";
-import { Label, Input } from "@rebass/forms";
-import { Box } from "rebass";
+import { Label, Input, LabelProps, InputProps } from "@rebass/forms";
+import { Box, BoxProps } from "rebass";
+import { Field } from "formik";
 
-const LabelTextField = (props:LabelTextFieldProps) => {
+export const LabelTextField = (props:LabelTextFieldProps) => {
     return (
-        <Box width={1} mb={4}>
-            <Label>
+        <Box width={1} mb={4} {...(props.boxProps || {})}>
+            <Label {...(props.labelProps || {})}>
                 {props.label}
             </Label>
-            <Input
-                tabIndex={1}
-                id={props.id} 
-                type='text'
-                placeholder={props.placeholder}
-            />
+            <Field name={props.id}>
+                {(fieldProps: any) => (
+                    <Input
+                        id={props.id} 
+                        name={props.id} 
+                        type={props.type || 'text'}
+                        placeholder={props.placeholder}
+                        {...(props.inputProps || {})}
+                        {...fieldProps.field}
+                    />
+                )}
+            </Field>
         </Box>
     );
 }
@@ -21,7 +28,9 @@ const LabelTextField = (props:LabelTextFieldProps) => {
 interface LabelTextFieldProps {
     id?: string,
     label?: string,
-    placeholder?: string
+    placeholder?: string,
+    type?: string,
+    labelProps?: LabelProps,
+    inputProps?: InputProps,
+    boxProps?: BoxProps,
 }
-
-export default LabelTextField;

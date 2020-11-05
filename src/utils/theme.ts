@@ -1,5 +1,5 @@
 export const theme = {
-	breakpoints: ["40em", "52em", "64em"],
+	breakpoints: ["40em", "52em", "64em", "94em"],
 	fontSizes: [12, 14, 16, 20, 24, 32, 48, 64],
 	colors: {
 		blue: "#07c",
@@ -32,6 +32,7 @@ export const theme = {
 		card: {
 			bg: 'white',
 			borderRadius: 3,
+			width: '100%'
 		},
 		box: {
 			bg: 'background',

@@ -7,7 +7,7 @@ mutation savePersonalia($id: String!, $personalia: PersistDeceasedInput!) {
         funeralId: $id,
         personalia: $personalia
     ) {
-        id
+        firstname
     }
 }
 `;

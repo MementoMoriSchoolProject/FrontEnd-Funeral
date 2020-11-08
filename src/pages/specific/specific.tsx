@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelectedFuneral } from '../../utils/selected-funeral';
-import { CreatingFuneral } from '../creation/creation-framework';
+import { CreatingFuneral } from '../create/creation-framework';
 import { FuneralSpecificOverview } from './overview';
 
 export const FuneralSpecificPage: React.FC<{}> = () => {

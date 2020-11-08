@@ -3,7 +3,7 @@ import { Label, Input, LabelProps, InputProps } from "@rebass/forms";
 import { Box, BoxProps } from "rebass";
 import { Field } from "formik";
 
-export const LabelTextField = (props:LabelTextFieldProps) => {
+export const LabelTextField = (props: LabelTextFieldProps) => {
     return (
         <Box width={1} mb={4} {...(props.boxProps || {})}>
             <Label {...(props.labelProps || {})}>
@@ -12,8 +12,8 @@ export const LabelTextField = (props:LabelTextFieldProps) => {
             <Field name={props.id}>
                 {(fieldProps: any) => (
                     <Input
-                        id={props.id} 
-                        name={props.id} 
+                        id={props.id}
+                        name={props.id}
                         type={props.type || 'text'}
                         placeholder={props.placeholder}
                         {...(props.inputProps || {})}

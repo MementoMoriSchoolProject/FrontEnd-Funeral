@@ -95,12 +95,27 @@ export const theme = {
 	},
 	buttons: {
 		primary: {
-			color: 'text',
+			color: 'background',
 			fontWeight: 'bold',
 			bg: 'primary',
 			outline: 'none',
 			cursor: 'pointer',
-			py: 2
+			py: 2,
+			shadow: '0 0 16px rgba(0, 0, 0, .25)',
+			transition: 'transform .25s',
+			transform: 'translateY(0px)',
+			'&:hover:not([disabled])': {
+				'-webkit-box-shadow': 'inset 0px 0px 28px -5px rgba(0,0,0,0.4)',
+				'-moz-box-shadow': 'inset 0px 0px 28px -5px rgba(0,0,0,0.4)',
+				'box-shadow': 'inset 0px 0px 28px -5px rgba(0,0,0,0.4)'
+			},
+			'&:active': {
+				transform: 'translateY(3px)',
+			},
+			'&:disabled': {
+				cursor: 'unset',
+				opacity: '0.6',
+			}
 		},
 	},
 };

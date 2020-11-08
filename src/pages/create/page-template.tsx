@@ -10,7 +10,7 @@ export const PageTemplate: React.FC<{ title: string }> = (props) => (
                 {props.title}
             </Heading>
         </Flex>
-        <ColoredLine color='black' height='3px' />
+        <ColoredLine color='black' />
         <Flex flexDirection='column' width={[1, 1, 1, 1/2, 1/3]} variant='scrollList' p={2} px={3}>
             {props.children}
         </Flex>

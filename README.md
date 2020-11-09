@@ -4,13 +4,13 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project we make use of graphql this makes use of generated schema's which are fetched from the backend 
 
-### `npm run graphql:donwload`
+### `npm run graphql:download`
 
 Will download the schema 
 
-### `npm run graphql:donwload`
+### `npm run graphql:generate`
 
-Will generated needed graphql files
+Will generate needed graphql files
 
 ## Available Scripts
 

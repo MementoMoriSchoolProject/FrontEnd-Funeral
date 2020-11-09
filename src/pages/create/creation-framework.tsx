@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { Flex } from 'rebass';
 import { ProgressArrow } from '../../atoms/progress-arrow';
 import { useSelectedFuneral } from '../../utils/selected-funeral';
+import { Client } from '../forms/client/client';
 import { Insurance } from '../forms/insurance/insurance';
 import { Personalia } from '../forms/personalia/personalia';
 import { PageTemplate } from './page-template';
@@ -25,6 +26,12 @@ const pages: (React.FC<FormProps> | FormPage)[] = [
             Personalia,
             Insurance,
         ]
+    },
+    {
+        title: 'Gegevens Opdrachtgever',
+        parts: [
+            Client
+        ]
     }
 ];
 
@@ -40,11 +47,11 @@ export const CreatingFuneral: React.FC<{}> = () => {
         if (destinationPage < 0 || destinationPage >= pages.length) return;
         setCurrentPage(destinationPage);
         setNextPage(0);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [nextPage]);
     return (
         <Formik
-            onSubmit={(_values, { setSubmitting }) => {}}
+            onSubmit={(_values, { setSubmitting }) => { }}
             initialValues={{}}
             enableReinitialize={true}
         >
@@ -58,10 +65,10 @@ export const CreatingFuneral: React.FC<{}> = () => {
                             {isReactComponent(Page) ? (
                                 <Page shouldSubmit={nextPage !== 0} {...formik} />
                             ) : (
-                                <PageTemplate title={Page.title}>
-                                    {Page.parts.map(Part => <Part shouldSubmit={nextPage !== 0} {...formik} />)}
-                                </PageTemplate>
-                            )}
+                                    <PageTemplate title={Page.title}>
+                                        {Page.parts.map(Part => <Part shouldSubmit={nextPage !== 0} {...formik} />)}
+                                    </PageTemplate>
+                                )}
                         </Flex>
                     </Flex>
                     <Flex flexGrow={0} m={4}>

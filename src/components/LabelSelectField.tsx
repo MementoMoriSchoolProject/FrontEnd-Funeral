@@ -2,7 +2,7 @@ import React from "react";
 import { Label, Select } from "@rebass/forms";
 import { Box } from "rebass";
 
-const LabelSelectField : React.FC<LabelSelectFieldProps> = (props) => {
+export const LabelSelectField : React.FC<LabelSelectFieldProps> = (props) => {
     return (
         <Box width={1} mb={4}>
             <Label htmlFor={props.id}>
@@ -24,5 +24,3 @@ interface LabelSelectFieldProps {
     label?: string,
     defaultValue?: string
 }
-
-export default LabelSelectField;

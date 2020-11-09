@@ -5,11 +5,6 @@ const FUNERALS = gql`
 query funerals {
     funerals {
         id
-        deceased {
-            id
-            firstname
-            lastname
-        }
     }
 }
 `;

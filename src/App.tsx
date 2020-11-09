@@ -11,7 +11,7 @@ import { ApolloClient, ApolloProvider, createHttpLink, InMemoryCache } from '@ap
 import { setContext } from '@apollo/client/link/context';
 import { AuthStateProvider, ConditionedRoute, NonPrivateRoute, PrivateRoute } from './utils/private-route';
 import { SelectedFuneralProvider, useSelectedFuneral } from './utils/selected-funeral';
-import { FuneralSpecificPage } from './pages/funeral-specific/specific';
+import { FuneralSpecificPage } from './pages/specific/specific';
 
 const httpLink = createHttpLink({
 	uri: 'http://localhost:8000/graphql',

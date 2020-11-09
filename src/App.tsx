@@ -6,7 +6,7 @@ import {
 	Switch,
 } from 'react-router-dom';
 import { LoginPage } from './pages/login/login';
-import { FuneralOverviewPage } from './pages/funeral-overview/overview';
+import { FuneralOverviewPage } from './pages/all/overview';
 import { ApolloClient, ApolloProvider, createHttpLink, InMemoryCache } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import { AuthStateProvider, ConditionedRoute, NonPrivateRoute, PrivateRoute } from './utils/private-route';

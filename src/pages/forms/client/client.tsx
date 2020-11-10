@@ -9,13 +9,14 @@ import { useSelectedFuneral } from '../../../utils/selected-funeral';
 import { useSaveClient } from './mutation/save-client';
 import { useGetClient } from './query/get-client'
 
+
 const wrapId = (htmlId: string) => `client.${htmlId}`;
 
 export const Client: React.FC<FormProps> = ({ shouldSubmit, setValues, values }) => {
     const [selectedFuneral] = useSelectedFuneral();
     const [saveClient] = useSaveClient();
 
-    // saving
+    // savinga
     useEffect(() => {
         if (shouldSubmit && selectedFuneral) {
             saveClient({

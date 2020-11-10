@@ -17,7 +17,6 @@ export const Circumstances: React.FC<FormProps> = ({ shouldSubmit, setValues, va
     const [saveCircumstances] = useSaveCircumstances();
     useEffect(() => {
         if (!shouldSubmit) return;
-        console.log(values.circumstances);
         saveCircumstances({
             variables: {
                 id: selectedFuneral?.id || '',

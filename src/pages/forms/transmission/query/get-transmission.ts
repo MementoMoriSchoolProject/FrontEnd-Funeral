@@ -1,9 +1,9 @@
 import { gql, useQuery } from "@apollo/client";
-import { getTransmission, getTransmissionVariables } from "./__generated__/getTransmission";
+import { getTransmissions, getTransmissionsVariables } from "./__generated__/getTransmissions";
 
-const GET_TRANSMISSION = gql`
-query getTransmission($id: String!) {
-    transmission(id: $id) {
+const GET_TRANSMISSIONS = gql`
+query getTransmissions($id: String!) {
+    transmissions(id: $id) {
         date
         by
         from
@@ -16,4 +16,4 @@ query getTransmission($id: String!) {
 }
 `;
 
-export const useGetTransmission = (variables: getTransmissionVariables) => useQuery<getTransmission>(GET_TRANSMISSION, { variables });
+export const useGetTransmissions = (variables: getTransmissionsVariables) => useQuery<getTransmissions>(GET_TRANSMISSIONS, { variables });

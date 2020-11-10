@@ -1,15 +1,13 @@
 import { gql, useMutation } from "@apollo/client";
-import { saveTransmission, saveTransmissionVariables } from "./__generated__/saveTransmission";
+import { saveTransmissions, saveTransmissionsVariables } from "./__generated__/saveTransmissions";
 
-const SAVE_TRANSMISSION = gql`
-mutation saveTransmission($id: String!, $transmission: PersistTransmissionInput!) {
-    saveTransmission(
+const SAVE_TRANSMISSIONS = gql`
+mutation saveTransmissions($id: String!, $transmissions: [PersistTransmissionInput!]!) {
+    saveTransmissions(
         funeralId: $id,
-        transmission: $transmission
-    ) {
-        date
-    }
+        transmissions: $transmissions
+    )
 }
 `;
 
-export const useSaveTransmission = () => useMutation<saveTransmission, saveTransmissionVariables>(SAVE_TRANSMISSION);
+export const useSaveTransmissions = () => useMutation<saveTransmissions, saveTransmissionsVariables>(SAVE_TRANSMISSIONS);

@@ -47,8 +47,8 @@ export const VisitingInput: React.FC<FormProps & {
                                 <option value="Familiebezoek">Familiebezoek</option>
                                 <option value="Condoleancebezoek">Condoleancebezoek</option>
                             </LabelSelectField>
-                            <LabelTextField id={wrapId(`${index}.timeOfArrival`)} label="Aanvangstijd" placeholder="13-12-1901" type='date' />
-                            <LabelTextField id={wrapId(`${index}.timeOfLeave`)} label="Eindtijd" placeholder="13-12-1901" type='date'/>
+                            <LabelTextField id={wrapId(`${index}.timeOfArrival`)} label="Aanvangstijd" placeholder="13-12-1901" type='time' />
+                            <LabelTextField id={wrapId(`${index}.timeOfLeave`)} label="Eindtijd" placeholder="13-12-1901" type='time'/>
                             <LabelTextField id={wrapId(`${index}.speicalNeeds`)} label="Bijzonderheden" />
                         </Flex>
                         <Flex flexGrow={0} alignItems='flex-start' style={{ position: 'relative' }}>

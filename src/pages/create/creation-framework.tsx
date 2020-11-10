@@ -9,6 +9,7 @@ import { Insurance } from '../forms/insurance/insurance';
 import { Personalia } from '../forms/personalia/personalia';
 import { PageTemplate } from './page-template';
 import { Transmission } from '../forms/transmission/transmission';
+import { FinalCare } from '../forms/finalcare/finalcare';
 
 export interface FormProps extends FormikProps<any> {
     shouldSubmit: boolean;
@@ -39,6 +40,12 @@ const pages: (React.FC<FormProps> | FormPage)[] = [
         title: 'Overbrenging',
         parts: [
             Transmission
+        ]
+    },
+    {
+        title: 'Laatste verzorging',
+        parts: [
+            FinalCare
         ]
     }
 ];

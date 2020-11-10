@@ -4,6 +4,7 @@ import { Flex } from 'rebass';
 import { Heading } from '../../../atoms/heading';
 import { LabelSelectField } from '../../../components/LabelSelectField';
 import { LabelTextField } from '../../../components/LabelTextField';
+import { formatDate } from '../../../utils/date';
 import { useSelectedFuneral } from '../../../utils/selected-funeral';
 import { FormProps } from '../../create/creation-framework';
 import { useSavePersonalia } from './mutation/save-personalia';
@@ -35,7 +36,7 @@ export const Personalia: React.FC<FormProps> = ({ shouldSubmit, setValues, value
                 personalia: {
                     ...initialValues?.personalia,
                     // convert graphql to JS date
-                    dateOfBirth: initialValues.personalia?.dateOfBirth ? new Date(initialValues.personalia?.dateOfBirth).toISOString().substring(0, 10) : null
+                    dateOfBirth: formatDate(initialValues.personalia?.dateOfBirth)
                 },
                 ...values
             });

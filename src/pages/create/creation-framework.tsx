@@ -8,16 +8,24 @@ import { Circumstances } from '../forms/circumstances';
 import { Insurance } from '../forms/insurance/insurance';
 import { Personalia } from '../forms/personalia/personalia';
 import { PageTemplate } from './page-template';
+import { Transmission } from '../forms/transmission/transmission';
 import { FinalCare } from '../forms/finalcare/finalcare';
+import { funeral_funeral } from '../../utils/__generated__/funeral';
 
 export interface FormProps extends FormikProps<any> {
     shouldSubmit: boolean;
-};
+}
+
+export interface FormArrayProps extends FormProps {
+    arrayHelpers: any,
+    selectedFuneral: funeral_funeral | null
+}
 
 interface FormPage {
     title: string;
     parts: React.FC<FormProps>[];
 }
+
 
 // this list is basically the entire creation flow
 const pages: (React.FC<FormProps> | FormPage)[] = [
@@ -33,6 +41,12 @@ const pages: (React.FC<FormProps> | FormPage)[] = [
         title: 'Gegevens Opdrachtgever',
         parts: [
             Client
+        ]
+    },
+    {
+        title: 'Overbrenging',
+        parts: [
+            Transmission
         ]
     },
     {

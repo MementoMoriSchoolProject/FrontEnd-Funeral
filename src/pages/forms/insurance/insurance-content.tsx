@@ -3,30 +3,20 @@ import { FaTrash } from 'react-icons/fa';
 import { Button, Flex } from 'rebass';
 import { ProgressButton } from '../../../atoms/progress-button';
 import { LabelTextField } from '../../../components/LabelTextField';
-import { arrayToObject } from '../../../utils/array';
-import { funeral_funeral } from '../../../utils/__generated__/funeral';
-import { FormProps } from '../../create/creation-framework';
+import { FormArrayProps } from '../../create/creation-framework';
 import { useGetInsurances } from './query/get-insurances';
 
 const FORM_ID = 'insurances';
 const wrapId = (htmlId: string) => `${FORM_ID}.${htmlId}`;
 
-export const InsuranceInput: React.FC<FormProps & {
-    arrayHelpers: any,
-    selectedFuneral: funeral_funeral | null
-}> = ({ values, arrayHelpers, setValues, selectedFuneral }) => {
+export const InsuranceInput: React.FC<FormArrayProps> = ({ values, arrayHelpers, setValues, selectedFuneral }) => {
 
     // initial values
     const { data: initialValues } = useGetInsurances({ id: selectedFuneral?.id || '' });
     useEffect(() => {
         if (!initialValues) return;
 
-        // the API works with an array (which is okay), but formik
-        // uses an object with numeric keys, so we have to convert between those 2
-        const insuranceObject = arrayToObject(initialValues.insurances || undefined);
-
-        setValues({ insurances: insuranceObject, ...values });
-
+        setValues({ insurances: initialValues.insurances || [], ...values });
         // because we're using an ArrayHelper, we must also tell the array helper that we've received new values
         initialValues.insurances?.forEach((it, index) => arrayHelpers.replace(index, it));
 

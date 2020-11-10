@@ -1,5 +1,5 @@
 import { gql, useQuery } from '@apollo/client';
-import React, { createContext, Dispatch, SetStateAction, useContext, useState } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 import { Flex } from 'rebass';
 import { funeral, funeral_funeral } from './__generated__/funeral';
 

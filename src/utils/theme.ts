@@ -117,5 +117,13 @@ export const theme = {
 				opacity: '0.6',
 			}
 		},
+		icon: {
+			p: 2,
+			bg: 'transparent',
+			color: 'text',
+			m: 0,
+			cursor: 'pointer',
+			outline: 'none',
+		}
 	},
 };

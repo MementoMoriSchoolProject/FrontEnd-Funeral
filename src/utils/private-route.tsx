@@ -70,7 +70,6 @@ const AuthStateContext = createContext<boolean>(false);
 export const AuthStateProvider: React.FC<{}> = (props) => {
     const { loading, data } = useQuery(LOGGED_IN);
 
-    console.log('Data:', data);
     if (loading) {
         return (<Flex justifyContent='center' alignItems='center' height='100vh'>Loading...</Flex>);
     }

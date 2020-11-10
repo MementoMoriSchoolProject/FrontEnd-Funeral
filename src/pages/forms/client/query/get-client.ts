@@ -13,7 +13,7 @@ query getClient($id: String!) {
         town
         dateOfBirth
         phoneNumber
-        emailAdress
+        emailAddress
         relation
     }
 }

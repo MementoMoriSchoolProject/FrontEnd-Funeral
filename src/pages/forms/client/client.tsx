@@ -76,7 +76,7 @@ export const Client: React.FC<FormProps> = ({ shouldSubmit, setValues, values })
                 <LabelTextField id={wrapId("phoneNumber")} label="Mobiel Telefoonnummer" />
             </Flex>
             <Flex>
-                <LabelTextField id={wrapId("emailAdress")} label="E-mail Adres" />
+                <LabelTextField id={wrapId("emailAddress")} label="E-mail Adres" />
             </Flex>
             <Flex>
                 <LabelSelectField id={wrapId("relation")} label="Relatie tot de overledene" name="relatie">

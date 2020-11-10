@@ -31,7 +31,7 @@ export const Insurance: React.FC<FormProps> = ({ shouldSubmit }) => {
                     <LabelTextField id={wrapId("polisnummer")} label="Polisnummer" />
                 </Flex>
             </Box>
-            <ProgressButton loading={false}>Voeg verzekering toe</ProgressButton>
+            <ProgressButton mb={4} loading={false}>Voeg verzekering toe</ProgressButton>
         </>
     );
 };

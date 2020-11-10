@@ -1,10 +1,10 @@
 import React from "react";
 import { Label, Input, Textarea } from "@rebass/forms";
-import { Box } from "rebass";
+import { Box, BoxProps } from "rebass";
 
 const LabelTextAreaField = (props: LabelTextAreaFieldProps) => {
     return (
-        <Box width={1}>
+        <Box width={1} mb={4} {...(props.boxProps)}>
             <Label htmlFor={props.id}>
                 {props.label}
             </Label>
@@ -23,7 +23,8 @@ interface LabelTextAreaFieldProps {
     label?: string,
     placeholder?: string,
     name?: string,
-    bg?: string
+    bg?: string,
+    boxProps?: BoxProps
 }
 
 export default LabelTextAreaField;

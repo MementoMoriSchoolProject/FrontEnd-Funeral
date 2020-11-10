@@ -1,10 +1,10 @@
 import React from "react";
 import { Label, Select } from "@rebass/forms";
-import { Box } from "rebass";
+import { Box, BoxProps } from "rebass";
 
 export const LabelSelectField : React.FC<LabelSelectFieldProps> = (props) => {
     return (
-        <Box width={1} mb={4}>
+        <Box width={1} mb={4} {...(props.boxProps)}>
             <Label htmlFor={props.id}>
                 {props.label}
             </Label>
@@ -22,5 +22,6 @@ interface LabelSelectFieldProps {
     id?: string,
     name?: string,
     label?: string,
-    defaultValue?: string
+    defaultValue?: string,
+    boxProps?: BoxProps
 }

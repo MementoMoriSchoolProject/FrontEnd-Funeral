@@ -20,7 +20,7 @@ export const Circumstances: React.FC<FormProps> = ({ shouldSubmit, setValues, va
         console.log(values.circumstances);
         saveCircumstances({
             variables: {
-                id: selectedFuneral?.id,
+                id: selectedFuneral?.id || '',
                 circumstances: _.omit(values.circumstances, '__typename'),
             }
         })

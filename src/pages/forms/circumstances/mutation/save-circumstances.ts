@@ -1,4 +1,5 @@
 import { gql, useMutation } from "@apollo/client";
+import { saveCircumstances, saveCircumstancesVariables } from "./__generated__/saveCircumstances";
 
 const SAVE_CIRCUMSTANCES = gql`
 mutation saveCircumstances($id: String!, $circumstances: PersistCircumstancesInput!) {
@@ -11,4 +12,4 @@ mutation saveCircumstances($id: String!, $circumstances: PersistCircumstancesInp
 }
 `;
 
-export const useSaveCircumstances = () => useMutation(SAVE_CIRCUMSTANCES);
+export const useSaveCircumstances = () => useMutation<saveCircumstances, saveCircumstancesVariables>(SAVE_CIRCUMSTANCES);

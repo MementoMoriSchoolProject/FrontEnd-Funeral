@@ -9,6 +9,7 @@ import { Insurance } from '../forms/insurance/insurance';
 import { Personalia } from '../forms/personalia/personalia';
 import { PageTemplate } from './page-template';
 import { FinalCare } from '../forms/finalcare/finalcare';
+import { Visiting } from '../forms/visiting/visiting';
 
 export interface FormProps extends FormikProps<any> {
     shouldSubmit: boolean;
@@ -40,7 +41,13 @@ const pages: (React.FC<FormProps> | FormPage)[] = [
         parts: [
             FinalCare
         ]
-    }
+    },
+    {
+        title: 'Bezoek',
+        parts: [
+            Visiting
+        ]
+    },
 ];
 
 const isReactComponent = (page: React.FC<FormProps> | FormPage): page is React.FC<FormProps> => 'children' in page;

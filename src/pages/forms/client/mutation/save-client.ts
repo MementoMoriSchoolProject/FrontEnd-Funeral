@@ -2,7 +2,7 @@ import { gql, useMutation } from "@apollo/client";
 import { saveClient, saveClientVariables } from "./__generated__/saveClient";
 
 const SAVE_CLIENT = gql`
-mutation saveClient($id: String!, $client: PersistDeceasedInput!) {
+mutation saveClient($id: String!, $client: PersistClientInput!) {
     saveClient(
         funeralId: $id,
         client: $client

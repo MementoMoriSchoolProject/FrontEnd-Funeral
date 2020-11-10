@@ -1,37 +1,54 @@
+import { FieldArray } from 'formik';
 import React, { useEffect } from 'react';
-import { Box, Flex } from 'rebass';
+import _ from 'lodash';
 import { Heading } from '../../../atoms/heading';
-import { ProgressButton } from '../../../atoms/progress-button';
-import { LabelTextField } from '../../../components/LabelTextField';
+import { useSelectedFuneral } from '../../../utils/selected-funeral';
 import { FormProps } from '../../create/creation-framework';
+import { useSaveInsurances } from './mutation/save-insurances';
+import { InsuranceInput } from './insurance-content';
+import { objectToArray } from '../../../utils/array';
 
-const wrapId = (htmlId: string) => `insurance.${htmlId}`;
+const FORM_ID = 'insurances';
 
-export const Insurance: React.FC<FormProps> = ({ shouldSubmit }) => {
+export const Insurance: React.FC<FormProps> = ({ shouldSubmit, values, ...rest }) => {
+    const [selectedFuneral] = useSelectedFuneral();
+
+    // save
+    const [saveInsurances] = useSaveInsurances();
     useEffect(() => {
-        if (shouldSubmit) {
-            console.log('Submitting Insurance!');
-        }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        if (!shouldSubmit) return;
+
+        // the API works with an array (which is okay), but formik
+        // uses an object with numeric keys, so we have to convert between those 2
+        const insuranceArray = objectToArray(values.insurances);
+
+        saveInsurances({
+            variables: {
+                id: selectedFuneral?.id || '',
+                insurances: insuranceArray
+            }
+        });
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [shouldSubmit]);
-    useEffect(() => {
-        console.log('Run once (Insurance)');
-    }, []);
 
     return (
         <>
-            <Heading fontSize={[1, 2, 3]} color="#000" mx="auto" mb="4">
+            <Heading level={2} mb={4}>
                 Verzekering
             </Heading>
-            <Box p={4} mb={4} sx={{ boxShadow: '0 0 16px rgba(0, 0, 0, .25)' }}>
-                <Flex>
-                    <LabelTextField id={wrapId("maatschappij")} label="Maatschappij" />
-                </Flex>
-                <Flex>
-                    <LabelTextField id={wrapId("polisnummer")} label="Polisnummer" />
-                </Flex>
-            </Box>
-            <ProgressButton mb={4} loading={false}>Voeg verzekering toe</ProgressButton>
+            <FieldArray
+                name={FORM_ID}
+                render={arrayHelpers => (
+                    <InsuranceInput
+                        selectedFuneral={selectedFuneral}
+                        shouldSubmit={shouldSubmit}
+                        values={values}
+                        arrayHelpers={arrayHelpers}
+                        {...rest}
+                    />
+                )}
+            />
         </>
     );
 };

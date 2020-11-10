@@ -1,4 +1,5 @@
 import { gql, useQuery } from "@apollo/client";
+import { getClient, getClientVariables } from "./__generated__/getClient";
 
 const GET_CLIENT = gql`
 query getClient($id: String!) {
@@ -19,4 +20,4 @@ query getClient($id: String!) {
 }
 `;
 
-export const useGetClient = () => useQuery(GET_CLIENT);
+export const useGetClient = (variables: getClientVariables) => useQuery<getClient>(GET_CLIENT, { variables });

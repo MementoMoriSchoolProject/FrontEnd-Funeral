@@ -1,5 +1,4 @@
 import { Formik, FormikProps } from 'formik';
-import _ from 'lodash';
 import React, { useEffect, useState } from 'react';
 import { Flex } from 'rebass';
 import { ProgressArrow } from '../../atoms/progress-arrow';

@@ -12,8 +12,5 @@ export function objectToArray<T>(obj?: {[key: number]: T}): T[] {
  */
 export function arrayToObject<T>(array?: T[]): {[key: number]: T} {
     if (!array) return {};
-    return array.reduce((total: {[key: number]: T}, next, index) => {
-        total[index] = next;
-        return total;
-    }, {});
+    return {...array};
 }

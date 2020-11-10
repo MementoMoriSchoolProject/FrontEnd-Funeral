@@ -29,7 +29,7 @@ export const Client: React.FC<FormProps> = ({ shouldSubmit, setValues, values })
     }, [shouldSubmit]);
 
     // initial values
-    const { data: initialValues } = useGetClient();
+    const { data: initialValues } = useGetClient({ id: selectedFuneral?.id || '' });
     useEffect(() => {
         if (initialValues)
             setValues({ client: initialValues?.client, ...values });

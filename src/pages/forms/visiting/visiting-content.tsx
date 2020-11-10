@@ -7,6 +7,7 @@ import { arrayToObject } from '../../../utils/array';
 import { funeral_funeral } from '../../../utils/__generated__/funeral';
 import { FormProps } from '../../create/creation-framework';
 import { useGetVisiting } from './query/get-visiting';
+import { LabelSelectField } from '../../../components/LabelSelectField';
 
 const FORM_ID = 'visiting';
 const wrapId = (htmlId: string) => `${FORM_ID}.${htmlId}`;
@@ -33,7 +34,7 @@ export const VisitingInput: React.FC<FormProps & {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [initialValues]);
 
-    // Need to update this 
+    // Need to update this time discussion needed
     return (
         <>
             {values.visiting && values.visiting.length > 0 ? (
@@ -41,11 +42,14 @@ export const VisitingInput: React.FC<FormProps & {
                     <Flex key={index} mb={4} sx={{ boxShadow: '0 0 16px rgba(0, 0, 0, .25)' }}>
                         <Flex p={4} flexGrow={1} flexDirection='column' alignItems='stretch'>
                             <LabelTextField id={wrapId(`${index}.location`)} label="Locatie" />
-                            <LabelTextField id={wrapId(`${index}.date`)} label="Datum" />
-                            <LabelTextField id={wrapId(`${index}.kindOfVisit`)} label="Aard van bezoek" />
-                            <LabelTextField id={wrapId(`${index}.timeOfArrival`)} label="Aankomst tijd" />
-                            <LabelTextField id={wrapId(`${index}.timeOfLeave`)} label="Vertrek tijd" />
-                            <LabelTextField id={wrapId(`${index}.speicalNeeds`)} label="Overige" />
+                            <LabelTextField id={wrapId(`${index}.date`)} label="Datum" placeholder="13-12-1901" type='date'/>
+                            <LabelSelectField id={wrapId(`${index}.kindOfVisit`)} label="Soort" name="Soort">
+                                <option value="Familiebezoek">Familiebezoek</option>
+                                <option value="Condoleancebezoek">Condoleancebezoek</option>
+                            </LabelSelectField>
+                            <LabelTextField id={wrapId(`${index}.timeOfArrival`)} label="Aanvangstijd" placeholder="13-12-1901" type='date' />
+                            <LabelTextField id={wrapId(`${index}.timeOfLeave`)} label="Eindtijd" placeholder="13-12-1901" type='date'/>
+                            <LabelTextField id={wrapId(`${index}.speicalNeeds`)} label="Bijzonderheden" />
                         </Flex>
                         <Flex flexGrow={0} alignItems='flex-start' style={{ position: 'relative' }}>
                             <Button variant='icon' style={{
@@ -66,7 +70,7 @@ export const VisitingInput: React.FC<FormProps & {
                 mb={4}
                 loading={false}
             >
-                Voeg bezoek toe
+                Voeg rouwbezoek toe
             </ProgressButton>
         </>
     )

@@ -18,7 +18,7 @@ export const VisitingInput: React.FC<FormProps & {
 }> = ({ values, arrayHelpers, setValues, selectedFuneral }) => {
 
     // initial values
-    const { data: initialValues } = useGetVisiting();
+    const { data: initialValues } = useGetVisiting({ id: selectedFuneral?.id || '' });
     useEffect(() => {
         if (!initialValues) return;
 
@@ -42,13 +42,13 @@ export const VisitingInput: React.FC<FormProps & {
                     <Flex key={index} mb={4} sx={{ boxShadow: '0 0 16px rgba(0, 0, 0, .25)' }}>
                         <Flex p={4} flexGrow={1} flexDirection='column' alignItems='stretch'>
                             <LabelTextField id={wrapId(`${index}.location`)} label="Locatie" />
-                            <LabelTextField id={wrapId(`${index}.date`)} label="Datum" placeholder="13-12-1901" type='date'/>
+                            <LabelTextField id={wrapId(`${index}.date`)} label="Datum" placeholder="13-12-1901" type='date' />
                             <LabelSelectField id={wrapId(`${index}.kindOfVisit`)} label="Soort" name="Soort">
                                 <option value="Familiebezoek">Familiebezoek</option>
                                 <option value="Condoleancebezoek">Condoleancebezoek</option>
                             </LabelSelectField>
                             <LabelTextField id={wrapId(`${index}.timeOfArrival`)} label="Aanvangstijd" placeholder="13-12-1901" type='time' />
-                            <LabelTextField id={wrapId(`${index}.timeOfLeave`)} label="Eindtijd" placeholder="13-12-1901" type='time'/>
+                            <LabelTextField id={wrapId(`${index}.timeOfLeave`)} label="Eindtijd" placeholder="13-12-1901" type='time' />
                             <LabelTextField id={wrapId(`${index}.speicalNeeds`)} label="Bijzonderheden" />
                         </Flex>
                         <Flex flexGrow={0} alignItems='flex-start' style={{ position: 'relative' }}>

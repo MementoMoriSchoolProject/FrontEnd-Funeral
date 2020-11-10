@@ -1,4 +1,5 @@
 import { gql, useQuery } from "@apollo/client";
+import { getVisiting, getVisitingVariables } from "./__generated__/getVisiting";
 
 const GET_INSURANCES = gql`
 query getVisiting($id: String!) {
@@ -13,4 +14,4 @@ query getVisiting($id: String!) {
 }
 `;
 
-export const useGetVisiting = () => useQuery(GET_INSURANCES);
+export const useGetVisiting = (variables: getVisitingVariables) => useQuery<getVisiting>(GET_INSURANCES, { variables });

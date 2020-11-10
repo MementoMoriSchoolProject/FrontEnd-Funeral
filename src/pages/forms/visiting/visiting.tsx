@@ -7,6 +7,7 @@ import { FormProps } from '../../create/creation-framework';
 import { useSaveVisiting } from './mutation/save-visiting';
 import { VisitingInput } from './visiting-content';
 import { objectToArray } from '../../../utils/array';
+import { PersistVisitingInput } from '../../../../__generated__/globalTypes';
 
 const FORM_ID = 'visiting';
 
@@ -20,7 +21,7 @@ export const Visiting: React.FC<FormProps> = ({ shouldSubmit, values, ...rest })
 
         // the API works with an array (which is okay), but formik
         // uses an object with numeric keys, so we have to convert between those 2
-        const visitingArray = objectToArray(values.visiting);
+        const visitingArray = objectToArray<PersistVisitingInput>(values.insurances);
 
         saveVisiting({
             variables: {

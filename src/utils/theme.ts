@@ -25,14 +25,19 @@ export const theme = {
 		heading: 1.25,
 	},
 	shadows: {
-		small: "0 0 4px rgba(0, 0, 0, .125)",
-		large: "0 0 24px rgba(0, 0, 0, .125)",
+		small: "0 0 8px rgba(0, 0, 0, .125)",
+		large: '0 0 16px rgba(0, 0, 0, .25)',
 	},
 	variants: {
 		card: {
 			bg: 'white',
 			borderRadius: 3,
-			width: '100%'
+			width: '100%',
+			boxShadow: 'small',
+		},
+		highCard: {
+			extends: 'card',
+			boxShadow: 'large',
 		},
 		box: {
 			bg: 'background',
@@ -75,11 +80,6 @@ export const theme = {
             fontWeight: 'bold',
             fontSize: 1,
         },
-        label: {
-            color: 'text',
-            fontWeight: 400,
-            mb: 1,
-        },
 	},
 	forms: {
 		input: {
@@ -91,7 +91,13 @@ export const theme = {
 			'&:active, &:focus': {
 				borderColor: 'primary',
 			}
-		}
+		},
+        label: {
+            color: 'primary',
+			fontWeight: 600,
+			fontSize: 1,
+            mb: 1,
+        },
 	},
 	buttons: {
 		primary: {

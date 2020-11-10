@@ -1,11 +1,11 @@
 import React from "react";
-import { Label, Input, Textarea } from "@rebass/forms";
+import { Label, Textarea } from "@rebass/forms";
 import { Box, BoxProps } from "rebass";
 
 const LabelTextAreaField = (props: LabelTextAreaFieldProps) => {
     return (
         <Box width={1} mb={4} {...(props.boxProps)}>
-            <Label htmlFor={props.id}>
+            <Label variant='label' htmlFor={props.id}>
                 {props.label}
             </Label>
             <Textarea

@@ -1,12 +1,12 @@
 import { FieldArray } from 'formik';
 import React, { useEffect } from 'react';
-import _ from 'lodash';
 import { Heading } from '../../../atoms/heading';
 import { useSelectedFuneral } from '../../../utils/selected-funeral';
 import { FormProps } from '../../create/creation-framework';
 import { useSaveInsurances } from './mutation/save-insurances';
 import { InsuranceInput } from './insurance-content';
 import { objectToArray } from '../../../utils/array';
+import { PersistInsuranceInput } from '../../../../__generated__/globalTypes';
 
 const FORM_ID = 'insurances';
 
@@ -20,7 +20,7 @@ export const Insurance: React.FC<FormProps> = ({ shouldSubmit, values, ...rest }
 
         // the API works with an array (which is okay), but formik
         // uses an object with numeric keys, so we have to convert between those 2
-        const insuranceArray = objectToArray(values.insurances);
+        const insuranceArray = objectToArray<PersistInsuranceInput>(values.insurances);
 
         saveInsurances({
             variables: {

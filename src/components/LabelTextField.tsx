@@ -6,7 +6,7 @@ import { Field } from "formik";
 export const LabelTextField = (props: LabelTextFieldProps) => {
     return (
         <Box width={1} mb={4} {...(props.boxProps || {})}>
-            <Label {...(props.labelProps || {})}>
+            <Label variant='label' {...(props.labelProps || {})}>
                 {props.label}
             </Label>
             <Field name={props.id}>

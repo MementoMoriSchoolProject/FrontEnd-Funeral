@@ -35,7 +35,7 @@ export const Personalia: React.FC<FormProps> = ({ shouldSubmit, setValues, value
                 personalia: {
                     ...initialValues?.personalia,
                     // convert graphql to JS date
-                    dateOfBirth: new Date(initialValues.personalia?.dateOfBirth).toISOString().substring(0, 10)
+                    dateOfBirth: initialValues.personalia?.dateOfBirth ? new Date(initialValues.personalia?.dateOfBirth).toISOString().substring(0, 10) : null
                 },
                 ...values
             });

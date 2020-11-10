@@ -35,7 +35,7 @@ export const Circumstances: React.FC<FormProps> = ({ shouldSubmit, setValues, va
             circumstances: {
                 ...initialValues.circumstances,
                 // convert graphql to JS date
-                date: new Date(initialValues.circumstances?.date).toISOString().substring(0, 10)
+                date: initialValues.circumstances?.date ? new Date(initialValues.circumstances?.date).toISOString().substring(0, 10) : null
             },
             ...values,
         });

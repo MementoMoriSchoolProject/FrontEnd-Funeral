@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { Flex } from 'rebass';
 import { ProgressArrow } from '../../atoms/progress-arrow';
 import { useSelectedFuneral } from '../../utils/selected-funeral';
+import { Circumstances } from '../forms/circumstances';
 import { Insurance } from '../forms/insurance/insurance';
 import { Personalia } from '../forms/personalia/personalia';
 import { PageTemplate } from './page-template';
@@ -24,6 +25,7 @@ const pages: (React.FC<FormProps> | FormPage)[] = [
         parts: [
             Personalia,
             Insurance,
+            Circumstances,
         ]
     }
 ];

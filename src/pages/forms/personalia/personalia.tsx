@@ -31,7 +31,14 @@ export const Personalia: React.FC<FormProps> = ({ shouldSubmit, setValues, value
     const { data: initialValues } = useGetPersonalia({ id: selectedFuneral?.id || '' });
     useEffect(() => {
         if (initialValues)
-            setValues({ personalia: initialValues?.personalia, ...values });
+            setValues({
+                personalia: {
+                    ...initialValues?.personalia,
+                    // convert graphql to JS date
+                    dateOfBirth: new Date(initialValues.personalia?.dateOfBirth).toISOString().substring(0, 10)
+                },
+                ...values
+            });
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [initialValues]);
 

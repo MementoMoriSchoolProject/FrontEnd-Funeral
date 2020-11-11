@@ -11,6 +11,9 @@ import { PageTemplate } from './page-template';
 import { Transmission } from '../forms/transmission/transmission';
 import { FinalCare } from '../forms/finalcare/finalcare';
 import { funeral_funeral } from '../../utils/__generated__/funeral';
+import { Farewell } from '../forms/farewell/farewell';
+import { FuneralLetter } from '../forms/funeralletter/funeralletter';
+import { CommemorativeCard } from '../forms/commemorativecard/commemorativecard';
 
 export interface FormProps extends FormikProps<any> {
     shouldSubmit: boolean;
@@ -53,6 +56,19 @@ const pages: (React.FC<FormProps> | FormPage)[] = [
         title: 'Laatste verzorging',
         parts: [
             FinalCare
+        ]
+    },
+    {
+        title: 'Kerkdienst/Afscheidsdienst',
+        parts: [
+            Farewell
+        ]
+    },
+    {
+        title: 'Kaarten',
+        parts: [
+            FuneralLetter,
+            CommemorativeCard
         ]
     }
 ];

@@ -3,11 +3,12 @@ import { FaTrash } from 'react-icons/fa';
 import { Button, Flex } from 'rebass';
 import { ProgressButton } from '../../../atoms/progress-button';
 import { LabelTextField } from '../../../components/LabelTextField';
-import { arrayToObject } from '../../../utils/array';
 import { funeral_funeral } from '../../../utils/__generated__/funeral';
+import { formatDate } from '../../../utils/date';
 import { FormProps } from '../../create/creation-framework';
 import { useGetVisiting } from './query/get-visiting';
 import { LabelSelectField } from '../../../components/LabelSelectField';
+import { getVisiting_visiting } from './query/__generated__/getVisiting';
 
 const FORM_ID = 'visiting';
 const wrapId = (htmlId: string) => `${FORM_ID}.${htmlId}`;
@@ -22,15 +23,21 @@ export const VisitingInput: React.FC<FormProps & {
     useEffect(() => {
         if (!initialValues) return;
 
-        // the API works with an array (which is okay), but formik
-        // uses an object with numeric keys, so we have to convert between those 2
-        const visitingObject = arrayToObject(initialValues.visiting || undefined);
+        let visiting = (initialValues.visiting || []).map(it => ({
+            ...it,
+            date: formatDate(it.date)
+        }));
 
-        setValues({ visiting: visitingObject, ...values });
+        const newValues : {
+            visiting: (getVisiting_visiting[] | null)[],
+            [key: string]: any
+        } = {
+            visiting,
+            ...values
+        };
 
-        // because we're using an ArrayHelper, we must also tell the array helper that we've received new values
-        initialValues.visiting?.forEach((it: any, index: any) => arrayHelpers.replace(index, it));
-
+        setValues(newValues);
+        newValues.visiting?.forEach((it, index) => arrayHelpers.replace(index, it));
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [initialValues]);
 
@@ -49,7 +56,7 @@ export const VisitingInput: React.FC<FormProps & {
                             </LabelSelectField>
                             <LabelTextField id={wrapId(`${index}.timeOfArrival`)} label="Aanvangstijd" placeholder="13-12-1901" type='time' />
                             <LabelTextField id={wrapId(`${index}.timeOfLeave`)} label="Eindtijd" placeholder="13-12-1901" type='time' />
-                            <LabelTextField id={wrapId(`${index}.speicalNeeds`)} label="Bijzonderheden" />
+                            <LabelTextField id={wrapId(`${index}.specialNeeds`)} label="Bijzonderheden" />
                         </Flex>
                         <Flex flexGrow={0} alignItems='flex-start' style={{ position: 'relative' }}>
                             <Button variant='icon' style={{

@@ -8,17 +8,28 @@ import { Circumstances } from '../forms/circumstances';
 import { Insurance } from '../forms/insurance/insurance';
 import { Personalia } from '../forms/personalia/personalia';
 import { PageTemplate } from './page-template';
+import { Transmission } from '../forms/transmission/transmission';
 import { FinalCare } from '../forms/finalcare/finalcare';
 import { Visiting } from '../forms/visiting/visiting';
+import { funeral_funeral } from '../../utils/__generated__/funeral';
+import { Farewell } from '../forms/farewell/farewell';
+import { FuneralLetter } from '../forms/funeralletter/funeralletter';
+import { CommemorativeCard } from '../forms/commemorativecard/commemorativecard';
 
 export interface FormProps extends FormikProps<any> {
     shouldSubmit: boolean;
-};
+}
+
+export interface FormArrayProps extends FormProps {
+    arrayHelpers: any,
+    selectedFuneral: funeral_funeral | null
+}
 
 interface FormPage {
     title: string;
     parts: React.FC<FormProps>[];
 }
+
 
 // this list is basically the entire creation flow
 const pages: (React.FC<FormProps> | FormPage)[] = [
@@ -37,6 +48,12 @@ const pages: (React.FC<FormProps> | FormPage)[] = [
         ]
     },
     {
+        title: 'Overbrenging',
+        parts: [
+            Transmission
+        ]
+    },
+    {
         title: 'Laatste verzorging',
         parts: [
             FinalCare
@@ -48,6 +65,18 @@ const pages: (React.FC<FormProps> | FormPage)[] = [
             Visiting
         ]
     },
+        title: 'Kerkdienst/Afscheidsdienst',
+        parts: [
+            Farewell
+        ]
+    },
+    {
+        title: 'Kaarten',
+        parts: [
+            FuneralLetter,
+            CommemorativeCard
+        ]
+    }
 ];
 
 const isReactComponent = (page: React.FC<FormProps> | FormPage): page is React.FC<FormProps> => 'children' in page;

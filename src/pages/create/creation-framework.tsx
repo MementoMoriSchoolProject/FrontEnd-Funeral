@@ -10,6 +10,7 @@ import { Personalia } from '../forms/personalia/personalia';
 import { PageTemplate } from './page-template';
 import { Transmission } from '../forms/transmission/transmission';
 import { FinalCare } from '../forms/finalcare/finalcare';
+import { Visiting } from '../forms/visiting/visiting';
 import { funeral_funeral } from '../../utils/__generated__/funeral';
 import { Farewell } from '../forms/farewell/farewell';
 import { FuneralLetter } from '../forms/funeralletter/funeralletter';
@@ -59,6 +60,11 @@ const pages: (React.FC<FormProps> | FormPage)[] = [
         ]
     },
     {
+        title: 'Bezoek',
+        parts: [
+            Visiting
+        ]
+    },
         title: 'Kerkdienst/Afscheidsdienst',
         parts: [
             Farewell

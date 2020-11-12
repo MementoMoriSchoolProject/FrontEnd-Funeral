@@ -13,7 +13,7 @@ export const LoginPage: React.FC<{}> = () => {
 
     return (
         <Flex justifyContent="center" alignItems="center" height="100vh" bg="background">
-            <Box p={3} variant="card">
+            <Box p={3} variant="card" width="initial">
                 <Heading level={1}>Login</Heading>
                 <Formik
                     initialValues={{

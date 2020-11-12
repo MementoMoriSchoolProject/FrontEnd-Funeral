@@ -37,7 +37,7 @@
     "build": "npm run lint && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "eslint . --ext .ts,.tsx --ignore-pattern node_modules/",
+    "lint": "eslint . --ext .ts,.tsx --ignore-pattern node_modules/ --config ./.eslintrc.json",
     "lint:fix": "npm run lint -- --fix",
     "graphql:download": "npx apollo client:download-schema --endpoint=http://localhost:8000/graphql",
     "graphql:generate": "npx apollo client:codegen --localSchemaFile=schema.json --target=typescript"

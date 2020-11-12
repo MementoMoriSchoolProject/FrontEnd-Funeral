@@ -17,9 +17,9 @@ jobs:
             - run:
                 name: "npm install backend"
                 command: |
-                  CIRCLE_PR_BRANCH=$(git branch)
+                  CIRCLE_PR_BRANCH=$(git rev-parse --abbrev-ref HEAD)
                   export CIRCLE_PR_BRANCH
-                  if [ $CIRCLE_PR_BRANC = "master" ]
+                  if [ "$CIRCLE_PR_BRANC" = "master" ]
                   then
                     CIRCLE_PR_BRANCH=development
                     export CIRCLE_PR_BRANCH

@@ -9,7 +9,7 @@ import { useSaveNightguard } from './mutation/save-nightguard';
 import { useGetNightguard } from './query/get-nightguard';
 import { formatDate } from '../../../utils/date';
 
-const wrapId = (htmlId: string) => `client.${htmlId}`;
+const wrapId = (htmlId: string) => `nightguard.${htmlId}`;
 
 export const Nightguard: React.FC<FormProps> = ({ shouldSubmit, setValues, values }) => {
     const [selectedFuneral] = useSelectedFuneral();

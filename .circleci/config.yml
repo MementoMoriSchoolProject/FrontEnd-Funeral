@@ -10,20 +10,20 @@ jobs:
       # does some git magic
       - checkout
       # clone the backend into a special backend folder
-      - run:
-          name: "Fetch branch name"
-          command: |
-            bash -c "echo "export CIRCLE_PR_BRANCH = curl --fail -s https://api.github.com/repos/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}/pulls/${CIRCLE_PR_NUMBER} | jq -r '.head.ref'" >> $BASH_ENV"
-            if [ -z "$CIRCLE_PR_BRANCH"]
-            then
-              "export CIRCLE_PR_BRANCH = development" >> $BASH_ENV
-            fi
-            echo $CIRCLE_PR_BRANCH
       - run: git clone git@github.com:MementoMoriSchoolProject/Project_Se_Node_Server.git ~/backend
       - node/with-cache:
           steps:
             # npm install on the backend
-            - run: cd ~/backend && git fetch --all && git checkout $CIRCLE_PR_BRANCH && npm install
+            - run:
+                name: "npm install backend"
+                command: |
+                  export CIRCLE_PR_BRANCH = curl --fail -s https://api.github.com/repos/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}/pulls/${CIRCLE_PR_NUMBER} | jq -r '.head.ref'
+                  if [ -z "$CIRCLE_PR_BRANCH"]
+                  then
+                    export CIRCLE_PR_BRANCH = development
+                  fi
+                  echo $CIRCLE_PR_BRANCH
+                  cd ~/backend && git fetch --all && git checkout $CIRCLE_PR_BRANCH && npm install
       # run the backend in the background
       - run:
           command: cd ~/backend && npm run dev

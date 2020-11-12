@@ -17,6 +17,7 @@ jobs:
             if [ -z "$CIRCLE_PR_BRANCH"]
             then
               "export CIRCLE_PR_BRANCH = development" >> $BASH_ENV
+            echo $CIRCLE_PR_BRANCH
       - run: git clone git@github.com:MementoMoriSchoolProject/Project_Se_Node_Server.git ~/backend
       - node/with-cache:
           steps:

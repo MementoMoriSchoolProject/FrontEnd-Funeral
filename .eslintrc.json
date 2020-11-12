@@ -25,12 +25,6 @@
         }
     },
     "rules": {
-        "import/no-unresolved": [
-            "error",
-            {
-                "ignore": [ "([\\s\\S]*)__generated__([\\s\\S]*)" ]
-            }
-        ],
         "no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
         "linebreak-style": "off",
         "no-use-before-define": "off",

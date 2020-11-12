@@ -7,24 +7,31 @@ jobs:
       name: node/default
       tag: '12.0'
     steps:
+      # does some git magic
       - checkout
+      # clone the backend into a special backend folder
       - run: git clone git@github.com:MementoMoriSchoolProject/Project_Se_Node_Server.git ~/backend
       - node/with-cache:
           steps:
-            - run: cd ~/backend
-            - run: cd ~/backend && pwd && echo "installing backend" && npm install
+            # npm install on the backend
+            - run: cd ~/backend && && npm install
+      # run the backend in the background
       - run:
           command: cd ~/backend && npm run dev
           background: true
+      # wait till the backend is up by continously checking if we can connect or not
       - run:
           shell: /bin/sh
           command: |
             wget --retry-connrefused --waitretry=1 --read-timeout=20 --timeout=15 -t 10 http://localhost:8000/graphql
             :
-      - run: cd ~/project
       - node/with-cache:
           steps:
+            # npm install on the frontend
             - run: npm install
+      # download graphql definition from the backend
       - run: npm run graphql:download
+      # generate graphql types from the definition
       - run: npm run graphql:generate
+      # build the frontend
       - run: npm run build

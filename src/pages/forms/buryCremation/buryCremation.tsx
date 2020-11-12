@@ -8,7 +8,6 @@ import { useSelectedFuneral } from '../../../utils/selected-funeral';
 import { useSaveBuryCremation } from './mutation/save-buryCremation';
 import { useGetBuryCremation } from './query/get-buryCremation';
 import { formatDate } from '../../../utils/date';
-import { Heading } from '../../../atoms/heading';
 
 const wrapId = (htmlId: string) => `burycremation.${htmlId}`;
 
@@ -37,8 +36,6 @@ export const BuryCremation: React.FC<FormProps> = ({ shouldSubmit, setValues, va
                     ...initialValues?.buryCremation,
                     // convert graphql to JS date
                     date: formatDate(initialValues.buryCremation?.date),
-                    timeOfArrival: formatDate(initialValues.buryCremation?.timeOfArrival)
-
                 },
                 ...values
             });
@@ -47,11 +44,8 @@ export const BuryCremation: React.FC<FormProps> = ({ shouldSubmit, setValues, va
 
     return (
         <>
-            <Heading level={2} mx="auto" mb="4">
-                Begraven/Crematie
-            </Heading>
             <Flex>
-                <LabelSelectField id={wrapId("buryCremation")} label="Geslacht" name="geslacht">
+                <LabelSelectField id={wrapId("buryCremation")} label="Begraven of Cremeren" name="Begraven of Cremeren">
                     <option value="Bury">Begraven</option>
                     <option value="Cremation">Cremeren</option>
                 </LabelSelectField>
@@ -63,7 +57,7 @@ export const BuryCremation: React.FC<FormProps> = ({ shouldSubmit, setValues, va
                 <LabelTextField id={wrapId("timeOfArrival")} label="Tijdstip/aanvang" type="time" />
             </Flex>
             <Flex>
-                <LabelTextField id={wrapId("namePlace")} label="Naam Locatie" boxProps={{ ml: 2 }} />
+                <LabelTextField id={wrapId("namePlace")} label="Naam Locatie" />
             </Flex>
             <Flex>
                 <LabelTextField id={wrapId("address")} label="Adres" />
@@ -80,10 +74,7 @@ export const BuryCremation: React.FC<FormProps> = ({ shouldSubmit, setValues, va
                     <option value="familyLast">Familie als laatste</option>
                 </LabelSelectField>
             </Flex>
-            <Flex>
-                <LabelTextField id={wrapId("specialNeeds")} label="Bijzonderheden" />
-            </Flex>
-            {values.burycremation.buryCremation === 'Bury' ? (
+            {values.burycremation?.buryCremation === 'Bury' ? (
                 <>
                     <Flex>
                         <LabelSelectField id={wrapId("kindOfGrave")} label="Soort graf" name="soort graf">
@@ -117,16 +108,16 @@ export const BuryCremation: React.FC<FormProps> = ({ shouldSubmit, setValues, va
             ) : (
                 <>
                     <Flex>
-                        <LabelSelectField id={wrapId("cascetView")} label="Volgorde afscheid" name="volgorde afscheid">
-                            <option value="familyOnly">Alleen met familie</option>
-                            <option value="familyWithFriends">Samen met belangstellenden</option>
-                            <option value="no">Nee</option>
-                        </LabelSelectField>
-                    </Flex>
-                    <Flex>
                         <LabelSelectField id={wrapId("insertion")} label="Volgorde afscheid" name="volgorde afscheid">
                             <option value="withFamily">Met familie</option>
                             <option value="withoutFamily">Zonder familie</option>
+                        </LabelSelectField>
+                    </Flex>
+                    <Flex>
+                        <LabelSelectField id={wrapId("cascetView")} label="Baar aan zicht onttrekken" name="volgorde afscheid">
+                            <option value="familyOnly">Alleen met familie</option>
+                            <option value="familyWithFriends">Samen met belangstellenden</option>
+                            <option value="no">Nee</option>
                         </LabelSelectField>
                     </Flex>
                     <Flex>
@@ -134,6 +125,9 @@ export const BuryCremation: React.FC<FormProps> = ({ shouldSubmit, setValues, va
                     </Flex>
                 </>
             )}
+            <Flex>
+                <LabelTextField id={wrapId("specialNeeds")} label="Bijzonderheden" />
+            </Flex>
         </>
     );
 };

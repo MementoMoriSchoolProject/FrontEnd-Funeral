@@ -36,8 +36,6 @@ export const Nightguard: React.FC<FormProps> = ({ shouldSubmit, setValues, value
                     ...initialValues?.nightguard,
                     // convert graphql to JS date
                     date: formatDate(initialValues.nightguard?.date),
-                    time: formatDate(initialValues.nightguard?.time)
-
                 },
                 ...values
             });

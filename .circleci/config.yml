@@ -17,10 +17,10 @@ jobs:
             - run:
                 name: "npm install backend"
                 command: |
-                  export CIRCLE_PR_BRANCH = curl --fail -s https://api.github.com/repos/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}/pulls/${CIRCLE_PR_NUMBER} | jq -r '.head.ref'
+                  export CIRCLE_PR_BRANCH="curl --fail -s https://api.github.com/repos/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}/pulls/${CIRCLE_PR_NUMBER} | jq -r '.head.ref'"
                   if [ -z "$CIRCLE_PR_BRANCH"]
                   then
-                    export CIRCLE_PR_BRANCH = development
+                    export CIRCLE_PR_BRANCH=development
                   fi
                   echo $CIRCLE_PR_BRANCH
                   cd ~/backend && git fetch --all && git checkout $CIRCLE_PR_BRANCH && npm install

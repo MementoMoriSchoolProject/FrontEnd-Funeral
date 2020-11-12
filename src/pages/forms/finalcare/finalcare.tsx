@@ -38,11 +38,8 @@ export const FinalCare: React.FC<FormProps> = ({ shouldSubmit, setValues, values
     
     return (
         <>
-            <Heading level={2} mx="auto" mb="4">
-                Laatste verzorging
-            </Heading>
             <Flex>
-                <LabelTextField id={wrapId("dateOfFinalCare")} label="Datum" placeholder="13-12-1901" type='date' />
+                <LabelTextField id={wrapId("date")} label="Datum" placeholder="13-12-1901" type='date' />
             </Flex>
             <Flex>
                 <LabelSelectField id={wrapId("location")} label="Locatie verzorging">
@@ -59,14 +56,14 @@ export const FinalCare: React.FC<FormProps> = ({ shouldSubmit, setValues, values
                 </LabelSelectField>
             </Flex>
             <Flex>
-                <LabelSelectField id={wrapId("pacemaker")} label="Pacemaker verwijderen">
+                <LabelSelectField id={wrapId("deletePacemaker")} label="Pacemaker verwijderen">
                     <option value="ja">Ja</option>
                     <option value="nee">Nee</option>
                     <option value="nvt">Niet van toepassing</option>
                 </LabelSelectField>
             </Flex>
             <Flex>
-                <LabelSelectField id={wrapId("fingerprint")} label="Vingerafdruk maken">
+                <LabelSelectField id={wrapId("makeFingerprint")} label="Vingerafdruk maken">
                     <option value="ja">Ja</option>
                     <option value="nee">Nee</option>
                 </LabelSelectField>
@@ -79,7 +76,7 @@ export const FinalCare: React.FC<FormProps> = ({ shouldSubmit, setValues, values
                 </LabelSelectField>
             </Flex>
             <Flex>
-                <LabelSelectField id={wrapId("wishes")} label="Wensen m.b.t. sieraden/bril">
+                <LabelSelectField id={wrapId("wishesJewelryGlasses")} label="Wensen m.b.t. sieraden/bril">
                     <option value="retourdaguitvaart">Retour op de dag van de uitvaart</option>
                     <option value="retourfamilie">Retour aan familie</option>
                     <option value="blijven">Blijven bij overledene</option>
@@ -87,10 +84,10 @@ export const FinalCare: React.FC<FormProps> = ({ shouldSubmit, setValues, values
                 </LabelSelectField>
             </Flex>
             <Flex>
-                <LabelTextAreaField id={wrapId("detailsofcare")} label="Bijzonderheden" />
+                <LabelTextAreaField id={wrapId("detailsOfCare")} label="Bijzonderheden" />
             </Flex>
             <Flex>
-                <LabelTextAreaField id={wrapId("whishesmakup")} label="Wensen make-up/kapsel" />
+                <LabelTextAreaField id={wrapId("makeUpHairstyleWishes")} label="Wensen make-up/kapsel" />
             </Flex>
         </>
     );

@@ -39,9 +39,6 @@ export const Client: React.FC<FormProps> = ({ shouldSubmit, setValues, values })
 
     return (
         <>
-            <Heading level={2} mx="auto" mb="4">
-                Client
-            </Heading>
             <Flex>
                 <LabelTextField id={wrapId("firstname")} label="Voornaam" />
                 <LabelTextField id={wrapId("firstLetters")} label="Voorletters" boxProps={{ ml: 2 }} />

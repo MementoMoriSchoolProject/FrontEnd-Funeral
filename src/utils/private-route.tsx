@@ -2,6 +2,7 @@ import { gql, useQuery } from '@apollo/client';
 import React, { createContext, useContext } from 'react';
 import { Redirect, Route, RouteProps } from 'react-router-dom';
 import { Flex } from 'rebass';
+import { Spinner } from '../atoms/spinner';
 
 export const PrivateRoute: React.FC<RouteProps> = ({ children, ...rest }) => {
     const isSignedIn = useAuth();
@@ -71,7 +72,11 @@ export const AuthStateProvider: React.FC<{}> = (props) => {
     const { loading, data } = useQuery(LOGGED_IN);
 
     if (loading) {
-        return (<Flex justifyContent='center' alignItems='center' height='100vh'>Loading...</Flex>);
+        return (
+            <Flex justifyContent='center' alignItems='center' height='100vh'>
+                <Spinner />
+            </Flex>
+        );
     }
     return (
         <AuthStateContext.Provider value={!!data}>

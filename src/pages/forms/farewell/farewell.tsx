@@ -38,9 +38,6 @@ export const Farewell: React.FC<FormProps> = ({ shouldSubmit, setValues, values,
 
     return (
         <>
-            <Heading level={2} mx="auto" mb="4">
-                Kerkdienst/Afscheidsdienst
-            </Heading>
             <Flex>
                 <LabelTextField id={wrapId("pastor")} label="Voorganger" />
             </Flex>

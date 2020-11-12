@@ -61,7 +61,8 @@ export const theme = {
 	text: {
 		text: {
             color: 'text',
-			fontSize: 0,
+			fontSize: 2,
+			fontWeight: 600,
         },
         heading1: {
             color: 'text',
@@ -90,14 +91,33 @@ export const theme = {
 			mb: 2,
 			'&:active, &:focus': {
 				borderColor: 'primary',
-			}
+			},
+			'&[type="time"], &[type="date"]': {
+				fontFamily: 'Arial !important',
+			},
+		},
+		select: {
+			borderWidth: 2,
+			borderColor: 'secondary',
+			outline: 'none',
+			borderRadius: 4,
+			'&:active, &:focus': {
+				borderColor: 'primary',
+			},
 		},
         label: {
             color: 'primary',
 			fontWeight: 600,
 			fontSize: 1,
             mb: 1,
-        },
+		},
+		textarea: {
+			borderWidth: 2,
+			borderColor: 'secondary',
+			outline: 'none',
+			borderRadius: 4,
+			fontFamily: 'Arial',
+		}
 	},
 	buttons: {
 		primary: {

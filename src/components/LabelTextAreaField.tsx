@@ -1,6 +1,7 @@
 import React from "react";
 import { Label, Textarea } from "@rebass/forms";
 import { Box, BoxProps } from "rebass";
+import { Field } from "formik";
 
 const LabelTextAreaField = (props: LabelTextAreaFieldProps) => {
     return (
@@ -8,12 +9,17 @@ const LabelTextAreaField = (props: LabelTextAreaFieldProps) => {
             <Label variant='label' htmlFor={props.id}>
                 {props.label}
             </Label>
-            <Textarea
-                id={props.id}
-                name={props.name}
-                placeholder={props.placeholder}
-                bg={props.bg}
-            />
+            <Field name={props.id}>
+                {(fieldProps: any) => (
+                    <Textarea
+                        id={props.id}
+                        name={props.id}
+                        placeholder={props.placeholder}
+                        bg={props.bg}
+                        {...fieldProps.field}
+                    />
+                )}
+            </Field>
         </Box>
     );
 }

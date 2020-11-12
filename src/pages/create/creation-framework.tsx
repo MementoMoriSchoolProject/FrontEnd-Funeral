@@ -14,6 +14,7 @@ import { funeral_funeral } from '../../utils/__generated__/funeral';
 import { Farewell } from '../forms/farewell/farewell';
 import { FuneralLetter } from '../forms/funeralletter/funeralletter';
 import { CommemorativeCard } from '../forms/commemorativecard/commemorativecard';
+import { Ceremony } from '../forms/ceremony';
 
 export interface FormProps extends FormikProps<any> {
     shouldSubmit: boolean;
@@ -62,6 +63,12 @@ const pages: (React.FC<FormProps> | FormPage)[] = [
         title: 'Kerkdienst/Afscheidsdienst',
         parts: [
             Farewell
+        ]
+    },
+    {
+        title: 'Gegevens Plechtigheid',
+        parts: [
+            Ceremony
         ]
     },
     {

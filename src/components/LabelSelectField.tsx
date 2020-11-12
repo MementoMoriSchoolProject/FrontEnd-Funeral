@@ -1,6 +1,7 @@
 import React from "react";
 import { Label, Select } from "@rebass/forms";
 import { Box, BoxProps } from "rebass";
+import { Field } from "formik";
 
 export const LabelSelectField : React.FC<LabelSelectFieldProps> = (props) => {
     return (
@@ -8,12 +9,18 @@ export const LabelSelectField : React.FC<LabelSelectFieldProps> = (props) => {
             <Label variant='label' htmlFor={props.id}>
                 {props.label}
             </Label>
-            <Select
-                id={props.id}
-                name={props.name}
-                defaultValue={props.defaultValue}>
-                    {props.children}
-            </Select>
+            <Field name={props.id}>
+                {(fieldProps: any) => (
+                    <Select
+                        id={props.id}
+                        name={props.name || props.id}
+                        defaultValue={props.defaultValue}
+                        {...fieldProps.field}
+                    >
+                        {props.children}
+                    </Select>
+                )}
+            </Field>
         </Box>
     );
 }

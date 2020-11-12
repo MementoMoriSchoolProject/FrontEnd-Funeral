@@ -14,6 +14,10 @@ jobs:
       - node/with-cache:
           steps:
             # npm install on the backend
+            # this command finds the branch the frontend is on,
+            # and attempts to switch to that same branch name on the backend,
+            # so that it can compare the frontend changes to the API changes
+            # that belong with it
             - run:
                 name: "npm install backend"
                 command: |
@@ -24,11 +28,9 @@ jobs:
                     CIRCLE_PR_BRANCH=development
                     export CIRCLE_PR_BRANCH
                   fi
-                  echo $CIRCLE_PR_BRANCH
                   cd ~/backend
                   git pull
                   (git checkout $CIRCLE_PR_BRANCH || git checkout development)
-                  echo $(git rev-parse --abbrev-ref HEAD)
                   npm install
       # run the backend in the background
       - run:

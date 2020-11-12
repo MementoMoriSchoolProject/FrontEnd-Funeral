@@ -25,7 +25,7 @@ jobs:
                     export CIRCLE_PR_BRANCH
                   fi
                   echo $CIRCLE_PR_BRANCH
-                  cd ~/backend && git fetch --all && git checkout $CIRCLE_PR_BRANCH && npm install
+                  cd ~/backend && git pull && git checkout $CIRCLE_PR_BRANCH  && npm install
       # run the backend in the background
       - run:
           command: cd ~/backend && npm run dev

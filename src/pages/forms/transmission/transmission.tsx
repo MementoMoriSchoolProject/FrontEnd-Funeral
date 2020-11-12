@@ -1,7 +1,6 @@
 import { FieldArray } from 'formik';
 import React, { useEffect } from 'react';
 import { PersistTransmissionInput } from '../../../../__generated__/globalTypes';
-import { Heading } from '../../../atoms/heading';
 import { objectToArray } from '../../../utils/array';
 import { useSelectedFuneral } from '../../../utils/selected-funeral';
 import { FormProps } from '../../create/creation-framework';
@@ -14,7 +13,6 @@ export const Transmission: React.FC<FormProps> = ({ shouldSubmit, setValues, val
     // saving
     useEffect(() => {
         if (shouldSubmit && selectedFuneral) {
-
             // the API works with an array (which is okay), but formik
             // uses an object with numeric keys, so we have to convert between those 2
             const transmissions = objectToArray<PersistTransmissionInput>(values.transmissions);
@@ -26,14 +24,13 @@ export const Transmission: React.FC<FormProps> = ({ shouldSubmit, setValues, val
                 }
             });
         }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [shouldSubmit]);
 
     // console.log('Test: ', values.transmissions);
     return (
         <>
             <FieldArray
-                name='transmissions'
+                name="transmissions"
                 render={arrayHelpers => (
                     <TransmissionContent
                         selectedFuneral={selectedFuneral}

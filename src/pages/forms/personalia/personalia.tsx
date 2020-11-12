@@ -12,7 +12,7 @@ import { useGetPersonalia } from './query/get-personalia';
 
 const wrapId = (htmlId: string) => `personalia.${htmlId}`;
 
-export const Personalia: React.FC<FormProps> = ({ shouldSubmit, setValues, values, setFieldValue }) => {
+export const Personalia: React.FC<FormProps> = ({ shouldSubmit, setValues, values }) => {
     const [selectedFuneral] = useSelectedFuneral();
     const [savePersonalia] = useSavePersonalia();
     // saving
@@ -25,13 +25,12 @@ export const Personalia: React.FC<FormProps> = ({ shouldSubmit, setValues, value
                 }
             });
         }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [shouldSubmit]);
 
     // initial values
     const { data: initialValues } = useGetPersonalia({ id: selectedFuneral?.id || '' });
     useEffect(() => {
-        if (initialValues)
+        if (initialValues) {
             setValues({
                 personalia: {
                     ...initialValues?.personalia,
@@ -40,7 +39,7 @@ export const Personalia: React.FC<FormProps> = ({ shouldSubmit, setValues, value
                 },
                 ...values
             });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        }
     }, [initialValues]);
 
     return (
@@ -84,11 +83,11 @@ export const Personalia: React.FC<FormProps> = ({ shouldSubmit, setValues, value
                 <LabelTextField id={wrapId("bsn")} label="BSN" />
             </Flex>
             <Flex>
-                <LabelTextField id={wrapId("dateOfBirth")} label="Geboortedatum" placeholder="13-12-1901" type='date' />
+                <LabelTextField id={wrapId("dateOfBirth")} label="Geboortedatum" placeholder="13-12-1901" type="date" />
             </Flex>
             <Flex>
-                <LabelTextField id={wrapId("amountOfChildren")} label="Aantal Kinderen" type='number' boxProps={{ mr: 2 }} />
-                <LabelTextField id={wrapId("amountOfMinors")} label="Aantal minderjarig" type='number' boxProps={{ ml: 2 }} />
+                <LabelTextField id={wrapId("amountOfChildren")} label="Aantal Kinderen" type="number" boxProps={{ mr: 2 }} />
+                <LabelTextField id={wrapId("amountOfMinors")} label="Aantal minderjarig" type="number" boxProps={{ ml: 2 }} />
             </Flex>
             <Flex>
                 <LabelTextField id={wrapId("maritalStatus")} label="Burgelijke Staat" />

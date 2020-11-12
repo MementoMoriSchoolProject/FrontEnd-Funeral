@@ -28,8 +28,6 @@ export const Insurance: React.FC<FormProps> = ({ shouldSubmit, values, ...rest }
                 insurances: insuranceArray
             }
         });
-
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [shouldSubmit]);
 
     return (

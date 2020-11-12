@@ -1,7 +1,6 @@
 import _ from 'lodash';
 import React, { useEffect } from 'react';
 import { Flex } from 'rebass';
-import { Heading } from '../../../atoms/heading';
 import { LabelSelectField } from '../../../components/LabelSelectField';
 import LabelTextAreaField from '../../../components/LabelTextAreaField';
 import { LabelTextField } from '../../../components/LabelTextField';
@@ -12,7 +11,7 @@ import { useFinalCare } from './query/get-finalcare';
 
 const wrapId = (htmlId: string) => `finalcare.${htmlId}`;
 
-export const FinalCare: React.FC<FormProps> = ({ shouldSubmit, setValues, values, setFieldValue }) => {
+export const FinalCare: React.FC<FormProps> = ({ shouldSubmit, setValues, values }) => {
     const [selectedFuneral] = useSelectedFuneral();
     const [saveFinalCare] = useSaveFinalCare();
     // saving
@@ -25,21 +24,18 @@ export const FinalCare: React.FC<FormProps> = ({ shouldSubmit, setValues, values
                 }
             });
         }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [shouldSubmit]);
 
     // initial values
     const { data: initialValues } = useFinalCare({ id: selectedFuneral?.id || '' });
     useEffect(() => {
-        if (initialValues)
-            setValues({ client: initialValues?.finalcare, ...values });
-        // eslint-disable-next-line react-hooks/exhaustive-deps
+        if (initialValues) setValues({ client: initialValues?.finalcare, ...values });
     }, [initialValues]);
-    
+
     return (
         <>
             <Flex>
-                <LabelTextField id={wrapId("date")} label="Datum" placeholder="13-12-1901" type='date' />
+                <LabelTextField id={wrapId("date")} label="Datum" placeholder="13-12-1901" type="date" />
             </Flex>
             <Flex>
                 <LabelSelectField id={wrapId("location")} label="Locatie verzorging">
@@ -50,7 +46,6 @@ export const FinalCare: React.FC<FormProps> = ({ shouldSubmit, setValues, values
             </Flex>
             <Flex>
                 <LabelSelectField id={wrapId("family")} label="Met of zonder familie">
-                    <option value="" selected></option>
                     <option value="metfamilie">Met familie</option>
                     <option value="zonderfamilie">Geen familie</option>
                 </LabelSelectField>

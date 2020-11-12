@@ -1,6 +1,6 @@
+import React, { useEffect } from 'react';
 import { FieldArray } from 'formik';
 import _ from 'lodash';
-import React, { useEffect } from 'react';
 import { Button, Flex } from 'rebass';
 import { LabelSelectField } from '../../../components/LabelSelectField';
 import LabelTextAreaField from '../../../components/LabelTextAreaField';
@@ -15,7 +15,7 @@ import { Text } from '../../../atoms/text';
 
 const wrapId = (htmlId: string) => `ceremony.${htmlId}`;
 
-export const Ceremony: React.FC<FormProps> = ({ shouldSubmit, setValues, values, setFieldValue }) => {
+export const Ceremony: React.FC<FormProps> = ({ shouldSubmit, setValues, values }) => {
     const [selectedFuneral] = useSelectedFuneral();
 
     const [saveCeremony] = useSaveCeremony();
@@ -29,29 +29,27 @@ export const Ceremony: React.FC<FormProps> = ({ shouldSubmit, setValues, values,
                 }
             });
         }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [shouldSubmit]);
 
     // initial values
     const { data: initialValues } = useGetCeremony({ id: selectedFuneral?.id || '' });
     useEffect(() => {
-        if (initialValues)
-            setValues({
-                ceremony: {
-                    ...initialValues?.ceremony,
-                    // convert graphql to JS date
-                    date: formatDate(initialValues.ceremony?.date)
-                },
-                ...values
-            });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        if (!initialValues) return;
+        setValues({
+            ceremony: {
+                ...initialValues?.ceremony,
+                // convert graphql to JS date
+                date: formatDate(initialValues.ceremony?.date)
+            },
+            ...values
+        });
     }, [initialValues]);
 
     return (
         <>
             <Flex>
-                <LabelTextField id={wrapId("date")} type='date' label="Datum uitvaart" boxProps={{ mr: 2 }} />
-                <LabelTextField id={wrapId("time")} type='time' label="Tijdstip uitvaart" boxProps={{ ml: 2 }} />
+                <LabelTextField id={wrapId("date")} type="date" label="Datum uitvaart" boxProps={{ mr: 2 }} />
+                <LabelTextField id={wrapId("time")} type="time" label="Tijdstip uitvaart" boxProps={{ ml: 2 }} />
             </Flex>
             <Flex>
                 <LabelSelectField
@@ -63,26 +61,26 @@ export const Ceremony: React.FC<FormProps> = ({ shouldSubmit, setValues, values,
                     <option value="true">Ja</option>
                     <option value="false">Nee</option>
                 </LabelSelectField>
-                <LabelTextField id={wrapId("timeDepartureLayoutAddress")} type='time' label="Tijdstip vertrek opbaaradres" boxProps={{ ml: 2 }} />
+                <LabelTextField id={wrapId("timeDepartureLayoutAddress")} type="time" label="Tijdstip vertrek opbaaradres" boxProps={{ ml: 2 }} />
             </Flex>
             <Flex>
                 <LabelTextField
                     id={wrapId("duration")}
-                    type='time'
+                    type="time"
                     label="Duur plechtigheid"
                     boxProps={{ mr: 2 }}
                 />
                 <LabelTextField
                     id={wrapId("extraTime")}
-                    type='time'
+                    type="time"
                     label="Aula extra tijd"
                     boxProps={{ ml: 2 }}
                 />
             </Flex>
-            <Flex>            
+            <Flex>
                 <LabelTextField
                     id={wrapId("aulaStart")}
-                    type='time'
+                    type="time"
                     label="Aanvang Aula"
                     boxProps={{ mr: 2 }}
                 />
@@ -91,7 +89,7 @@ export const Ceremony: React.FC<FormProps> = ({ shouldSubmit, setValues, values,
             <Flex>
                 <LabelTextField
                     id={wrapId("amountOfInterestedGuests")}
-                    type='number'
+                    type="number"
                     label="Aantal belangstellenden"
                     boxProps={{ mr: 2 }}
                 />
@@ -121,8 +119,8 @@ export const Ceremony: React.FC<FormProps> = ({ shouldSubmit, setValues, values,
                 </LabelSelectField>
             </Flex>
             <Flex>
-                <LabelTextField id={wrapId("funeralAssistantAmount")} type='number' label="Aantal uitvaartassistenten" boxProps={{ mr: 2 }} />
-                <LabelTextField id={wrapId("carrierAmount")} type='number' label="Aantal dragers" boxProps={{ ml: 2 }} />
+                <LabelTextField id={wrapId("funeralAssistantAmount")} type="number" label="Aantal uitvaartassistenten" boxProps={{ mr: 2 }} />
+                <LabelTextField id={wrapId("carrierAmount")} type="number" label="Aantal dragers" boxProps={{ ml: 2 }} />
             </Flex>
             <Flex>
                 <LabelTextField id={wrapId("acceptFamily")} label="Ontvangst familie" />
@@ -138,18 +136,18 @@ export const Ceremony: React.FC<FormProps> = ({ shouldSubmit, setValues, values,
                     <option value="last">Laatste</option>
                     <option value="n/a">Niet van toepassing</option>
                 </LabelSelectField>
-                <LabelTextField id={wrapId("placesForFamilyAmount")} type='number' label="Aantal plaatsen voor familie" boxProps={{ ml: 2 }} />
+                <LabelTextField id={wrapId("placesForFamilyAmount")} type="number" label="Aantal plaatsen voor familie" boxProps={{ ml: 2 }} />
             </Flex>
             <Flex>
                 <LabelTextField id={wrapId("openingSpeech")} label="Welkomstwoord" boxProps={{ mr: 2 }} />
                 <LabelTextField id={wrapId("candlesLitBy")} label="Kaarsen aangestoken door" boxProps={{ ml: 2 }} />
             </Flex>
             <FieldArray
-                name='ceremony.speakers'
+                name="ceremony.speakers"
                 render={arrayHelpers => {
                     const speakers: string[] = values.ceremony?.speakers;
                     return (
-                        <Flex flexDirection='column' width='100%'>
+                        <Flex flexDirection="column" width="100%">
                             {speakers && speakers.length > 0 ? (
                                 speakers.map((speaker, index) => (
                                     <ListItem key={index} onDelete={() => arrayHelpers.remove(index)}>
@@ -157,7 +155,7 @@ export const Ceremony: React.FC<FormProps> = ({ shouldSubmit, setValues, values,
                                     </ListItem>
                                 ))
                             ) : (
-                                <Flex mb={4} justifyContent='center'>
+                                <Flex mb={4} justifyContent="center">
                                     <Text>
                                         Er zijn nog geen sprekers toegevoegd.
                                     </Text>

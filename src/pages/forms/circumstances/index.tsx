@@ -22,8 +22,7 @@ export const Circumstances: React.FC<FormProps> = ({ shouldSubmit, setValues, va
                 id: selectedFuneral?.id || '',
                 circumstances: _.omit(values.circumstances, '__typename'),
             }
-        })
-        // eslint-disable-next-line react-hooks/exhaustive-deps
+        });
     }, [shouldSubmit]);
 
     // initial values
@@ -38,7 +37,6 @@ export const Circumstances: React.FC<FormProps> = ({ shouldSubmit, setValues, va
             },
             ...values,
         });
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [initialValues]);
     return (
         <>
@@ -46,8 +44,8 @@ export const Circumstances: React.FC<FormProps> = ({ shouldSubmit, setValues, va
                 Overlijden
             </Heading>
             <Flex>
-                <LabelTextField id={wrapId("date")} type='date' label="Datum" boxProps={{ mr: 2 }} />
-                <LabelTextField id={wrapId("time")} type='time' label="Tijdstip" boxProps={{ ml: 2 }} />
+                <LabelTextField id={wrapId("date")} type="date" label="Datum" boxProps={{ mr: 2 }} />
+                <LabelTextField id={wrapId("time")} type="time" label="Tijdstip" boxProps={{ ml: 2 }} />
             </Flex>
             <Flex>
                 <LabelTextField id={wrapId("address")} label="Adres" boxProps={{ mr: 2 }} />
@@ -64,4 +62,4 @@ export const Circumstances: React.FC<FormProps> = ({ shouldSubmit, setValues, va
             </Flex>
         </>
     );
-}
+};

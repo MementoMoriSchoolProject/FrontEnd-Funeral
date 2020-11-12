@@ -11,13 +11,12 @@ import { getTransmissions_transmissions } from './query/__generated__/getTransmi
 const wrapId = (htmlId: string) => `transmissions.${htmlId}`;
 
 export const TransmissionContent: React.FC<FormArrayProps> = ({ setValues, values, selectedFuneral, arrayHelpers }) => {
-
     // initial values
     const { data: initialValues } = useGetTransmissions({ id: selectedFuneral?.id || '' });
     useEffect(() => {
         if (!initialValues) return;
 
-        let transmissions = (initialValues.transmissions || []).map(it => ({
+        const transmissions = (initialValues.transmissions || []).map(it => ({
             ...it,
             date: formatDate(it.date)
         }));
@@ -32,18 +31,16 @@ export const TransmissionContent: React.FC<FormArrayProps> = ({ setValues, value
 
         setValues(newValues);
         newValues.transmissions?.forEach((it, index) => arrayHelpers.replace(index, it));
-
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [initialValues]);
 
     return (
         <>
             {values.transmissions && values.transmissions.length > 0 ? (
                 values.transmissions.map((_: any, index: number) => (
-                    <Flex key={index} variant='highCard' mb={4}>
-                        <Flex p={4} flexGrow={1} flexDirection='column' alignItems='stretch'>
+                    <Flex key={index} variant="highCard" mb={4}>
+                        <Flex p={4} flexGrow={1} flexDirection="column" alignItems="stretch">
                             <Flex>
-                                <LabelTextField id={wrapId(`${index}.date`)} label="Datum" placeholder="13-12-1901" type='date' />
+                                <LabelTextField id={wrapId(`${index}.date`)} label="Datum" placeholder="13-12-1901" type="date" />
                             </Flex>
                             <Flex>
                                 <LabelTextField id={wrapId(`${index}.by`)} label="Door" />
@@ -61,12 +58,16 @@ export const TransmissionContent: React.FC<FormArrayProps> = ({ setValues, value
                                 <LabelTextField id={wrapId(`${index}.toPlace`)} label="Plaats" boxProps={{ ml: 2 }} />
                             </Flex>
                         </Flex>
-                        <Flex flexGrow={0} alignItems='flex-start' style={{ position: 'relative' }}>
-                            <Button variant='icon' style={{
-                                position: 'absolute',
-                                top: 0,
-                                right: 0,
-                            }} onClick={() => arrayHelpers.remove(index)}>
+                        <Flex flexGrow={0} alignItems="flex-start" style={{ position: 'relative' }}>
+                            <Button
+                                variant="icon"
+                                style={{
+                                    position: 'absolute',
+                                    top: 0,
+                                    right: 0,
+                                }}
+                                onClick={() => arrayHelpers.remove(index)}
+                            >
                                 <FaTrash size={20} />
                             </Button>
                         </Flex>
@@ -82,4 +83,4 @@ export const TransmissionContent: React.FC<FormArrayProps> = ({ setValues, value
             </ProgressButton>
         </>
     );
-}
+};

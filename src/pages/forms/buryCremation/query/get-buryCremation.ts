@@ -1,4 +1,5 @@
 import { gql, useQuery } from "@apollo/client";
+import { getBuryCremation, getBuryCremationVariables } from "./__generated__/getBuryCremation";
 
 const GET_BURYCREMATION = gql`
 query getBuryCremation($id: String!) {
@@ -25,4 +26,4 @@ query getBuryCremation($id: String!) {
 }
 `;
 
-export const useGetBuryCremation = () => useQuery(GET_BURYCREMATION);
+export const useGetBuryCremation = (variables: getBuryCremationVariables) => useQuery<getBuryCremation>(GET_BURYCREMATION, { variables });

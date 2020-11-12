@@ -1,14 +1,15 @@
 import { gql, useMutation } from "@apollo/client";
+import { saveBuryCremation, saveBuryCremationVariables } from "./__generated__/saveBuryCremation";
 
 const SAVE_BURYCREMATION = gql`
-mutation saveBuryCremation($id: String!, $ceremony: PersistCeremonyInput!) {
-    saveCeremony(
+mutation saveBuryCremation($id: String!, $burycremation: PersistBuryCremationInput!) {
+    saveBuryCremation(
         funeralId: $id,
-        buryCremation: $buryCremation
+        burycremation: $burycremation
     ) {
         buryCremation
     }
 }
 `;
 
-export const useSaveBuryCremation = () => useMutation(SAVE_BURYCREMATION);
+export const useSaveBuryCremation = () => useMutation<saveBuryCremation, saveBuryCremationVariables>(SAVE_BURYCREMATION);

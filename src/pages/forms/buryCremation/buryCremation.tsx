@@ -10,7 +10,7 @@ import { useGetBuryCremation } from './query/get-buryCremation';
 import { formatDate } from '../../../utils/date';
 import { Heading } from '../../../atoms/heading';
 
-const wrapId = (htmlId: string) => `buryCremation.${htmlId}`;
+const wrapId = (htmlId: string) => `burycremation.${htmlId}`;
 
 export const BuryCremation: React.FC<FormProps> = ({ shouldSubmit, setValues, values }) => {
     const [selectedFuneral] = useSelectedFuneral();
@@ -22,18 +22,18 @@ export const BuryCremation: React.FC<FormProps> = ({ shouldSubmit, setValues, va
             saveBuryCremation({
                 variables: {
                     id: selectedFuneral.id,
-                    buryCremation: _.omit(values.buryCremation, ['__typename']),
+                    burycremation: _.omit(values.burycremation, ['__typename']),
                 }
             });
         }
     }, [shouldSubmit]);
 
     // initial values
-    const { data: initialValues } = useGetBuryCremation();
+    const { data: initialValues } = useGetBuryCremation({ id: selectedFuneral?.id || '' });
     useEffect(() => {
         if (initialValues) {
             setValues({
-                buryCremation: {
+                burycremation: {
                     ...initialValues?.buryCremation,
                     // convert graphql to JS date
                     date: formatDate(initialValues.buryCremation?.date),
@@ -44,6 +44,7 @@ export const BuryCremation: React.FC<FormProps> = ({ shouldSubmit, setValues, va
             });
         }
     }, [initialValues]);
+
     return (
         <>
             <Heading level={2} mx="auto" mb="4">
@@ -55,7 +56,6 @@ export const BuryCremation: React.FC<FormProps> = ({ shouldSubmit, setValues, va
                     <option value="Cremation">Cremeren</option>
                 </LabelSelectField>
             </Flex>
-            {/*common things*/}
             <Flex>
                 <LabelTextField id={wrapId("date")} label="Datum" placeholder="13-12-1901" type="date" />
             </Flex>
@@ -83,52 +83,57 @@ export const BuryCremation: React.FC<FormProps> = ({ shouldSubmit, setValues, va
             <Flex>
                 <LabelTextField id={wrapId("specialNeeds")} label="Bijzonderheden" />
             </Flex>
-            {/*cremation specific things*/}
-            <Flex>
-                <LabelSelectField id={wrapId("cascetView")} label="Volgorde afscheid" name="volgorde afscheid">
-                    <option value="familyOnly">Alleen met familie</option>
-                    <option value="familyWithFriends">Samen met belangstellenden</option>
-                    <option value="no">Nee</option>
-                </LabelSelectField>
-            </Flex>
-            <Flex>
-                <LabelSelectField id={wrapId("insertion")} label="Volgorde afscheid" name="volgorde afscheid">
-                    <option value="withFamily">Met familie</option>
-                    <option value="withoutFamily">Zonder familie</option>
-                </LabelSelectField>
-            </Flex>
-            <Flex>
-                <LabelTextField id={wrapId("ashesDestination")} label="Asbestemming" />
-            </Flex>
-            {/*bury specific things*/}
-            <Flex>
-                <LabelSelectField id={wrapId("kindOfGrave")} label="Soort graf" name="soort graf">
-                    <option value="common">Algemeen</option>
-                    <option value="family">Familie</option>
-                </LabelSelectField>
-            </Flex>
-            <Flex>
-                <LabelSelectField id={wrapId("existingGrave")} label="Bestaand graf" name="bestaand graf">
-                    <option value="yes">Ja</option>
-                    <option value="no">Nee</option>
-                </LabelSelectField>
-            </Flex>
-            <Flex>
-                <LabelTextField id={wrapId("sectionNumber")} label="Vak/nummer" />
-            </Flex>
-            <Flex>
-                <LabelTextField id={wrapId("burriedRecently")} label="Reeds begraven" />
-            </Flex>
-            <Flex>
-                <LabelSelectField id={wrapId("cascetDescend")} label="Kist dalen" name="kist dalen">
-                    <option value="familyOnly">Alleen met familie</option>
-                    <option value="familyWithFriends">Samen met belangstellenden</option>
-                    <option value="no">Nee</option>
-                </LabelSelectField>
-            </Flex>
-            <Flex>
-                <LabelTextField id={wrapId("stonemason")} label="Steenhouwer" />
-            </Flex>
+            {values.burycremation.buryCremation === 'Bury' ? (
+                <>
+                    <Flex>
+                        <LabelSelectField id={wrapId("kindOfGrave")} label="Soort graf" name="soort graf">
+                            <option value="common">Algemeen</option>
+                            <option value="family">Familie</option>
+                        </LabelSelectField>
+                    </Flex>
+                    <Flex>
+                        <LabelSelectField id={wrapId("existingGrave")} label="Bestaand graf" name="bestaand graf">
+                            <option value="yes">Ja</option>
+                            <option value="no">Nee</option>
+                        </LabelSelectField>
+                    </Flex>
+                    <Flex>
+                        <LabelTextField id={wrapId("sectionNumber")} label="Vak/nummer" />
+                    </Flex>
+                    <Flex>
+                        <LabelTextField id={wrapId("burriedRecently")} label="Reeds begraven" />
+                    </Flex>
+                    <Flex>
+                        <LabelSelectField id={wrapId("cascetDescend")} label="Kist dalen" name="kist dalen">
+                            <option value="familyOnly">Alleen met familie</option>
+                            <option value="familyWithFriends">Samen met belangstellenden</option>
+                            <option value="no">Nee</option>
+                        </LabelSelectField>
+                    </Flex>
+                    <Flex>
+                        <LabelTextField id={wrapId("stonemason")} label="Steenhouwer" />
+                    </Flex>
+                </>
+            ) : (
+                <>
+                    <Flex>
+                        <LabelSelectField id={wrapId("cascetView")} label="Volgorde afscheid" name="volgorde afscheid">
+                            <option value="familyOnly">Alleen met familie</option>
+                            <option value="familyWithFriends">Samen met belangstellenden</option>
+                            <option value="no">Nee</option>
+                        </LabelSelectField>
+                    </Flex>
+                    <Flex>
+                        <LabelSelectField id={wrapId("insertion")} label="Volgorde afscheid" name="volgorde afscheid">
+                            <option value="withFamily">Met familie</option>
+                            <option value="withoutFamily">Zonder familie</option>
+                        </LabelSelectField>
+                    </Flex>
+                    <Flex>
+                        <LabelTextField id={wrapId("ashesDestination")} label="Asbestemming" />
+                    </Flex>
+                </>
+            )}
         </>
     );
 };

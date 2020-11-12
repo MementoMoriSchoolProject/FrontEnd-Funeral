@@ -124,10 +124,10 @@ export const CreatingFuneral: React.FC<{}> = () => {
                             {isReactComponent(Page) ? (
                                 <Page shouldSubmit={nextPage !== 0} {...formik} />
                             ) : (
-                                    <PageTemplate title={Page.title}>
-                                        {Page.parts.map(Part => <Part shouldSubmit={nextPage !== 0} {...formik} />)}
-                                    </PageTemplate>
-                                )}
+                                <PageTemplate title={Page.title}>
+                                    {Page.parts.map(Part => <Part shouldSubmit={nextPage !== 0} {...formik} />)}
+                                </PageTemplate>
+                            )}
                         </Flex>
                     </Flex>
                     <Flex flexGrow={0} m={4}>

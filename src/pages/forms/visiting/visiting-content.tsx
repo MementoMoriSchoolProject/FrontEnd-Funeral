@@ -23,7 +23,7 @@ export const VisitingInput: React.FC<FormProps & {
     useEffect(() => {
         if (!initialValues) return;
 
-        let visiting = (initialValues.visiting || []).map(it => ({
+        const visiting = (initialValues.visiting || []).map(it => ({
             ...it,
             date: formatDate(it.date)
         }));
@@ -38,7 +38,7 @@ export const VisitingInput: React.FC<FormProps & {
 
         setValues(newValues);
         newValues.visiting?.forEach((it, index) => arrayHelpers.replace(index, it));
-        // eslint-disable-next-line react-hooks/exhaustive-deps
+
     }, [initialValues]);
 
     // Need to update this time discussion needed
@@ -47,31 +47,35 @@ export const VisitingInput: React.FC<FormProps & {
             {values.visiting && values.visiting.length > 0 ? (
                 values.visiting.map((_: any, index: number) => (
                     <Flex key={index} mb={4} sx={{ boxShadow: '0 0 16px rgba(0, 0, 0, .25)' }}>
-                        <Flex p={4} flexGrow={1} flexDirection='column' alignItems='stretch'>
+                        <Flex p={4} flexGrow={1} flexDirection="column" alignItems="stretch">
                             <LabelTextField id={wrapId(`${index}.location`)} label="Locatie" />
-                            <LabelTextField id={wrapId(`${index}.date`)} label="Datum" placeholder="13-12-1901" type='date' />
+                            <LabelTextField id={wrapId(`${index}.date`)} label="Datum" placeholder="13-12-1901" type="date" />
                             <LabelSelectField id={wrapId(`${index}.kindOfVisit`)} label="Soort" name="Soort">
                                 <option value="Familiebezoek">Familiebezoek</option>
                                 <option value="Condoleancebezoek">Condoleancebezoek</option>
                             </LabelSelectField>
-                            <LabelTextField id={wrapId(`${index}.timeOfArrival`)} label="Aanvangstijd" placeholder="13-12-1901" type='time' />
-                            <LabelTextField id={wrapId(`${index}.timeOfLeave`)} label="Eindtijd" placeholder="13-12-1901" type='time' />
+                            <LabelTextField id={wrapId(`${index}.timeOfArrival`)} label="Aanvangstijd" placeholder="13-12-1901" type="time" />
+                            <LabelTextField id={wrapId(`${index}.timeOfLeave`)} label="Eindtijd" placeholder="13-12-1901" type="time" />
                             <LabelTextField id={wrapId(`${index}.specialNeeds`)} label="Bijzonderheden" />
                         </Flex>
-                        <Flex flexGrow={0} alignItems='flex-start' style={{ position: 'relative' }}>
-                            <Button variant='icon' style={{
-                                position: 'absolute',
-                                top: 0,
-                                right: 0,
-                            }} onClick={() => arrayHelpers.remove(index)}>
+                        <Flex flexGrow={0} alignItems="flex-start" style={{ position: 'relative' }}>
+                            <Button
+                                variant="icon"
+                                style={{
+                                    position: 'absolute',
+                                    top: 0,
+                                    right: 0,
+                                }}
+                                onClick={() => arrayHelpers.remove(index)}
+                            >
                                 <FaTrash size={20} />
                             </Button>
                         </Flex>
                     </Flex>
                 ))
             ) : (
-                    <></>
-                )}
+                <></>
+            )}
             <ProgressButton
                 onClick={() => arrayHelpers.push({})}
                 mb={4}
@@ -80,5 +84,5 @@ export const VisitingInput: React.FC<FormProps & {
                 Voeg rouwbezoek toe
             </ProgressButton>
         </>
-    )
-}
+    );
+};

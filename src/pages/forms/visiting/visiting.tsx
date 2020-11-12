@@ -1,6 +1,5 @@
 import { FieldArray } from 'formik';
 import React, { useEffect } from 'react';
-import _ from 'lodash';
 import { Heading } from '../../../atoms/heading';
 import { useSelectedFuneral } from '../../../utils/selected-funeral';
 import { FormProps } from '../../create/creation-framework';
@@ -29,8 +28,6 @@ export const Visiting: React.FC<FormProps> = ({ shouldSubmit, values, ...rest })
                 visiting: visitingArray
             }
         });
-
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [shouldSubmit]);
 
     return (

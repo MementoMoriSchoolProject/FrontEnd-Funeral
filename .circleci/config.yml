@@ -12,8 +12,8 @@ jobs:
       - node/with-cache:
           steps:
             - run: cd ~/backend
-            - run: pwd && echo "installing backend" && npm install
-      - run: pwd && echo "running backend" && npm run dev
+            - run: cd ~/backend && pwd && echo "installing backend" && npm install
+      - run: cd ~/backend && pwd && echo "running backend" && npm run dev
       - run: cd ~/project
       - node/with-cache:
           steps:

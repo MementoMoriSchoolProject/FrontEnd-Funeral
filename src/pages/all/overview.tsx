@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { Box, Flex } from 'rebass';
 import { Heading } from '../../atoms/heading';
 import { ProgressButton } from '../../atoms/progress-button';
+import { Spinner } from '../../atoms/spinner';
 import { Header } from '../../components/header/Header';
 import { useSelectedFuneral } from '../../utils/selected-funeral';
 import { useCreateFuneral } from './mutation/create-funeral';
@@ -36,7 +37,7 @@ export const FuneralOverviewPage: React.FC<{}> = () => {
 				<Box variant='scrollList' maxHeight='400px'>
 					{loading ? (
 						<Flex justifyContent='center'>
-							Loading...
+							<Spinner />
 						</Flex>
 					) : data && data.funerals.map(funeral => (
 							<Flex key={funeral.id}>

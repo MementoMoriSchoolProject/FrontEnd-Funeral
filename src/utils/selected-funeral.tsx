@@ -1,6 +1,7 @@
 import { gql, useQuery } from '@apollo/client';
 import React, { createContext, useContext, useState } from 'react';
 import { Flex } from 'rebass';
+import { Spinner } from '../atoms/spinner';
 import { funeral, funeral_funeral } from './__generated__/funeral';
 
 const ACTIVE_FUNERAL = 'active-funeral';
@@ -36,7 +37,9 @@ export const SelectedFuneralProvider: React.FC<{}> = (props) => {
 
     if (loading) {
         return (
-            <Flex justifyContent='center' alignItems='center' height='100vh'>Loading...</Flex>
+            <Flex justifyContent='center' alignItems='center' height='100vh'>
+                <Spinner />
+            </Flex>
         );
     }
     return (

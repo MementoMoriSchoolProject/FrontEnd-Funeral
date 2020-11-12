@@ -32,9 +32,6 @@ export const Transmission: React.FC<FormProps> = ({ shouldSubmit, setValues, val
     // console.log('Test: ', values.transmissions);
     return (
         <>
-            <Heading level={2} mx="auto" mb="4">
-                Transmission
-            </Heading>
             <FieldArray
                 name='transmissions'
                 render={arrayHelpers => (

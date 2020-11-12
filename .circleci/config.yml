@@ -11,10 +11,10 @@ jobs:
       - run: git clone git@github.com:MementoMoriSchoolProject/Project_Se_Node_Server.git ~/backend
       - node/with-cache:
           steps:
-            - run: cd ~/backend/Project_Se_Node_Server
+            - run: cd ~/backend
             - run: npm install
       - run: npm run dev
-      - run: cd ~
+      - run: cd ~/project
       - node/with-cache:
           steps:
             - run: npm install

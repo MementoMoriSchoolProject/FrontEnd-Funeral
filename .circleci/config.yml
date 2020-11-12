@@ -19,7 +19,7 @@ jobs:
                 command: |
                   CIRCLE_PR_BRANCH=$(git branch)
                   export CIRCLE_PR_BRANCH
-                  if [ $CIRCLE_PR_BRANC" = "master" ]
+                  if [ $CIRCLE_PR_BRANC = "master" ]
                   then
                     CIRCLE_PR_BRANCH=development
                     export CIRCLE_PR_BRANCH

@@ -65,6 +65,7 @@ const pages: (React.FC<FormProps> | FormPage)[] = [
             Visiting
         ]
     },
+    {
         title: 'Kerkdienst/Afscheidsdienst',
         parts: [
             Farewell

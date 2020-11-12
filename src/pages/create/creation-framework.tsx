@@ -17,6 +17,7 @@ import { FuneralLetter } from '../forms/funeralletter/funeralletter';
 import { CommemorativeCard } from '../forms/commemorativecard/commemorativecard';
 import { Ceremony } from '../forms/ceremony';
 import { Nightguard } from '../forms/nightguard/nightguard';
+import { BuryCremation } from '../forms/buryCremation/buryCremation';
 
 export interface FormProps extends FormikProps<any> {
     shouldSubmit: boolean;
@@ -74,6 +75,12 @@ const pages: (React.FC<FormProps> | FormPage)[] = [
         ]
     },
     {
+        title: 'Begraven/Crematie',
+        parts: [
+            BuryCremation
+        ]
+    },
+    {
         title: 'Gegevens Plechtigheid',
         parts: [
             Ceremony
@@ -117,10 +124,10 @@ export const CreatingFuneral: React.FC<{}> = () => {
                             {isReactComponent(Page) ? (
                                 <Page shouldSubmit={nextPage !== 0} {...formik} />
                             ) : (
-                                <PageTemplate title={Page.title}>
-                                    {Page.parts.map(Part => <Part shouldSubmit={nextPage !== 0} {...formik} />)}
-                                </PageTemplate>
-                            )}
+                                    <PageTemplate title={Page.title}>
+                                        {Page.parts.map(Part => <Part shouldSubmit={nextPage !== 0} {...formik} />)}
+                                    </PageTemplate>
+                                )}
                         </Flex>
                     </Flex>
                     <Flex flexGrow={0} m={4}>

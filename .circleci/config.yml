@@ -13,7 +13,14 @@ jobs:
           steps:
             - run: cd ~/backend
             - run: cd ~/backend && pwd && echo "installing backend" && npm install
-      - run: cd ~/backend && pwd && echo "running backend" && npm run dev &
+      - run:
+          command: cd ~/backend && npm run dev
+          background: true
+      - run:
+          shell: /bin/sh
+          command: |
+            wget --retry-connrefused --waitretry=1 --read-timeout=20 --timeout=15 -t 10 http://localhost:8000/graphql
+            :
       - run: cd ~/project
       - node/with-cache:
           steps:

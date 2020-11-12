@@ -28,7 +28,7 @@
         "import/no-unresolved": [
             "error",
             {
-                "argsIgnorePattern": "^/__generated__/^"
+                "ignore": [ "([\\s\\S]*)__generated__([\\s\\S]*)" ]
             }
         ],
         "no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],

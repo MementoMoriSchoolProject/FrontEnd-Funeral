@@ -7,8 +7,17 @@ jobs:
       name: node/default
       tag: '12.0'
     steps:
+      - git clone git@github.com:MementoMoriSchoolProject/Project_Se_Node_Server.git ~/backend
+      - node/with-cache:
+          steps:
+            - run: cd ~/backend/Project_Se_Node_Server
+            - run: npm install
+      - run: npm run dev
+      - run: cd ~
       - checkout
       - node/with-cache:
           steps:
             - run: npm install
+      - run: npm run graphql:download
+      - run: npm run graphql:generate
       - run: npm run build

@@ -15,7 +15,7 @@ const content = {
         text: '>>',
         icon: FaArrowRight
     }
-}
+};
 
 export const ProgressArrow: React.FC<ProgressArrowProps & ButtonProps> = ({ direction, ...props }) => {
     const Icon = content[direction].icon;
@@ -24,4 +24,4 @@ export const ProgressArrow: React.FC<ProgressArrowProps & ButtonProps> = ({ dire
             <Icon />
         </Button>
     );
-}
+};

@@ -12,8 +12,8 @@ export const LoginPage: React.FC<{}> = () => {
     const [login, { loading, error }] = useLogin();
 
     return (
-        <Flex justifyContent='center' alignItems='center' height='100vh' bg='background'>
-            <Box p={3} variant='card'>
+        <Flex justifyContent="center" alignItems="center" height="100vh" bg="background">
+            <Box p={3} variant="card">
                 <Heading level={1}>Login</Heading>
                 <Formik
                     initialValues={{
@@ -31,7 +31,7 @@ export const LoginPage: React.FC<{}> = () => {
                     })}
                 >
                     {({ submitForm, values, handleChange, handleBlur }) => (
-                        <Flex flexDirection='column'>
+                        <Flex flexDirection="column">
                             {error ? (
                                 <>
                                     {error.graphQLErrors.map(({ message }) => (
@@ -40,19 +40,19 @@ export const LoginPage: React.FC<{}> = () => {
                                 </>
                             ) : null}
                             <Input
-                                name='email'
+                                name="email"
                                 value={values.email}
                                 onChange={handleChange}
                                 onBlur={handleBlur}
                             />
                             <Input
-                                type='password'
-                                name='password'
+                                type="password"
+                                name="password"
                                 value={values.password}
                                 onChange={handleChange}
                                 onBlur={handleBlur}
                             />
-                            <ProgressButton loading={loading} type='submit' onClick={submitForm}>
+                            <ProgressButton loading={loading} type="submit" onClick={submitForm}>
                                 Login
                             </ProgressButton>
                         </Flex>
@@ -60,5 +60,5 @@ export const LoginPage: React.FC<{}> = () => {
                 </Formik>
             </Box>
         </Flex>
-    )
-}
+    );
+};

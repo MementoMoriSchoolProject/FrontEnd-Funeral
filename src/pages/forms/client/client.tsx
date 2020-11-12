@@ -1,14 +1,12 @@
 import _ from 'lodash';
 import React, { useEffect } from 'react';
 import { Flex } from 'rebass';
-import { Heading } from '../../../atoms/heading';
 import { LabelSelectField } from '../../../components/LabelSelectField';
 import { LabelTextField } from '../../../components/LabelTextField';
 import { FormProps } from '../../create/creation-framework';
 import { useSelectedFuneral } from '../../../utils/selected-funeral';
 import { useSaveClient } from './mutation/save-client';
-import { useGetClient } from './query/get-client'
-
+import { useGetClient } from './query/get-client';
 
 const wrapId = (htmlId: string) => `client.${htmlId}`;
 
@@ -26,15 +24,12 @@ export const Client: React.FC<FormProps> = ({ shouldSubmit, setValues, values })
                 }
             });
         }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [shouldSubmit]);
 
     // initial values
     const { data: initialValues } = useGetClient({ id: selectedFuneral?.id || '' });
     useEffect(() => {
-        if (initialValues)
-            setValues({ client: initialValues?.client, ...values });
-        // eslint-disable-next-line react-hooks/exhaustive-deps
+        if (initialValues) setValues({ client: initialValues?.client, ...values });
     }, [initialValues]);
 
     return (
@@ -68,7 +63,7 @@ export const Client: React.FC<FormProps> = ({ shouldSubmit, setValues, values })
                 <LabelTextField id={wrapId("town")} label="Plaats" />
             </Flex>
             <Flex>
-                <LabelTextField id={wrapId("dateOfBirth")} label="Geboortedatum" placeholder="13-12-1901" type='date' />
+                <LabelTextField id={wrapId("dateOfBirth")} label="Geboortedatum" placeholder="13-12-1901" type="date" />
             </Flex>
             <Flex>
                 <LabelTextField id={wrapId("phoneNumber")} label="Mobiel Telefoonnummer" />

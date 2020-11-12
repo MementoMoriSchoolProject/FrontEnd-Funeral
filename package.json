@@ -18,6 +18,7 @@
     "@types/rebass": "^4.0.6",
     "@types/rebass__forms": "^4.0.4",
     "emotion-theming": "^10.0.27",
+    "eslint-import-resolver-typescript": "^2.3.0",
     "formik": "^2.2.1",
     "graphql": "^15.4.0",
     "lodash": "^4.17.20",
@@ -33,9 +34,11 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "npm run lint && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "lint": "eslint . --ext .ts,.tsx --ignore-pattern node_modules/",
+    "lint:fix": "npm run lint -- --fix",
     "graphql:download": "npx apollo client:download-schema --endpoint=http://localhost:8000/graphql",
     "graphql:generate": "npx apollo client:codegen --localSchemaFile=schema.json --target=typescript"
   },
@@ -59,6 +62,13 @@
     "@types/react-icons": "^3.0.0",
     "@types/react-toastify": "^4.1.0",
     "@types/styled-components": "^5.1.4",
-    "eslint": "^7.13.0"
+    "@typescript-eslint/eslint-plugin": "^4.7.0",
+    "@typescript-eslint/parser": "^4.7.0",
+    "eslint": "^7.13.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.21.5",
+    "eslint-plugin-react-hooks": "^4.2.0"
   }
 }

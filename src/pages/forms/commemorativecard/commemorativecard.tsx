@@ -2,7 +2,6 @@ import _ from 'lodash';
 import React, { useEffect } from 'react';
 import { Flex } from 'rebass';
 import { Heading } from '../../../atoms/heading';
-import { LabelSelectField } from '../../../components/LabelSelectField';
 import LabelTextAreaField from '../../../components/LabelTextAreaField';
 import { LabelTextField } from '../../../components/LabelTextField';
 import { useSelectedFuneral } from '../../../utils/selected-funeral';
@@ -12,7 +11,7 @@ import { useCommemorativeCard } from './query/get-commemorativecard';
 
 const wrapId = (htmlId: string) => `commemorativecard.${htmlId}`;
 
-export const CommemorativeCard: React.FC<FormProps> = ({ shouldSubmit, setValues, values, setFieldValue }) => {
+export const CommemorativeCard: React.FC<FormProps> = ({ shouldSubmit, setValues, values }) => {
     const [selectedFuneral] = useSelectedFuneral();
     const [saveCommemorativeCard] = useSaveCommemorativeCard();
     // saving
@@ -25,15 +24,12 @@ export const CommemorativeCard: React.FC<FormProps> = ({ shouldSubmit, setValues
                 }
             });
         }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [shouldSubmit]);
 
     // initial values
     const { data: initialValues } = useCommemorativeCard({ id: selectedFuneral?.id || '' });
     useEffect(() => {
-        if (initialValues)
-            setValues({ client: initialValues?.commemorativecard, ...values });
-        // eslint-disable-next-line react-hooks/exhaustive-deps
+        if (initialValues) setValues({ client: initialValues?.commemorativecard, ...values });
     }, [initialValues]);
 
     return (

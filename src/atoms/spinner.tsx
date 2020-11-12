@@ -12,5 +12,5 @@ to {
 `;
 
 export const Spinner = styled(CgSpinner)`
-    animation: ${(props: any) => rotate()} 1s linear infinite;
+    animation: ${() => rotate()} 1s linear infinite;
 `;

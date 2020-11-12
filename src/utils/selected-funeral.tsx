@@ -19,10 +19,10 @@ query funeral($id: String) {
 }
 `;
 
-const SelectedFuneralContext = createContext<[funeral_funeral | null, (id?: string) => void]>([null, () => {}]);
+const SelectedFuneralContext = createContext<[funeral_funeral | null, (_id?: string) => void]>([null, () => {}]);
 
 export const SelectedFuneralProvider: React.FC<{}> = (props) => {
-    localStorage.getItem('activeFuneral')
+    localStorage.getItem('activeFuneral');
     const [activeFuneralId, setActiveFuneralId] = useState<string | undefined>(localStorage.getItem(ACTIVE_FUNERAL) || undefined);
     const { loading, data } = useQuery<funeral>(FUNERAL, { variables: { id: activeFuneralId } });
 
@@ -33,17 +33,17 @@ export const SelectedFuneralProvider: React.FC<{}> = (props) => {
             localStorage.setItem(ACTIVE_FUNERAL, id);
         }
         setActiveFuneralId(id);
-    }
+    };
 
     if (loading) {
         return (
-            <Flex justifyContent='center' alignItems='center' height='100vh'>
+            <Flex justifyContent="center" alignItems="center" height="100vh">
                 <Spinner />
             </Flex>
         );
     }
     return (
-        <SelectedFuneralContext.Provider value={[ data ? data.funeral : null, setActiveFuneral ]}>
+        <SelectedFuneralContext.Provider value={[data ? data.funeral : null, setActiveFuneral]}>
             {props.children}
         </SelectedFuneralContext.Provider>
     );

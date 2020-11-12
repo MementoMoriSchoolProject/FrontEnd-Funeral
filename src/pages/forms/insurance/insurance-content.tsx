@@ -10,7 +10,6 @@ const FORM_ID = 'insurances';
 const wrapId = (htmlId: string) => `${FORM_ID}.${htmlId}`;
 
 export const InsuranceInput: React.FC<FormArrayProps> = ({ values, arrayHelpers, setValues, selectedFuneral }) => {
-
     // initial values
     const { data: initialValues } = useGetInsurances({ id: selectedFuneral?.id || '' });
     useEffect(() => {
@@ -19,8 +18,6 @@ export const InsuranceInput: React.FC<FormArrayProps> = ({ values, arrayHelpers,
         setValues({ insurances: initialValues.insurances || [], ...values });
         // because we're using an ArrayHelper, we must also tell the array helper that we've received new values
         initialValues.insurances?.forEach((it, index) => arrayHelpers.replace(index, it));
-
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [initialValues]);
 
     return (
@@ -28,16 +25,20 @@ export const InsuranceInput: React.FC<FormArrayProps> = ({ values, arrayHelpers,
             {values.insurances && values.insurances.length > 0 ? (
                 values.insurances.map((_: any, index: number) => (
                     <Flex key={index} mb={4} sx={{ boxShadow: '0 0 16px rgba(0, 0, 0, .25)' }}>
-                        <Flex p={4} flexGrow={1} flexDirection='column' alignItems='stretch'>
+                        <Flex p={4} flexGrow={1} flexDirection="column" alignItems="stretch">
                             <LabelTextField id={wrapId(`${index}.company`)} label="Maatschappij" />
                             <LabelTextField id={wrapId(`${index}.policynumber`)} label="Polisnummer" />
                         </Flex>
-                        <Flex flexGrow={0} alignItems='flex-start' style={{ position: 'relative' }}>
-                            <Button variant='icon' style={{
-                                position: 'absolute',
-                                top: 0,
-                                right: 0,
-                            }} onClick={() => arrayHelpers.remove(index)}>
+                        <Flex flexGrow={0} alignItems="flex-start" style={{ position: 'relative' }}>
+                            <Button
+                                variant="icon"
+                                style={{
+                                    position: 'absolute',
+                                    top: 0,
+                                    right: 0,
+                                }}
+                                onClick={() => arrayHelpers.remove(index)}
+                            >
                                 <FaTrash size={20} />
                             </Button>
                         </Flex>
@@ -54,5 +55,5 @@ export const InsuranceInput: React.FC<FormArrayProps> = ({ values, arrayHelpers,
                 Voeg verzekering toe
             </ProgressButton>
         </>
-    )
-}
+    );
+};

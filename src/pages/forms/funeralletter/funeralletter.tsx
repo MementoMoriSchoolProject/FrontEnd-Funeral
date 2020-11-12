@@ -2,7 +2,6 @@ import _ from 'lodash';
 import React, { useEffect } from 'react';
 import { Flex } from 'rebass';
 import { Heading } from '../../../atoms/heading';
-import { LabelSelectField } from '../../../components/LabelSelectField';
 import LabelTextAreaField from '../../../components/LabelTextAreaField';
 import { LabelTextField } from '../../../components/LabelTextField';
 import { useSelectedFuneral } from '../../../utils/selected-funeral';
@@ -12,7 +11,7 @@ import { useFuneralLetter } from './query/get-funeralletter';
 
 const wrapId = (htmlId: string) => `funeralletter.${htmlId}`;
 
-export const FuneralLetter: React.FC<FormProps> = ({ shouldSubmit, setValues, values, setFieldValue }) => {
+export const FuneralLetter: React.FC<FormProps> = ({ shouldSubmit, setValues, values }) => {
     const [selectedFuneral] = useSelectedFuneral();
     const [saveFuneralLetter] = useSaveFuneralLetter();
     // saving
@@ -25,15 +24,12 @@ export const FuneralLetter: React.FC<FormProps> = ({ shouldSubmit, setValues, va
                 }
             });
         }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [shouldSubmit]);
 
     // initial values
     const { data: initialValues } = useFuneralLetter({ id: selectedFuneral?.id || '' });
     useEffect(() => {
-        if (initialValues)
-            setValues({ client: initialValues?.funeralletter, ...values });
-        // eslint-disable-next-line react-hooks/exhaustive-deps
+        if (initialValues) setValues({ client: initialValues?.funeralletter, ...values });
     }, [initialValues]);
 
     return (

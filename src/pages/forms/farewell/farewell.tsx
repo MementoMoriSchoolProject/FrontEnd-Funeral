@@ -1,7 +1,6 @@
 import _ from 'lodash';
 import React, { useEffect } from 'react';
 import { Flex } from 'rebass';
-import { Heading } from '../../../atoms/heading';
 import { LabelSelectField } from '../../../components/LabelSelectField';
 import LabelTextAreaField from '../../../components/LabelTextAreaField';
 import { LabelTextField } from '../../../components/LabelTextField';
@@ -12,7 +11,7 @@ import { useFarewell } from './query/get-farewell';
 
 const wrapId = (htmlId: string) => `farewell.${htmlId}`;
 
-export const Farewell: React.FC<FormProps> = ({ shouldSubmit, setValues, values, setFieldValue }) => {
+export const Farewell: React.FC<FormProps> = ({ shouldSubmit, setValues, values }) => {
     const [selectedFuneral] = useSelectedFuneral();
     const [saveFarewell] = useSaveFarewell();
     // saving
@@ -25,15 +24,12 @@ export const Farewell: React.FC<FormProps> = ({ shouldSubmit, setValues, values,
                 }
             });
         }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [shouldSubmit]);
 
     // initial values
     const { data: initialValues } = useFarewell({ id: selectedFuneral?.id || '' });
     useEffect(() => {
-        if (initialValues)
-            setValues({ client: initialValues?.farewell, ...values });
-        // eslint-disable-next-line react-hooks/exhaustive-deps
+        if (initialValues) setValues({ client: initialValues?.farewell, ...values });
     }, [initialValues]);
 
     return (
@@ -54,7 +50,7 @@ export const Farewell: React.FC<FormProps> = ({ shouldSubmit, setValues, values,
                 <LabelTextField id={wrapId("place")} label="Naam locatie" />
             </Flex>
             <Flex>
-                <LabelTextField id={wrapId("date")} label="Datum" placeholder="13-12-1901" type='date' />
+                <LabelTextField id={wrapId("date")} label="Datum" placeholder="13-12-1901" type="date" />
             </Flex>
             <Flex>
                 <LabelTextField id={wrapId("startTime")} label="Aanvangstijd dienst" />
@@ -67,10 +63,10 @@ export const Farewell: React.FC<FormProps> = ({ shouldSubmit, setValues, values,
                 </LabelSelectField>
             </Flex>
             <Flex>
-                <LabelTextField id={wrapId("numberOfCarriers")} label="Aantal dragers" type='number' />
+                <LabelTextField id={wrapId("numberOfCarriers")} label="Aantal dragers" type="number" />
             </Flex>
             <Flex>
-                <LabelTextField id={wrapId("parkingSpaces")} label="Aantal te reserveren parkeerplaatsen bij afscheidsdienst" type='number' />
+                <LabelTextField id={wrapId("parkingSpaces")} label="Aantal te reserveren parkeerplaatsen bij afscheidsdienst" type="number" />
             </Flex>
             <Flex>
                 <LabelTextAreaField id={wrapId("details")} label="Bijzonderheden" />

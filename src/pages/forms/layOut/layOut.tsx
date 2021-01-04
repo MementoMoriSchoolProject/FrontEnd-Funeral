@@ -8,7 +8,7 @@ import { useSelectedFuneral } from '../../../utils/selected-funeral';
 import { useGetLayOut } from './query/get-layOut';
 import { useSaveLayOut } from './mutation/save-layOut';
 
-const wrapId = (htmlId: string) => `client.${htmlId}`;
+const wrapId = (htmlId: string) => `layOut.${htmlId}`;
 
 export const layOut: React.FC<FormProps> = ({ shouldSubmit, setValues, values }) => {
     const [selectedFuneral] = useSelectedFuneral();
@@ -17,7 +17,7 @@ export const layOut: React.FC<FormProps> = ({ shouldSubmit, setValues, values })
     // savinga
     useEffect(() => {
         if (shouldSubmit && selectedFuneral) {
-            useSaveLayOut({
+            saveLayOut({
                 variables: {
                     id: selectedFuneral.id,
                     layOut: _.omit(values.layOut, ['__typename']),
@@ -27,13 +27,60 @@ export const layOut: React.FC<FormProps> = ({ shouldSubmit, setValues, values })
     }, [shouldSubmit]);
 
     // initial values
-    const { data: initialValues } = useGetLayOut();
+    const { data: initialValues } = useGetLayOut({ id: selectedFuneral?.id || '' });
     useEffect(() => {
         if (initialValues) setValues({ layOut: initialValues?.layOut, ...values });
     }, [initialValues]);
 
+    const LocationInput: React.FC<{ id: string }> = () => (
+        <>
+            <Flex>
+                <LabelTextField id={wrapId("name")} label="Naam" />
+            </Flex>
+            <Flex>
+                <LabelTextField id={wrapId("address")} label="Achternaam" />
+            </Flex>
+            <Flex>
+                <LabelTextField id={wrapId("postalCode")} label="Voorletters" />
+            </Flex>
+            <Flex>
+                <LabelTextField id={wrapId("town")} label="Adres" />
+            </Flex>
+        </>
+    );
+
     return (
         <>
+            <Flex>
+                <LabelSelectField id={wrapId("location")} label="Locatie" name="Locatie">
+                    <option value="AfScheidshuis_Wouda">Afscheidshuis Wouda</option>
+                    <option value="Uitvaarthuis_Purmerend">Uitvaarthuis Purmerend</option>
+                    <option value="Uitvaartcentrum_Purmerend">Uitvaartcentrum Purmerend</option>
+                </LabelSelectField>
+            </Flex>
+            <LocationInput id={values.layOut?.location} />
+            <Flex>
+                <LabelSelectField id={wrapId("gender")} label="Geslacht" name="geslacht">
+                    <option value="man">Man</option>
+                    <option value="vrouw">Vrouw</option>
+                    <option value="non">Wil ik niet zeggen</option>
+                </LabelSelectField>
+            </Flex>
+            <Flex>
+                <LabelTextField id={wrapId("postal")} label="Postcode" />
+            </Flex>
+            <Flex>
+                <LabelTextField id={wrapId("town")} label="Plaats" />
+            </Flex>
+            <Flex>
+                <LabelTextField id={wrapId("dateOfBirth")} label="Geboortedatum" placeholder="13-12-1901" type="date" />
+            </Flex>
+            <Flex>
+                <LabelTextField id={wrapId("phoneNumber")} label="Mobiel Telefoonnummer" />
+            </Flex>
+            <Flex>
+                <LabelTextField id={wrapId("emailAddress")} label="E-mail Adres" />
+            </Flex>
         </>
     );
 };

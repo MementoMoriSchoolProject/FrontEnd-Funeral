@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import { Flex } from 'rebass';
 import { LabelSelectField } from '../../../components/LabelSelectField';
 import { LabelTextField } from '../../../components/LabelTextField';
+import { LocationInput } from '../../../components/LocationInput';
 import { FormProps } from '../../create/creation-framework';
 import { useSelectedFuneral } from '../../../utils/selected-funeral';
 import { useGetLayOut } from './query/get-layOut';
@@ -31,23 +32,6 @@ export const layOut: React.FC<FormProps> = ({ shouldSubmit, setValues, values })
     useEffect(() => {
         if (initialValues) setValues({ layOut: initialValues?.layOut, ...values });
     }, [initialValues]);
-
-    const LocationInput: React.FC<{ id: string }> = () => (
-        <>
-            <Flex>
-                <LabelTextField id={wrapId("name")} label="Naam" />
-            </Flex>
-            <Flex>
-                <LabelTextField id={wrapId("address")} label="Achternaam" />
-            </Flex>
-            <Flex>
-                <LabelTextField id={wrapId("postalCode")} label="Voorletters" />
-            </Flex>
-            <Flex>
-                <LabelTextField id={wrapId("town")} label="Adres" />
-            </Flex>
-        </>
-    );
 
     return (
         <>

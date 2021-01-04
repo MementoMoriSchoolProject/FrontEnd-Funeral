@@ -18,6 +18,7 @@ import { CommemorativeCard } from '../forms/commemorativecard/commemorativecard'
 import { Ceremony } from '../forms/ceremony';
 import { Nightguard } from '../forms/nightguard/nightguard';
 import { BuryCremation } from '../forms/buryCremation/buryCremation';
+import { Cascet } from '../forms/cascet/cascet';
 
 export interface FormProps extends FormikProps<any> {
     shouldSubmit: boolean;
@@ -84,6 +85,12 @@ const pages: (React.FC<FormProps> | FormPage)[] = [
         title: 'Gegevens Plechtigheid',
         parts: [
             Ceremony
+        ]
+    },
+    {
+        title: 'Kist',
+        parts: [
+            Cascet
         ]
     },
     {

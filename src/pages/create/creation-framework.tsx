@@ -18,6 +18,7 @@ import { CommemorativeCard } from '../forms/commemorativecard/commemorativecard'
 import { Ceremony } from '../forms/ceremony';
 import { Nightguard } from '../forms/nightguard/nightguard';
 import { BuryCremation } from '../forms/buryCremation/buryCremation';
+import { layOut } from '../forms/layOut/layOut';
 
 export interface FormProps extends FormikProps<any> {
     shouldSubmit: boolean;
@@ -59,6 +60,12 @@ const pages: (React.FC<FormProps> | FormPage)[] = [
         title: 'Laatste verzorging',
         parts: [
             FinalCare
+        ]
+    },
+    {
+        title: 'Opbaren',
+        parts: [
+            layOut
         ]
     },
     {

@@ -21,7 +21,6 @@ import { BuryCremation } from '../forms/buryCremation/buryCremation';
 import { Advertisement } from '../forms/advertisement/advertisement';
 import { layOut } from '../forms/layOut/layOut';
 
-
 export interface FormProps extends FormikProps<any> {
     shouldSubmit: boolean;
 }

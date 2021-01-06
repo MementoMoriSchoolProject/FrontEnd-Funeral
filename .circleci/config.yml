@@ -50,5 +50,7 @@ jobs:
       - run: npm run graphql:download
       # generate graphql types from the definition
       - run: npm run graphql:generate
+      # fix auto fixable lint errors
+      - run: npm run lint:fix
       # build the frontend
-      - run: npm run build --fix
+      - run: npm run build

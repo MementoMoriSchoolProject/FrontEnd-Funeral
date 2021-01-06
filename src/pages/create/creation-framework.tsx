@@ -119,7 +119,7 @@ const pages: (React.FC<FormProps> | FormPage)[] = [
             DrivingInfoFollowingCar
         ]
     },
-    {      
+    {
         title: 'Advertentie',
         parts: [
             Advertisement

@@ -51,4 +51,4 @@ jobs:
       # generate graphql types from the definition
       - run: npm run graphql:generate
       # build the frontend
-      - run: npm run build
+      - run: npm run build --fix

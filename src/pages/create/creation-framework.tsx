@@ -21,6 +21,9 @@ import { BuryCremation } from '../forms/buryCremation/buryCremation';
 import { Transport } from '../forms/transport/transport';
 import { DrivingInfoFuneralCar } from '../forms/drivinginfofuneralcar/drivinginfofuneralcar';
 import { DrivingInfoFollowingCar } from '../forms/drivinginfofollowingcar/drivinginfofollowingcar';
+import { Cascet } from '../forms/cascet/cascet';
+import { Advertisement } from '../forms/advertisement/advertisement';
+import { layOut } from '../forms/layOut/layOut';
 
 export interface FormProps extends FormikProps<any> {
     shouldSubmit: boolean;
@@ -65,6 +68,12 @@ const pages: (React.FC<FormProps> | FormPage)[] = [
         ]
     },
     {
+        title: 'Opbaren',
+        parts: [
+            layOut
+        ]
+    },
+    {
         title: 'Bezoek',
         parts: [
             Visiting,
@@ -90,6 +99,12 @@ const pages: (React.FC<FormProps> | FormPage)[] = [
         ]
     },
     {
+        title: 'Kist',
+        parts: [
+            Cascet
+        ]
+    },
+    {
         title: 'Kaarten',
         parts: [
             FuneralLetter,
@@ -102,6 +117,12 @@ const pages: (React.FC<FormProps> | FormPage)[] = [
             Transport,
             DrivingInfoFuneralCar,
             DrivingInfoFollowingCar
+        ]
+    },
+    {      
+        title: 'Advertentie',
+        parts: [
+            Advertisement
         ]
     }
 ];

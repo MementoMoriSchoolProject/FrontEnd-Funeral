@@ -21,6 +21,7 @@ import { BuryCremation } from '../forms/buryCremation/buryCremation';
 import { Cascet } from '../forms/cascet/cascet';
 import { Advertisement } from '../forms/advertisement/advertisement';
 import { layOut } from '../forms/layOut/layOut';
+import { AudioVideo } from '../forms/audiovideo/audiovideo';
 
 export interface FormProps extends FormikProps<any> {
     shouldSubmit: boolean;
@@ -112,6 +113,12 @@ const pages: (React.FC<FormProps> | FormPage)[] = [
         title: 'Advertentie',
         parts: [
             Advertisement
+        ]
+    },
+    {
+        title: 'Audio & Video',
+        parts: [
+            AudioVideo
         ]
     }
 ];

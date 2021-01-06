@@ -18,6 +18,9 @@ import { CommemorativeCard } from '../forms/commemorativecard/commemorativecard'
 import { Ceremony } from '../forms/ceremony';
 import { Nightguard } from '../forms/nightguard/nightguard';
 import { BuryCremation } from '../forms/buryCremation/buryCremation';
+import { Transport } from '../forms/transport/transport';
+import { DrivingInfoFuneralCar } from '../forms/drivinginfofuneralcar/drivinginfofuneralcar';
+import { DrivingInfoFollowingCar } from '../forms/drivinginfofollowingcar/drivinginfofollowingcar';
 import { Cascet } from '../forms/cascet/cascet';
 import { Advertisement } from '../forms/advertisement/advertisement';
 import { layOut } from '../forms/layOut/layOut';
@@ -109,6 +112,14 @@ const pages: (React.FC<FormProps> | FormPage)[] = [
         ]
     },
     {
+        title: 'Vervoer',
+        parts: [
+            Transport,
+            DrivingInfoFuneralCar,
+            DrivingInfoFollowingCar
+        ]
+    },
+    {      
         title: 'Advertentie',
         parts: [
             Advertisement

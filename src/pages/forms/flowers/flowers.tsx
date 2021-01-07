@@ -47,6 +47,7 @@ export const Flowers: React.FC<FormProps> = ({ shouldSubmit, setValues, values }
 
     return (
         <>
+            <Heading level={1} mb={4}>Bloemen</Heading>
             <Flex>
                 <LabelTextField id={wrapId("supplier")} label="Leverancier" boxProps={{ mr: 2 }} />
             </Flex>
@@ -75,7 +76,9 @@ export const Flowers: React.FC<FormProps> = ({ shouldSubmit, setValues, values }
                                             <LabelTextField id={wrapId(`colorOnLint.${index}`)} label="Kleur lint / kleur letters" />
                                         </ListItemNoIcon>
                                         <ListItemNoIcon key={index}>
-                                            <LabelTextField id={wrapId(`costFlower.${index}`)} label="Bedrag rouwboeket" />
+                                            <LabelTextField id={wrapId(`costFlower.${index}`)} type="number"
+                                                label="Bedrag rouwboeket"
+                                            />
                                         </ListItemNoIcon>
                                     </>
                                 ))

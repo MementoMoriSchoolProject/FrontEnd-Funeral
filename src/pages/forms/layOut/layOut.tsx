@@ -8,6 +8,7 @@ import { FormProps } from '../../create/creation-framework';
 import { useSelectedFuneral } from '../../../utils/selected-funeral';
 import { useGetLayOut } from './query/get-layOut';
 import { useSaveLayOut } from './mutation/save-layOut';
+import { Heading } from '../../../atoms/heading';
 
 const wrapId = (htmlId: string) => `layOut.${htmlId}`;
 
@@ -35,6 +36,9 @@ export const layOut: React.FC<FormProps> = ({ shouldSubmit, setValues, values })
 
     return (
         <>
+            <Flex justifyContent="center" mb={3}>
+                <Heading level={1}>Opmaak</Heading>
+            </Flex>
             <Flex>
                 <LabelSelectField id={wrapId("location")} label="Locatie" name="Locatie">
                     <option value="AfScheidshuis_Wouda">Afscheidshuis Wouda</option>

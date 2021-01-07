@@ -20,7 +20,7 @@ export const DrivingInfoFuneralCar: React.FC<FormProps> = ({ shouldSubmit, value
 
         // the API works with an array (which is okay), but formik
         // uses an object with numeric keys, so we have to convert between those 2
-        const drivingInfoFunferalCarArray = objectToArray<PersistDrivingInfoFuneralCarInput>(values.insurances);
+        const drivingInfoFunferalCarArray = objectToArray<PersistDrivingInfoFuneralCarInput>(values.drivinginfofuneralcar);
 
         saveDrivingInfoFuneralCar({
             variables: {

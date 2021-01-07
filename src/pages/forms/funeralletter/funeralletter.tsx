@@ -29,7 +29,7 @@ export const FuneralLetter: React.FC<FormProps> = ({ shouldSubmit, setValues, va
     // initial values
     const { data: initialValues } = useFuneralLetter({ id: selectedFuneral?.id || '' });
     useEffect(() => {
-        if (initialValues) setValues({ client: initialValues?.funeralletter, ...values });
+        if (initialValues) setValues({ funeralletter: initialValues?.funeralletter, ...values });
     }, [initialValues]);
 
     return (

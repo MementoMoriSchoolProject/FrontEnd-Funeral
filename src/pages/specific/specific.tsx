@@ -5,5 +5,5 @@ import { FuneralSpecificOverview } from './overview';
 
 export const FuneralSpecificPage: React.FC<{}> = () => {
     const [funeral] = useSelectedFuneral();
-    return funeral?.lastCreationStep !== undefined ? <CreatingFuneral /> : <FuneralSpecificOverview />;
+    return funeral?.lastCreationStep !== null ? <CreatingFuneral /> : <FuneralSpecificOverview />;
 };

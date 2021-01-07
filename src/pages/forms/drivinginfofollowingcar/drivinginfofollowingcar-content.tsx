@@ -22,7 +22,7 @@ export const DrivingInfoFollowingCarInput: React.FC<FormProps & {
     useEffect(() => {
         if (!initialValues) return;
 
-        const drivinginfofollowingcar = (initialValues.drivinginfofollowingcar || []).map(it => ({
+        const drivinginfofollowingcar = (initialValues.drivinginfofollowingcar || []).map((it: any) => ({
             ...it,
             departuretime: it.departuretime
         }));

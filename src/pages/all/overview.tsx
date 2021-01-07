@@ -52,8 +52,6 @@ export const FuneralOverviewPage: React.FC<{}> = () => {
                                 py={3}
                             >
                                 <Heading level={3} fontWeight="normal">
-                                    Funeral
-                                    {' '}
                                     {funeral.id}
                                 </Heading>
                             </Box>

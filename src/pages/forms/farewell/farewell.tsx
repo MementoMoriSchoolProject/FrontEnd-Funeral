@@ -29,7 +29,7 @@ export const Farewell: React.FC<FormProps> = ({ shouldSubmit, setValues, values 
     // initial values
     const { data: initialValues } = useFarewell({ id: selectedFuneral?.id || '' });
     useEffect(() => {
-        if (initialValues) setValues({ client: initialValues?.farewell, ...values });
+        if (initialValues) setValues({ farewell: initialValues?.farewell, ...values });
     }, [initialValues]);
 
     return (

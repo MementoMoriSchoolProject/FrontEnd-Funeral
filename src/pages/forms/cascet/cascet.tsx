@@ -7,6 +7,7 @@ import { FormProps } from '../../create/creation-framework';
 import { useSelectedFuneral } from '../../../utils/selected-funeral';
 import { useGetCascet } from './query/get-cascet';
 import { useSaveCascet } from './mutation/save-cascet';
+import { Heading } from '../../../atoms/heading';
 
 const wrapId = (htmlId: string) => `cascet.${htmlId}`;
 
@@ -34,6 +35,9 @@ export const Cascet: React.FC<FormProps> = ({ shouldSubmit, setValues, values })
 
     return (
         <>
+            <Flex justifyContent="center" mb={3}>
+                <Heading level={1}>Kist</Heading>
+            </Flex>
             <Flex>
                 <LabelTextField id={wrapId("model")} label="Model" />
             </Flex>

@@ -25,6 +25,7 @@ import { Cascet } from '../forms/cascet/cascet';
 import { Advertisement } from '../forms/advertisement/advertisement';
 import { layOut } from '../forms/layOut/layOut';
 import { AudioVideo } from '../forms/audiovideo/audiovideo';
+import { Flowers } from '../forms/flowers/flowers';
 
 export interface FormProps extends FormikProps<any> {
     shouldSubmit: boolean;
@@ -103,6 +104,12 @@ const pages: (React.FC<FormProps> | FormPage)[] = [
         title: 'Kist',
         parts: [
             Cascet
+        ]
+    },
+    {
+        title: 'Bloemen',
+        parts: [
+            Flowers
         ]
     },
     {

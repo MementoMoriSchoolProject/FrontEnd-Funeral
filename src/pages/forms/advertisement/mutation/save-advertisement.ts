@@ -6,9 +6,7 @@ mutation saveAdvertisement($id: String!, $advertisement: [PersistAdvertisementIn
     saveAdvertisement(
         funeralId: $id,
         advertisement: $advertisement
-    ) {
-        name
-    }
+    )
 }
 `;
 

@@ -18,9 +18,7 @@ import { CommemorativeCard } from '../forms/commemorativecard/commemorativecard'
 import { Ceremony } from '../forms/ceremony';
 import { Nightguard } from '../forms/nightguard/nightguard';
 import { BuryCremation } from '../forms/buryCremation/buryCremation';
-<<<<<<< HEAD
 import { Appointment } from '../forms/appointment';
-=======
 import { Transport } from '../forms/transport/transport';
 import { DrivingInfoFuneralCar } from '../forms/drivinginfofuneralcar/drivinginfofuneralcar';
 import { DrivingInfoFollowingCar } from '../forms/drivinginfofollowingcar/drivinginfofollowingcar';
@@ -30,7 +28,6 @@ import { layOut } from '../forms/layOut/layOut';
 import { useSaveLastPage } from './save-last-page';
 import { AudioVideo } from '../forms/audiovideo/audiovideo';
 import { Flowers } from '../forms/flowers/flowers';
->>>>>>> development
 
 export interface FormProps extends FormikProps<any> {
     shouldSubmit: boolean;

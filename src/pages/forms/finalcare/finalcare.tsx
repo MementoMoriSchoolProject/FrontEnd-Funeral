@@ -29,7 +29,7 @@ export const FinalCare: React.FC<FormProps> = ({ shouldSubmit, setValues, values
     // initial values
     const { data: initialValues } = useFinalCare({ id: selectedFuneral?.id || '' });
     useEffect(() => {
-        if (initialValues) setValues({ client: initialValues?.finalcare, ...values });
+        if (initialValues) setValues({ finalcare: initialValues?.finalcare, ...values });
     }, [initialValues]);
 
     return (

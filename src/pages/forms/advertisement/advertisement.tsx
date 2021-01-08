@@ -20,7 +20,7 @@ export const Advertisement: React.FC<FormProps> = ({ shouldSubmit, values, ...re
 
         // the API works with an array (which is okay), but formik
         // uses an object with numeric keys, so we have to convert between those 2
-        const advertisementArray = objectToArray<PersistAdvertisementInput>(values.insurances);
+        const advertisementArray = objectToArray<PersistAdvertisementInput>(values.advertisement);
 
         saveAdvertisement({
             variables: {

@@ -24,6 +24,7 @@ import { DrivingInfoFollowingCar } from '../forms/drivinginfofollowingcar/drivin
 import { Cascet } from '../forms/cascet/cascet';
 import { Advertisement } from '../forms/advertisement/advertisement';
 import { layOut } from '../forms/layOut/layOut';
+import { useSaveLastPage } from './save-last-page';
 import { AudioVideo } from '../forms/audiovideo/audiovideo';
 import { Flowers } from '../forms/flowers/flowers';
 
@@ -141,19 +142,26 @@ const pages: (React.FC<FormProps> | FormPage)[] = [
     }
 ];
 
-const isReactComponent = (page: React.FC<FormProps> | FormPage): page is React.FC<FormProps> => 'children' in page;
+const isReactComponent = (page: React.FC<FormProps> | FormPage): page is React.FC<FormProps> => page !== undefined && 'children' in page;
 
 export const CreatingFuneral: React.FC<{}> = () => {
-    const [funeral] = useSelectedFuneral();
+    // eslint-disable-next-line no-unused-vars
+    const [funeral, _, refetchFuneral] = useSelectedFuneral();
     const [nextPage, setNextPage] = useState(0);
     const [currentPage, setCurrentPage] = useState(funeral?.lastCreationStep || 0);
+    const [saveLastPage] = useSaveLastPage();
     const Page: (React.FC<FormProps> | FormPage) = pages[currentPage];
     useEffect(() => {
         const destinationPage = currentPage + nextPage;
-        if (destinationPage < 0 || destinationPage >= pages.length) return;
-        setCurrentPage(destinationPage);
-        setNextPage(0);
+        if (destinationPage >= pages.length) {
+            saveLastPage({ variables: { id: funeral?.id || "-1", page: null } }).then(() => refetchFuneral());
+        } else if (destinationPage >= 0) {
+            setCurrentPage(destinationPage);
+            setNextPage(0);
+            saveLastPage({ variables: { id: funeral?.id || "-1", page: destinationPage } });
+        }
     }, [nextPage]);
+    if (currentPage >= pages.length) return (<></>);
     return (
         <Formik
             onSubmit={() => { }}
@@ -177,7 +185,7 @@ export const CreatingFuneral: React.FC<{}> = () => {
                         </Flex>
                     </Flex>
                     <Flex flexGrow={0} m={4}>
-                        <ProgressArrow direction="next" onClick={() => setNextPage(1)} disabled={currentPage + 1 >= pages.length} />
+                        <ProgressArrow direction="next" onClick={() => setNextPage(1)} />
                     </Flex>
                 </Flex>
             )}

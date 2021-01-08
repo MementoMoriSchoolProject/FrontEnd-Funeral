@@ -30,14 +30,14 @@ export const Transport: React.FC<FormProps> = ({ shouldSubmit, setValues, values
     // initial values
     const { data: initialValues } = useGetTransport({ id: selectedFuneral?.id || '' });
     useEffect(() => {
-        if (initialValues) setValues({ client: initialValues?.transport, ...values });
+        if (initialValues) setValues({ transport: initialValues?.transport, ...values });
     }, [initialValues]);
 
     return (
         <>
-            <Heading level={2} mx="auto" mb="4">
-                Vervoer dag van de uitvaart
-            </Heading>
+            <Flex justifyContent="center" mb={3}>
+                <Heading level={1}>Vervoer dag van de uitvaart</Heading>
+            </Flex>
             <Flex>
                 <LabelSelectField id={wrapId("hearse")} label="Rouwauto" name="Rouwauto" boxProps={{ mr: 2 }}>
                     <option value="Ja">Ja</option>

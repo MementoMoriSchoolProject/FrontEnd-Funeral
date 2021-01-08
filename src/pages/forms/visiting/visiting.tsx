@@ -20,7 +20,7 @@ export const Visiting: React.FC<FormProps> = ({ shouldSubmit, values, ...rest })
 
         // the API works with an array (which is okay), but formik
         // uses an object with numeric keys, so we have to convert between those 2
-        const visitingArray = objectToArray<PersistVisitingInput>(values.insurances);
+        const visitingArray = objectToArray<PersistVisitingInput>(values.visiting);
 
         saveVisiting({
             variables: {

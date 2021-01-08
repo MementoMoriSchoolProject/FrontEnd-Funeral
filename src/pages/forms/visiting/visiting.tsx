@@ -32,7 +32,7 @@ export const Visiting: React.FC<FormProps> = ({ shouldSubmit, values, ...rest })
 
     return (
         <>
-            <Heading level={2} mb={4}>
+            <Heading level={2} mx="auto" mb="4">
                 Bezoek
             </Heading>
             <FieldArray

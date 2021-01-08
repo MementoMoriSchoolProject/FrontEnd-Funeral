@@ -35,9 +35,9 @@ export const Transport: React.FC<FormProps> = ({ shouldSubmit, setValues, values
 
     return (
         <>
-            <Flex justifyContent="center" mb={3}>
-                <Heading level={1}>Vervoer dag van de uitvaart</Heading>
-            </Flex>
+            <Heading level={2} mx="auto" mb="4">
+                Vervoer dag van de uitvaart
+            </Heading>
             <Flex>
                 <LabelSelectField id={wrapId("hearse")} label="Rouwauto" name="Rouwauto" boxProps={{ mr: 2 }}>
                     <option value="Ja">Ja</option>

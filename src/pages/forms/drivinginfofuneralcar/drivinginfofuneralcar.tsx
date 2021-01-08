@@ -32,7 +32,7 @@ export const DrivingInfoFuneralCar: React.FC<FormProps> = ({ shouldSubmit, value
 
     return (
         <>
-            <Heading level={2} mb={4}>
+            <Heading level={2} mx="auto" mb="4">
                 Rijgegevens Rouwauto
             </Heading>
             <FieldArray

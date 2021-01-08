@@ -47,7 +47,9 @@ export const Flowers: React.FC<FormProps> = ({ shouldSubmit, setValues, values }
 
     return (
         <>
-            <Heading level={1} mb={4}>Bloemen</Heading>
+            <Heading level={2} mx="auto" mb="4">
+                Bloemen
+            </Heading>
             <Flex>
                 <LabelTextField id={wrapId("supplier")} label="Leverancier" boxProps={{ mr: 2 }} />
             </Flex>

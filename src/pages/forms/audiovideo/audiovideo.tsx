@@ -21,7 +21,7 @@ export const AudioVideo: React.FC<FormProps> = ({ shouldSubmit, values, ...rest 
         if (shouldSubmit && selectedFuneral) {
             // the API works with an array (which is okay), but formik
             // uses an object with numeric keys, so we have to convert between those 2
-            const songs = objectToArray(values.audioVideo.songs);
+            const songs = objectToArray(values.audioVideo?.songs);
 
             saveAudioVideo({
                 variables: {
@@ -36,7 +36,7 @@ export const AudioVideo: React.FC<FormProps> = ({ shouldSubmit, values, ...rest 
     }, [shouldSubmit]);
     return (
         <>
-            <Heading level={2} mb={4}>
+            <Heading level={2} mx="auto" mb="4">
                 Audio and Video
             </Heading>
             <Flex>

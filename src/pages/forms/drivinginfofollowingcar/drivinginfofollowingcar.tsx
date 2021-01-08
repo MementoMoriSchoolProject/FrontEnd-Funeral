@@ -32,7 +32,7 @@ export const DrivingInfoFollowingCar: React.FC<FormProps> = ({ shouldSubmit, val
 
     return (
         <>
-            <Heading level={2} mb={4}>
+            <Heading level={2} mx="auto" mb="4">
                 Rijgegevens Volgauto
             </Heading>
             <FieldArray

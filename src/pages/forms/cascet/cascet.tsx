@@ -35,9 +35,9 @@ export const Cascet: React.FC<FormProps> = ({ shouldSubmit, setValues, values })
 
     return (
         <>
-            <Flex justifyContent="center" mb={3}>
-                <Heading level={1}>Kist</Heading>
-            </Flex>
+            <Heading level={2} mx="auto" mb="4">
+                Kist
+            </Heading>
             <Flex>
                 <LabelTextField id={wrapId("model")} label="Model" />
             </Flex>

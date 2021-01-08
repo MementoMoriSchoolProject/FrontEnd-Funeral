@@ -1,6 +1,7 @@
 import _ from 'lodash';
 import React, { useEffect } from 'react';
 import { Flex } from 'rebass';
+import { Heading } from '../../../atoms/heading';
 import { LabelSelectField } from '../../../components/LabelSelectField';
 import LabelTextAreaField from '../../../components/LabelTextAreaField';
 import { LabelTextField } from '../../../components/LabelTextField';
@@ -34,6 +35,9 @@ export const FinalCare: React.FC<FormProps> = ({ shouldSubmit, setValues, values
 
     return (
         <>
+            <Heading level={2} mx="auto" mb="4">
+                Laatste verzorging
+            </Heading>
             <Flex>
                 <LabelTextField id={wrapId("date")} label="Datum" placeholder="13-12-1901" type="date" />
             </Flex>

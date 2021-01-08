@@ -32,7 +32,7 @@ export const Advertisement: React.FC<FormProps> = ({ shouldSubmit, values, ...re
 
     return (
         <>
-            <Heading level={2} mb={4}>
+            <Heading level={2} mx="auto" mb="4">
                 Advertentie
             </Heading>
             <FieldArray

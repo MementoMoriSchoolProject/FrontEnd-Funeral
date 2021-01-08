@@ -7,6 +7,7 @@ import { Heading } from '../../atoms/heading';
 import { useSelectedFuneral } from '../../utils/selected-funeral';
 import { FormProps } from '../create/creation-framework';
 import { Advertisement } from '../forms/advertisement/advertisement';
+import { AudioVideo } from '../forms/audiovideo/audiovideo';
 import { BuryCremation } from '../forms/buryCremation/buryCremation';
 import { Cascet } from '../forms/cascet/cascet';
 import { Ceremony } from '../forms/ceremony';
@@ -16,6 +17,7 @@ import { CommemorativeCard } from '../forms/commemorativecard/commemorativecard'
 import { DrivingInfoFollowingCar } from '../forms/drivinginfofollowingcar/drivinginfofollowingcar';
 import { DrivingInfoFuneralCar } from '../forms/drivinginfofuneralcar/drivinginfofuneralcar';
 import { Farewell } from '../forms/farewell/farewell';
+import { Flowers } from '../forms/flowers/flowers';
 import { FuneralLetter } from '../forms/funeralletter/funeralletter';
 import { Insurance } from '../forms/insurance/insurance';
 import { layOut } from '../forms/layOut/layOut';
@@ -58,7 +60,7 @@ const menuGroups: {
     {
         title: 'Opmaak',
         icon: GiFlowers,
-        forms: [layOut, Cascet]
+        forms: [layOut, Cascet, Flowers]
     },
     {
         title: 'Bezoek',
@@ -79,8 +81,7 @@ const menuGroups: {
     {
         title: 'Plechtigheid',
         icon: FaBookReader,
-        // eslint-disable-next-line array-bracket-spacing
-        forms: [Ceremony, /* AudioVideo */]
+        forms: [Ceremony, AudioVideo]
     },
     // {
     //     title: 'Checklist',

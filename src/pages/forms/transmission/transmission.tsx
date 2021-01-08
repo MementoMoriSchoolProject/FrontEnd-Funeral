@@ -1,6 +1,7 @@
 import { FieldArray } from 'formik';
 import React, { useEffect } from 'react';
 import { PersistTransmissionInput } from '../../../../__generated__/globalTypes';
+import { Heading } from '../../../atoms/heading';
 import { objectToArray } from '../../../utils/array';
 import { useSelectedFuneral } from '../../../utils/selected-funeral';
 import { FormProps } from '../../create/creation-framework';
@@ -29,6 +30,9 @@ export const Transmission: React.FC<FormProps> = ({ shouldSubmit, setValues, val
     // console.log('Test: ', values.transmissions);
     return (
         <>
+            <Heading level={2} mx="auto" mb="4">
+                Overbrenging
+            </Heading>
             <FieldArray
                 name="transmissions"
                 render={arrayHelpers => (

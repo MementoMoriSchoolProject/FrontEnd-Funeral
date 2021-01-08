@@ -69,7 +69,7 @@ const menuGroups: {
         title: 'Locaties',
         icon: FaPlaceOfWorship,
         // eslint-disable-next-line array-bracket-spacing
-        forms: [Farewell, /* Koffiekamer */ ]
+        forms: [Farewell, /* Koffiekamer */]
     },
     {
         title: 'Ceremonie',
@@ -80,7 +80,7 @@ const menuGroups: {
         title: 'Plechtigheid',
         icon: FaBookReader,
         // eslint-disable-next-line array-bracket-spacing
-        forms: [Ceremony, /* AudioVideo */ ]
+        forms: [Ceremony, /* AudioVideo */]
     },
     // {
     //     title: 'Checklist',
@@ -106,13 +106,12 @@ export const FuneralSpecificOverview: React.FC<{}> = () => {
 
     return (
         <Formik
-            onSubmit={() => {}}
+            onSubmit={() => { }}
             initialValues={{}}
             enableReinitialize
         >
             {({ ...formik }) => (
                 <Flex flexDirection="column" height="100vh">
-                    {console.log(formik.values)}
                     <Flex flexDirection="row-reverse" height="100%">
                         <Flex variant="card" justifyContent="space-between" flexDirection="row" flex="100% 1 1" p={4} px={5}>
                             <Flex flexDirection="column" px={2} width={[1, 1, 1, 2 / 3, 5 / 12]} variant="scrollList">

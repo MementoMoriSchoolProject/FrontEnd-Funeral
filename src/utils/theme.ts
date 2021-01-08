@@ -79,7 +79,7 @@ export const theme = {
         heading3: {
             color: 'text',
             fontWeight: 'bold',
-            fontSize: 1,
+            fontSize: 2,
         },
     },
     forms: {

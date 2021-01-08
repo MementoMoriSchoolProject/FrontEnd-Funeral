@@ -29,7 +29,7 @@ export const CommemorativeCard: React.FC<FormProps> = ({ shouldSubmit, setValues
     // initial values
     const { data: initialValues } = useCommemorativeCard({ id: selectedFuneral?.id || '' });
     useEffect(() => {
-        if (initialValues) setValues({ client: initialValues?.commemorativecard, ...values });
+        if (initialValues) setValues({ commemorativecard: initialValues?.commemorativecard, ...values });
     }, [initialValues]);
 
     return (

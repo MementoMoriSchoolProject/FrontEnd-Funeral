@@ -3,29 +3,29 @@ import React, { useEffect } from 'react';
 import { Heading } from '../../../atoms/heading';
 import { useSelectedFuneral } from '../../../utils/selected-funeral';
 import { FormProps } from '../../create/creation-framework';
-import { useSaveVisiting } from './mutation/save-visiting';
-import { VisitingInput } from './visiting-content';
+import { useSaveAdvertisement } from './mutation/save-advertisement';
+import { AdvertisementInput } from './advertisement-content';
 import { objectToArray } from '../../../utils/array';
-import { PersistVisitingInput } from '../../../../__generated__/globalTypes';
+import { PersistAdvertisementInput } from '../../../../__generated__/globalTypes';
 
-const FORM_ID = 'visiting';
+const FORM_ID = 'advertisement';
 
-export const Visiting: React.FC<FormProps> = ({ shouldSubmit, values, ...rest }) => {
+export const Advertisement: React.FC<FormProps> = ({ shouldSubmit, values, ...rest }) => {
     const [selectedFuneral] = useSelectedFuneral();
 
     // save
-    const [saveVisiting] = useSaveVisiting();
+    const [saveAdvertisement] = useSaveAdvertisement();
     useEffect(() => {
         if (!shouldSubmit) return;
 
         // the API works with an array (which is okay), but formik
         // uses an object with numeric keys, so we have to convert between those 2
-        const visitingArray = objectToArray<PersistVisitingInput>(values.visiting);
+        const advertisementArray = objectToArray<PersistAdvertisementInput>(values.advertisement);
 
-        saveVisiting({
+        saveAdvertisement({
             variables: {
                 id: selectedFuneral?.id || '',
-                visiting: visitingArray
+                advertisement: advertisementArray
             }
         });
     }, [shouldSubmit]);
@@ -33,12 +33,12 @@ export const Visiting: React.FC<FormProps> = ({ shouldSubmit, values, ...rest })
     return (
         <>
             <Heading level={2} mx="auto" mb="4">
-                Bezoek
+                Advertentie
             </Heading>
             <FieldArray
                 name={FORM_ID}
                 render={arrayHelpers => (
-                    <VisitingInput
+                    <AdvertisementInput
                         selectedFuneral={selectedFuneral}
                         shouldSubmit={shouldSubmit}
                         values={values}

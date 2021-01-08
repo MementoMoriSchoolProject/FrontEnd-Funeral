@@ -8,6 +8,7 @@ import { useSelectedFuneral } from '../../../utils/selected-funeral';
 import { useSaveBuryCremation } from './mutation/save-buryCremation';
 import { useGetBuryCremation } from './query/get-buryCremation';
 import { formatDate } from '../../../utils/date';
+import { Heading } from '../../../atoms/heading';
 
 const wrapId = (htmlId: string) => `burycremation.${htmlId}`;
 
@@ -44,6 +45,9 @@ export const BuryCremation: React.FC<FormProps> = ({ shouldSubmit, setValues, va
 
     return (
         <>
+            <Heading level={2} mx="auto" mb="4">
+                Begraven / Crematie
+            </Heading>
             <Flex>
                 <LabelSelectField id={wrapId("buryCremation")} label="Begraven of Cremeren" name="Begraven of Cremeren">
                     <option value="Bury">Begraven</option>

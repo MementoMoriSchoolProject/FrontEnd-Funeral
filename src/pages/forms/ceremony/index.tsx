@@ -12,6 +12,7 @@ import { FormProps } from '../../create/creation-framework';
 import { useSaveCeremony } from './mutation/save-ceremony';
 import { useGetCeremony } from './query/get-ceremony';
 import { Text } from '../../../atoms/text';
+import { Heading } from '../../../atoms/heading';
 
 const wrapId = (htmlId: string) => `ceremony.${htmlId}`;
 
@@ -47,6 +48,9 @@ export const Ceremony: React.FC<FormProps> = ({ shouldSubmit, setValues, values 
 
     return (
         <>
+            <Heading level={2} mx="auto" mb="4">
+                Gegevens plechtigheid
+            </Heading>
             <Flex>
                 <LabelTextField id={wrapId("date")} type="date" label="Datum uitvaart" boxProps={{ mr: 2 }} />
                 <LabelTextField id={wrapId("time")} type="time" label="Tijdstip uitvaart" boxProps={{ ml: 2 }} />

@@ -7,6 +7,7 @@ import { FormProps } from '../../create/creation-framework';
 import { useSelectedFuneral } from '../../../utils/selected-funeral';
 import { useSaveClient } from './mutation/save-client';
 import { useGetClient } from './query/get-client';
+import { Heading } from '../../../atoms/heading';
 
 const wrapId = (htmlId: string) => `client.${htmlId}`;
 
@@ -34,6 +35,9 @@ export const Client: React.FC<FormProps> = ({ shouldSubmit, setValues, values })
 
     return (
         <>
+            <Heading level={2} mx="auto" mb="4">
+                Opdrachtgever
+            </Heading>
             <Flex>
                 <LabelTextField id={wrapId("firstname")} label="Voornaam" />
                 <LabelTextField id={wrapId("firstLetters")} label="Voorletters" boxProps={{ ml: 2 }} />

@@ -19,12 +19,12 @@ query funeral($id: String) {
 }
 `;
 
-const SelectedFuneralContext = createContext<[funeral_funeral | null, (_id?: string) => void]>([null, () => {}]);
+const SelectedFuneralContext = createContext<[funeral_funeral | null, (_id?: string) => void, () => Promise<any>]>([null, () => {}, async () => null]);
 
 export const SelectedFuneralProvider: React.FC<{}> = (props) => {
     localStorage.getItem('activeFuneral');
     const [activeFuneralId, setActiveFuneralId] = useState<string | undefined>(localStorage.getItem(ACTIVE_FUNERAL) || undefined);
-    const { loading, data } = useQuery<funeral>(FUNERAL, { variables: { id: activeFuneralId } });
+    const { loading, data, refetch } = useQuery<funeral>(FUNERAL, { variables: { id: activeFuneralId } });
 
     const setActiveFuneral = (id?: string) => {
         if (!id) {
@@ -43,7 +43,7 @@ export const SelectedFuneralProvider: React.FC<{}> = (props) => {
         );
     }
     return (
-        <SelectedFuneralContext.Provider value={[data ? data.funeral : null, setActiveFuneral]}>
+        <SelectedFuneralContext.Provider value={[data ? data.funeral : null, setActiveFuneral, () => refetch({ variables: { id: activeFuneralId } })]}>
             {props.children}
         </SelectedFuneralContext.Provider>
     );

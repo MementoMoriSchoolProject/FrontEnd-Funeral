@@ -3,29 +3,29 @@ import React, { useEffect } from 'react';
 import { Heading } from '../../../atoms/heading';
 import { useSelectedFuneral } from '../../../utils/selected-funeral';
 import { FormProps } from '../../create/creation-framework';
-import { useSaveVisiting } from './mutation/save-visiting';
-import { VisitingInput } from './visiting-content';
+import { useSaveDrivingInfoFuneralCar } from './mutation/save-drivinginfofuneralcar';
+import { DrivingInfoFuneralCarInput } from './drivinginfofuneralcar-content';
 import { objectToArray } from '../../../utils/array';
-import { PersistVisitingInput } from '../../../../__generated__/globalTypes';
+import { PersistDrivingInfoFuneralCarInput } from '../../../../__generated__/globalTypes';
 
-const FORM_ID = 'visiting';
+const FORM_ID = 'drivinginfofuneralcar';
 
-export const Visiting: React.FC<FormProps> = ({ shouldSubmit, values, ...rest }) => {
+export const DrivingInfoFuneralCar: React.FC<FormProps> = ({ shouldSubmit, values, ...rest }) => {
     const [selectedFuneral] = useSelectedFuneral();
 
     // save
-    const [saveVisiting] = useSaveVisiting();
+    const [saveDrivingInfoFuneralCar] = useSaveDrivingInfoFuneralCar();
     useEffect(() => {
         if (!shouldSubmit) return;
 
         // the API works with an array (which is okay), but formik
         // uses an object with numeric keys, so we have to convert between those 2
-        const visitingArray = objectToArray<PersistVisitingInput>(values.visiting);
+        const drivingInfoFunferalCarArray = objectToArray<PersistDrivingInfoFuneralCarInput>(values.drivinginfofuneralcar);
 
-        saveVisiting({
+        saveDrivingInfoFuneralCar({
             variables: {
                 id: selectedFuneral?.id || '',
-                visiting: visitingArray
+                drivinginfofuneralcar: drivingInfoFunferalCarArray
             }
         });
     }, [shouldSubmit]);
@@ -33,12 +33,12 @@ export const Visiting: React.FC<FormProps> = ({ shouldSubmit, values, ...rest })
     return (
         <>
             <Heading level={2} mx="auto" mb="4">
-                Bezoek
+                Rijgegevens Rouwauto
             </Heading>
             <FieldArray
                 name={FORM_ID}
                 render={arrayHelpers => (
-                    <VisitingInput
+                    <DrivingInfoFuneralCarInput
                         selectedFuneral={selectedFuneral}
                         shouldSubmit={shouldSubmit}
                         values={values}

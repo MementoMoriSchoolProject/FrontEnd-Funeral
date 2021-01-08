@@ -25,6 +25,8 @@ import { Cascet } from '../forms/cascet/cascet';
 import { Advertisement } from '../forms/advertisement/advertisement';
 import { layOut } from '../forms/layOut/layOut';
 import { useSaveLastPage } from './save-last-page';
+import { AudioVideo } from '../forms/audiovideo/audiovideo';
+import { Flowers } from '../forms/flowers/flowers';
 
 export interface FormProps extends FormikProps<any> {
     shouldSubmit: boolean;
@@ -106,6 +108,12 @@ const pages: (React.FC<FormProps> | FormPage)[] = [
         ]
     },
     {
+        title: 'Bloemen',
+        parts: [
+            Flowers
+        ]
+    },
+    {
         title: 'Kaarten',
         parts: [
             FuneralLetter,
@@ -124,6 +132,12 @@ const pages: (React.FC<FormProps> | FormPage)[] = [
         title: 'Advertentie',
         parts: [
             Advertisement
+        ]
+    },
+    {
+        title: 'Audio & Video',
+        parts: [
+            AudioVideo
         ]
     }
 ];

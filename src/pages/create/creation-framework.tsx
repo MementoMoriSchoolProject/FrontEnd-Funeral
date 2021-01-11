@@ -54,7 +54,7 @@ const pages: (React.FC<FormProps> | FormPage)[] = [
         ]
     },
     {
-        title: 'APpointment',
+        title: 'Afspraken',
         parts: [
             Appointment
         ]

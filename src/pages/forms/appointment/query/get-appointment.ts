@@ -1,5 +1,5 @@
 import { gql, useQuery } from "@apollo/client";
-//import { getAppointments, getAppointmentsVariables } from "./__generated__/getAppointments";
+import { getAppointments, getAppointmentsVariables } from "./__generated__/getAppointments";
 
 const GET_APPOINTMENTS = gql`
 query getAppointments($id: String!) {
@@ -23,4 +23,4 @@ query getAppointments($id: String!) {
 }
 `;
 
-export const useGetAppointments = () => useQuery(GET_APPOINTMENTS, {  });
+export const useGetAppointments = (variables: getAppointmentsVariables) => useQuery<getAppointments>(GET_APPOINTMENTS, { variables });

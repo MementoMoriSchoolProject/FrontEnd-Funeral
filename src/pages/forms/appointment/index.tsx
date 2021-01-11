@@ -36,14 +36,25 @@ export const Appointment: React.FC<FormProps> = ({ shouldSubmit, setValues, valu
     }, [shouldSubmit]);
 
     // initial values
-    const { data: initialValues } = useGetAppointments();
+    const { data: initialValues } = useGetAppointments({ id: selectedFuneral?.id || '' });
     useEffect(() => {
         if (!initialValues) return;
         setValues({
             appointments: {
                 ...initialValues?.appointments,
                 // convert graphql to JS date
-                date: formatDate(initialValues.appointments?.date)
+                dateFinalCare: formatDate(initialValues.appointments?.dateFinalCare),
+                dateConferenceContent: formatDate(initialValues.appointments?.dateConferenceContent),
+                dateDeliveryCart: formatDate(initialValues.appointments?.dateDeliveryCart),
+                dateDeliveryMusic: formatDate(initialValues.appointments?.dateDeliveryMusic),
+                dateDeliveryPresentation: formatDate(initialValues.appointments?.dateDeliveryPresentation),
+                extra: initialValues.appointments?.extra?.map(extraItem => {
+                    const newItem = {
+                      ...extraItem,
+                      date: formatDate(extraItem.date)
+                    };
+                    return newItem;
+                })
             },
             ...values
         });

@@ -1,5 +1,5 @@
 import { gql, useMutation } from "@apollo/client";
-//import { saveAppointments, saveAppointmentsVariables } from "./__generated__/saveAppointments";
+import { saveAppointments, saveAppointmentsVariables } from "./__generated__/saveAppointments";
 
 const SAVE_APPOINTMENTS = gql`
 mutation saveAppointments($id: String!, $appointments: PersistAppointmentInput!) {
@@ -12,4 +12,4 @@ mutation saveAppointments($id: String!, $appointments: PersistAppointmentInput!)
 }
 `;
 
-export const useSaveAppointments = () => useMutation(SAVE_APPOINTMENTS);
+export const useSaveAppointments = () => useMutation<saveAppointments, saveAppointmentsVariables>(SAVE_APPOINTMENTS);

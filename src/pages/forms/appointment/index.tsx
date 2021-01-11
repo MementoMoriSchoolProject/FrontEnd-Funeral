@@ -2,8 +2,6 @@ import React, { useEffect } from 'react';
 import { FieldArray } from 'formik';
 import _ from 'lodash';
 import { Button, Flex } from 'rebass';
-import { LabelSelectField } from '../../../components/LabelSelectField';
-import LabelTextAreaField from '../../../components/LabelTextAreaField';
 import { LabelTextField } from '../../../components/LabelTextField';
 import { ListItem } from '../../../molecules/list-item';
 import { formatDate } from '../../../utils/date';
@@ -23,8 +21,6 @@ export const Appointment: React.FC<FormProps> = ({ shouldSubmit, setValues, valu
     useEffect(() => {
 
         if (shouldSubmit && selectedFuneral) {
-
-            console.log(selectedFuneral.id);
 
             saveAppointments({
                 variables: {
@@ -50,8 +46,8 @@ export const Appointment: React.FC<FormProps> = ({ shouldSubmit, setValues, valu
                 dateDeliveryPresentation: formatDate(initialValues.appointments?.dateDeliveryPresentation),
                 extra: initialValues.appointments?.extra?.map(extraItem => {
                     const newItem = {
-                      ...extraItem,
-                      date: formatDate(extraItem.date)
+                        ...extraItem,
+                        date: formatDate(extraItem.date)
                     };
                     return newItem;
                 })
@@ -78,12 +74,12 @@ export const Appointment: React.FC<FormProps> = ({ shouldSubmit, setValues, valu
                 <LabelTextField id={wrapId("timeDeliveryCart")} type="time" label="Tijdstip" placeholder="13-12-1901" boxProps={{ ml: 2 }} />
             </Flex>
             <Flex>
-                Aanleveren muziek	
+                Aanleveren muziek
                 <LabelTextField id={wrapId("dateDeliveryMusic")} label="Datum" placeholder="13-12-1901" type="date" />
                 <LabelTextField id={wrapId("timeDeliveryMusic")} type="time" label="Tijdstip" placeholder="13-12-1901" boxProps={{ ml: 2 }} />
             </Flex>
             <Flex>
-                Aanleveren powerpoint-presentatie	
+                Aanleveren powerpoint-presentatie
                 <LabelTextField id={wrapId("dateDeliveryPresentation")} label="Datum" placeholder="13-12-1901" type="date" />
                 <LabelTextField id={wrapId("timeDeliveryPresentation")} type="time" label="Tijdstip" placeholder="13-12-1901" boxProps={{ ml: 2 }} />
             </Flex>
@@ -94,11 +90,11 @@ export const Appointment: React.FC<FormProps> = ({ shouldSubmit, setValues, valu
                     return (
                         <Flex flexDirection="column" width="100%">
                             {extra && extra.length > 0 ? (
-                                extra.map((extra, index) => (
+                                extra.map((_1, index) => (
                                     <ListItem key={index} onDelete={() => arrayHelpers.remove(index)}>
                                         <LabelTextField id={wrapId(`extra.${index}.description`)} label={`Extra afspraak ${index + 1}`} />
                                         <LabelTextField id={wrapId(`extra.${index}.date`)} label="Datum" placeholder="13-12-1901" type="date" />
-                                        <LabelTextField id={wrapId(`extra.${index}.time`)} type="time" label="Tijdstip" placeholder="13-12-1901" boxProps={{ ml: 2 }} />                                        
+                                        <LabelTextField id={wrapId(`extra.${index}.time`)} type="time" label="Tijdstip" placeholder="13-12-1901" boxProps={{ ml: 2 }} />
                                     </ListItem>
                                 ))
                             ) : (
@@ -108,7 +104,7 @@ export const Appointment: React.FC<FormProps> = ({ shouldSubmit, setValues, valu
                                     </Text>
                                 </Flex>
                             )}
-                            <Button mb={4} onClick={() => arrayHelpers.push('')}>
+                            <Button mb={4} onClick={() => arrayHelpers.push({})}>
                                 Voeg extra afspraak toe
                             </Button>
                         </Flex>

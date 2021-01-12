@@ -28,6 +28,7 @@ import { layOut } from '../forms/layOut/layOut';
 import { useSaveLastPage } from './save-last-page';
 import { AudioVideo } from '../forms/audiovideo/audiovideo';
 import { Flowers } from '../forms/flowers/flowers';
+import { CoffeeRoom } from '../forms/coffeeroom/coffeeroom';
 
 export interface FormProps extends FormikProps<any> {
     shouldSubmit: boolean;
@@ -100,6 +101,12 @@ const pages: (React.FC<FormProps> | FormPage)[] = [
         title: 'Begraven/Crematie',
         parts: [
             BuryCremation
+        ]
+    },
+    {
+        title: 'Koffiekamer',
+        parts: [
+            CoffeeRoom
         ]
     },
     {

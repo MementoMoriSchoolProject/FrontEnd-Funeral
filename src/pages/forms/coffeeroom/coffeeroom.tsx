@@ -36,7 +36,9 @@ export const CoffeeRoom: React.FC<FormProps> = ({ shouldSubmit, setValues, value
                 coffeeroom: {
                     ...initialValues?.coffeeroom,
                     // convert graphql to JS date
-                    date: formatDate(initialValues.coffeeroom?.date)
+                    date: formatDate(initialValues.coffeeroom?.date),
+                    time: formatDate(initialValues.coffeeroom?.time),
+                    departuretime: formatDate(initialValues.coffeeroom?.departuretime)
                 },
                 ...values
             });

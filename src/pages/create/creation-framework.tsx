@@ -55,27 +55,21 @@ const pages: (React.FC<FormProps> | FormPage)[] = [
         ]
     },
     {
-        title: 'Afspraken',
-        parts: [
-            Appointment
-        ]
-    },
-    {
         title: 'Gegevens Opdrachtgever',
         parts: [
             Client
         ]
     },
     {
-        title: 'Overbrenging',
-        parts: [
-            Transmission
-        ]
-    },
-    {
         title: 'Laatste verzorging',
         parts: [
             FinalCare
+        ]
+    },
+    {
+        title: 'Overbrenging',
+        parts: [
+            Transmission
         ]
     },
     {
@@ -104,15 +98,21 @@ const pages: (React.FC<FormProps> | FormPage)[] = [
         ]
     },
     {
-        title: 'Koffiekamer',
-        parts: [
-            CoffeeRoom
-        ]
-    },
-    {
         title: 'Gegevens Plechtigheid',
         parts: [
             Ceremony
+        ]
+    },
+    {
+        title: 'Beeld en geluid',
+        parts: [
+            AudioVideo
+        ]
+    },
+    {
+        title: 'Koffiekamer',
+        parts: [
+            CoffeeRoom
         ]
     },
     {
@@ -135,6 +135,12 @@ const pages: (React.FC<FormProps> | FormPage)[] = [
         ]
     },
     {
+        title: 'Advertentie',
+        parts: [
+            Advertisement
+        ]
+    },
+    {
         title: 'Vervoer',
         parts: [
             Transport,
@@ -143,17 +149,11 @@ const pages: (React.FC<FormProps> | FormPage)[] = [
         ]
     },
     {
-        title: 'Advertentie',
+        title: 'Afspraken',
         parts: [
-            Advertisement
+            Appointment
         ]
     },
-    {
-        title: 'Audio & Video',
-        parts: [
-            AudioVideo
-        ]
-    }
 ];
 
 const isReactComponent = (page: React.FC<FormProps> | FormPage): page is React.FC<FormProps> => page !== undefined && 'children' in page;

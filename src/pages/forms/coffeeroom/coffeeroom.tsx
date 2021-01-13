@@ -1,6 +1,7 @@
 import _ from 'lodash';
 import React, { useEffect } from 'react';
 import { Flex } from 'rebass';
+import { Heading } from '../../../atoms/heading';
 import { LabelSelectField } from '../../../components/LabelSelectField';
 import { LabelTextField } from '../../../components/LabelTextField';
 import { formatDate } from '../../../utils/date';
@@ -47,6 +48,9 @@ export const CoffeeRoom: React.FC<FormProps> = ({ shouldSubmit, setValues, value
 
     return (
         <>
+            <Heading level={2} mx="auto" mb="4">
+                Koffiekamer
+            </Heading>
             <Flex>
                 <LabelSelectField id={wrapId("usagecoffeeroom")} label="Gebruik koffiekamer" name="usagecoffeeroom">
                     <option value="restaurant">Restaurant</option>

@@ -26,11 +26,13 @@ import { Personalia } from '../forms/personalia/personalia';
 import { Transmission } from '../forms/transmission/transmission';
 import { Transport } from '../forms/transport/transport';
 import { Visiting } from '../forms/visiting/visiting';
+import { PersonaliaPDFIntegration } from '../pdf/personalia-pdf';
 
 const menuGroups: {
     title: string,
     icon: any | null,
-    forms: React.FC<FormProps>[]
+    forms: React.FC<FormProps>[],
+    pdfs?: React.FC<any>[]
 }[] = [
     {
         title: 'Terug',
@@ -40,7 +42,8 @@ const menuGroups: {
     {
         title: 'Overledene',
         icon: FaUser,
-        forms: [Personalia, Circumstances]
+        forms: [Personalia, Circumstances],
+        pdfs: [PersonaliaPDFIntegration]
     },
     {
         title: 'Kosten',
@@ -127,7 +130,12 @@ export const FuneralSpecificOverview: React.FC<{}> = () => {
                                 <Heading>This is where E-Mail will show</Heading>
                             </Flex>
                             <Flex flexDirection="column" px={2} alignItems="center" justifyContent="center" width={[1, 1, 1, 2 / 3, 5 / 12]} variant="scrollList">
-                                <Heading>This is where forms for printing will show</Heading>
+                                {menuGroups[selectedPage].pdfs?.map((PDF) => (
+                                    <>
+                                        <Heading level={2} mb={3}>PDF</Heading>
+                                        <PDF />
+                                    </>
+                                ))}
                             </Flex>
                         </Flex>
                         <Flex alignItems="center" flexGrow={0} pt={1} overflowY="auto" overflowX="hidden" flexDirection="column">

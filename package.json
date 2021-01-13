@@ -24,7 +24,6 @@
     "lodash": "^4.17.20",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-gmail": "^1.0.1",
     "react-google-login": "^5.2.2",
     "react-icons": "^3.11.0",
     "react-router-dom": "^5.2.0",

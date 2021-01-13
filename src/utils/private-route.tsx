@@ -12,10 +12,10 @@ const LOGGED_IN = gql`
     }
 `;
 
-const AuthStateContext = createContext<boolean>(false);
+const AuthStateContext = createContext<{ isSignedIn: boolean, refetch: () => any }>({ isSignedIn: false, refetch: () => { } });
 
 export const AuthStateProvider: React.FC<{}> = (props) => {
-    const { loading, data } = useQuery(LOGGED_IN);
+    const { loading, data, refetch } = useQuery(LOGGED_IN);
 
     if (loading) {
         return (
@@ -25,7 +25,7 @@ export const AuthStateProvider: React.FC<{}> = (props) => {
         );
     }
     return (
-        <AuthStateContext.Provider value={!!data}>
+        <AuthStateContext.Provider value={{ isSignedIn: !!data, refetch }}>
             {props.children}
         </AuthStateContext.Provider>
     );
@@ -34,7 +34,7 @@ export const AuthStateProvider: React.FC<{}> = (props) => {
 export const useAuth = () => useContext(AuthStateContext);
 
 export const PrivateRoute: React.FC<RouteProps> = ({ children, ...rest }) => {
-    const isSignedIn = useAuth();
+    const { isSignedIn } = useAuth();
     return (
         <Route
             {...rest}

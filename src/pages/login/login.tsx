@@ -5,11 +5,13 @@ import { useHistory } from 'react-router-dom';
 import { Box, Flex } from 'rebass';
 import { Heading } from '../../atoms/heading';
 import { ProgressButton } from '../../atoms/progress-button';
+import { useAuth } from '../../utils/private-route';
 import { useLogin } from './query/login';
 
 export const LoginPage: React.FC<{}> = () => {
     const history = useHistory();
     const [login, { loading, error }] = useLogin();
+    const { refetch } = useAuth();
 
     return (
         <Flex justifyContent="center" alignItems="center" height="100vh" bg="background">
@@ -26,7 +28,7 @@ export const LoginPage: React.FC<{}> = () => {
                         if (data?.login) {
                             // login successful
                             localStorage.setItem('token', data.login);
-                            await history.push('/');
+                            refetch().then(() => { history.push("/"); });
                         }
                     })}
                 >

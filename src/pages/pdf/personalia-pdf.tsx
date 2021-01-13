@@ -70,25 +70,25 @@ const PersonaliaPDF = (data: any) => (
                 <View style={styles.padding}>
                     <Text style={styles.text}>
                         Roepnaam:
-                        {data?.personalia.callname}
+                        {data?.personalia?.callname}
                     </Text>
                 </View>
                 <View style={styles.padding}>
                     <Text style={styles.text}>
                         Adres:
-                        {data?.personalia.address}
+                        {data?.personalia?.address}
                     </Text>
                 </View>
                 <View style={styles.padding}>
                     <Text style={styles.text}>
                         Postcode:
-                        {data?.personalia.postal}
+                        {data?.personalia?.postal}
                     </Text>
                 </View>
                 <View style={styles.padding}>
                     <Text style={styles.text}>
                         WoonPlaats:
-                        {data?.personalia.town}
+                        {data?.personalia?.town}
                     </Text>
                 </View>
                 <View style={styles.padding}>
@@ -100,20 +100,20 @@ const PersonaliaPDF = (data: any) => (
                 <View style={styles.padding}>
                     <Text style={styles.text}>
                         Geslacht:
-                        {data?.personalia.gender}
+                        {data?.personalia?.gender}
                     </Text>
                 </View>
                 <View style={styles.twocolumn}>
                     <View style={styles.column}>
                         <Text style={styles.text}>
                             Burgelijke staat:
-                            {data?.personalia.maritalStatus}
+                            {data?.personalia?.maritalStatus}
                         </Text>
                     </View>
                     <View style={styles.column}>
                         <Text style={styles.text}>
                             Geloofsovertuiging:
-                            {data?.personalia.religion}
+                            {data?.personalia?.religion}
                         </Text>
                     </View>
                 </View>
@@ -132,14 +132,14 @@ const PersonaliaPDF = (data: any) => (
                     <View style={styles.column}>
                         <Text style={styles.text}>
                             Tijdstip van overlijden:
-                            {data?.circumstances.time}
+                            {data?.circumstances?.time}
                         </Text>
                     </View>
                 </View>
                 <View style={styles.padding}>
                     <Text style={styles.text}>
                         Adres:
-                        {data?.circumstances.address}
+                        {data?.circumstances?.address}
                     </Text>
                 </View>
                 <View style={styles.twocolumn}>
@@ -152,7 +152,7 @@ const PersonaliaPDF = (data: any) => (
                     <View style={styles.column}>
                         <Text style={styles.text}>
                             Plaats:
-                            {data?.circumstances.town}
+                            {data?.circumstances?.town}
                         </Text>
                     </View>
                 </View>
@@ -319,7 +319,7 @@ export const PersonaliaPDFIntegration = () => {
 
             return (
                 <>
-                    <BlobProvider document={PersonaliaPDF({ ...personalia.data, ...circumstances.data, ...client.data, ...farewell.data, ...nightguard.data })}>
+                    <BlobProvider document={PersonaliaPDF({ ...personalia?.data, ...circumstances?.data, ...client.data, ...farewell.data, ...nightguard.data })}>
                         {({ url }) => <iframe title="pdf-display" src={url as any} style={{ width: '100%', height: '100%' }} />}
                     </BlobProvider>
                 </>

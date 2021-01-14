@@ -46,11 +46,11 @@ export const Transport: React.FC<FormProps> = ({ shouldSubmit, setValues, values
                 <LabelTextField id={wrapId("hearsecolor")} label="Kleur" boxProps={{ ml: 2 }} />
             </Flex>
             <Flex>
-                <LabelTextField id={wrapId("numberoffollowcars")} label="Aantal volgauto's" type="number" boxProps={{ mr: 2 }} />
+                <LabelTextField id={wrapId("numberoffollowcars")} label="Aantal volgauto's" boxProps={{ mr: 2 }} />
                 <LabelTextField id={wrapId("numberoffollowcarscolor")} label="Kleur" boxProps={{ ml: 2 }} />
             </Flex>
             <Flex>
-                <LabelTextField id={wrapId("numberofflowercars")} label="Aantal bloemenauto's" type="number" boxProps={{ mr: 2 }} />
+                <LabelTextField id={wrapId("numberofflowercars")} label="Aantal bloemenauto's" boxProps={{ mr: 2 }} />
                 <LabelTextField id={wrapId("numberofflowercarscolor")} label="Kleur" boxProps={{ ml: 2 }} />
             </Flex>
         </>

@@ -10,7 +10,6 @@ import { FormProps } from '../../create/creation-framework';
 import { Text } from '../../../atoms/text';
 import { useSaveFlowers } from './mutation/save-flowers';
 import { useGetFlowers } from './query/get-flowers';
-import { ListItemNoIcon } from '../../../molecules/list-item-no-icon';
 import { Heading } from '../../../atoms/heading';
 
 const wrapId = (htmlId: string) => `flowers.${htmlId}`;
@@ -25,7 +24,10 @@ export const Flowers: React.FC<FormProps> = ({ shouldSubmit, setValues, values }
             saveFlowers({
                 variables: {
                     id: selectedFuneral.id,
-                    flowers: _.omit(values.flowers, ['__typename']),
+                    flowers: {
+                        ..._.omit(values.flowers, ['__typename']),
+                        flowers: values.flowers.flowers.map((it: any) => _.omit(it, ['__typename']))
+                    }
                 }
             });
         }
@@ -60,28 +62,16 @@ export const Flowers: React.FC<FormProps> = ({ shouldSubmit, setValues, values }
                     return (
                         <Flex flexDirection="column" width="100%">
                             {flowers && flowers.length > 0 ? (
-                                flowers.map((flower, index) => (
+                                flowers.map((__: any, index: number) => (
                                     <>
                                         <ListItem key={index} onDelete={() => arrayHelpers.remove(index)}>
                                             <Heading level={2} mb={4}>{`Rouwboeket ${index + 1}`}</Heading>
-                                        </ListItem>
-                                        <ListItemNoIcon key={index}>
                                             <LabelTextField id={wrapId(`flowers.${index}.formatting`)} label="Model / opmaak rouwboeket" />
-                                        </ListItemNoIcon>
-                                        <ListItemNoIcon key={index}>
                                             <LabelTextField id={wrapId(`flowers.${index}.textOnLint1`)} label="Tekst op lint 1" />
-                                        </ListItemNoIcon>
-                                        <ListItemNoIcon key={index}>
                                             <LabelTextField id={wrapId(`flowers.${index}.textOnLint2`)} label="Tekst op lint 2" />
-                                        </ListItemNoIcon>
-                                        <ListItemNoIcon key={index}>
                                             <LabelTextField id={wrapId(`flowers.${index}.colorOnLint`)} label="Kleur lint / kleur letters" />
-                                        </ListItemNoIcon>
-                                        <ListItemNoIcon key={index}>
-                                            <LabelTextField id={wrapId(`flowers.${index}.costFlower`)} type="number"
-                                                label="Bedrag rouwboeket"
-                                            />
-                                        </ListItemNoIcon>
+                                            <LabelTextField id={wrapId(`flowers.${index}.costFlower`)} type="number" label="Bedrag rouwboeket" />
+                                        </ListItem>
                                     </>
                                 ))
                             ) : (
@@ -105,7 +95,7 @@ export const Flowers: React.FC<FormProps> = ({ shouldSubmit, setValues, values }
                 <LabelTextField id={wrapId("finalTime")} type="time" label="Uiterlijk voor (tijdstip)" boxProps={{ ml: 2 }} />
             </Flex>
             <LabelTextField
-                id={wrapId("totalcost")}
+                id={wrapId("totalCost")}
                 type="number"
                 label="Totaal bedrag"
                 boxProps={{ mr: 2 }}
@@ -114,7 +104,7 @@ export const Flowers: React.FC<FormProps> = ({ shouldSubmit, setValues, values }
                 <LabelTextField id={wrapId("deliveryLocation")} label="Afleverlocatie" boxProps={{ mr: 2 }} />
             </Flex>
             <Flex>
-                <LabelTextField id={wrapId("adress")} label="Adres" boxProps={{ mr: 2 }} />
+                <LabelTextField id={wrapId("address")} label="Adres" boxProps={{ mr: 2 }} />
             </Flex>
             <Flex>
                 <LabelTextField id={wrapId("postalCode")} label="Postcode" boxProps={{ mr: 2 }} />

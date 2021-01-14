@@ -13,7 +13,7 @@ interface EmailListProps {
     isAuthorized?: boolean;
 }
 
-export const EmailList: React.FC<EmailListProps> = ({ labels, query, onSelect, setAuthorized, isAuthorized }) => {
+export const EmailList: React.FC<EmailListProps> = ({ labels, query, onSelect, setAuthorized }) => {
     const { data, loading, error } = useGetEmails({
         input: {
             labels,

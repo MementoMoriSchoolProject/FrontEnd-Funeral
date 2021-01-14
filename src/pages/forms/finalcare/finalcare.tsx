@@ -50,8 +50,8 @@ export const FinalCare: React.FC<FormProps> = ({ shouldSubmit, setValues, values
             </Flex>
             <Flex>
                 <LabelSelectField id={wrapId("family")} label="Met of zonder familie">
-                    <option value="metfamilie">Met familie</option>
-                    <option value="zonderfamilie">Geen familie</option>
+                    <option value="Met familie">Met familie</option>
+                    <option value="Zonder familie">Geen familie</option>
                 </LabelSelectField>
             </Flex>
             <Flex>

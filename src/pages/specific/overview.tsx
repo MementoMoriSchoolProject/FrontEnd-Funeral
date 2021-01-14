@@ -136,6 +136,7 @@ export const FuneralSpecificOverview: React.FC<{}> = () => {
                                 <Heading>This is where E-Mail will show</Heading>
                             </Flex>
                             <Flex flexDirection="column" px={2} alignItems="center" justifyContent="center" width={[1, 1, 1, 2 / 3, 5 / 12]} variant="scrollList">
+                                {menuGroups[selectedPage].pdfs === undefined ? <p>Geen pdfs.</p> : ''}
                                 {menuGroups[selectedPage].pdfs?.map((PDF) => (
                                     <>
                                         <Heading level={2} mb={3}>PDF</Heading>

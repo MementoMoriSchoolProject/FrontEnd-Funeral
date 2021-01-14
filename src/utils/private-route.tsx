@@ -64,7 +64,7 @@ export const ConditionedRoute: React.FC<RouteProps & { condition: boolean }> = (
 );
 
 export const NonPrivateRoute: React.FC<RouteProps> = ({ children, ...rest }) => {
-    const isSignedIn = useAuth();
+    const { isSignedIn } = useAuth();
     return (
         <Route
             {...rest}

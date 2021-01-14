@@ -66,19 +66,19 @@ export const Flowers: React.FC<FormProps> = ({ shouldSubmit, setValues, values }
                                             <Heading level={2} mb={4}>{`Rouwboeket ${index + 1}`}</Heading>
                                         </ListItem>
                                         <ListItemNoIcon key={index}>
-                                            <LabelTextField id={wrapId(`formatting.${index}`)} label="Model / opmaak rouwboeket" />
+                                            <LabelTextField id={wrapId(`flowers.${index}.formatting`)} label="Model / opmaak rouwboeket" />
                                         </ListItemNoIcon>
                                         <ListItemNoIcon key={index}>
-                                            <LabelTextField id={wrapId(`textOnLint1.${index}`)} label="Tekst op lint 1" />
+                                            <LabelTextField id={wrapId(`flowers.${index}.textOnLint1`)} label="Tekst op lint 1" />
                                         </ListItemNoIcon>
                                         <ListItemNoIcon key={index}>
-                                            <LabelTextField id={wrapId(`textOnLint2.${index}`)} label="Tekst op lint 2" />
+                                            <LabelTextField id={wrapId(`flowers.${index}.textOnLint2`)} label="Tekst op lint 2" />
                                         </ListItemNoIcon>
                                         <ListItemNoIcon key={index}>
-                                            <LabelTextField id={wrapId(`colorOnLint.${index}`)} label="Kleur lint / kleur letters" />
+                                            <LabelTextField id={wrapId(`flowers.${index}.colorOnLint`)} label="Kleur lint / kleur letters" />
                                         </ListItemNoIcon>
                                         <ListItemNoIcon key={index}>
-                                            <LabelTextField id={wrapId(`costFlower.${index}`)} type="number"
+                                            <LabelTextField id={wrapId(`flowers.${index}.costFlower`)} type="number"
                                                 label="Bedrag rouwboeket"
                                             />
                                         </ListItemNoIcon>
@@ -91,7 +91,7 @@ export const Flowers: React.FC<FormProps> = ({ shouldSubmit, setValues, values }
                                     </Text>
                                 </Flex>
                             )}
-                            <Button mb={4} onClick={() => arrayHelpers.push('')}>
+                            <Button mb={4} onClick={() => arrayHelpers.push({})}>
                                 Voeg bloemen toe
                             </Button>
                         </Flex>

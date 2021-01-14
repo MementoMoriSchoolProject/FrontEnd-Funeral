@@ -6,6 +6,7 @@ import { Flex } from 'rebass';
 import { Heading } from '../../atoms/heading';
 import { useSelectedFuneral } from '../../utils/selected-funeral';
 import { FormProps } from '../create/creation-framework';
+import { EmailOverview } from '../email/email-overview';
 import { Advertisement } from '../forms/advertisement/advertisement';
 import { AudioVideo } from '../forms/audiovideo/audiovideo';
 import { BuryCremation } from '../forms/buryCremation/buryCremation';
@@ -117,14 +118,11 @@ export const FuneralSpecificOverview: React.FC<{}> = () => {
                         <Flex variant="card" justifyContent="space-between" flexDirection="row" flex="100% 1 1" p={4} px={5}>
                             <Flex flexDirection="column" px={2} width={[1, 1, 1, 2 / 3, 5 / 12]} variant="scrollList">
                                 {menuGroups[selectedPage].forms.map((Form) => (
-                                    <>
-                                        {/* <Heading level={2}></Heading> */}
-                                        <Form shouldSubmit={nextPage >= 0} {...formik} />
-                                    </>
+                                    <Form shouldSubmit={nextPage >= 0} {...formik} />
                                 ))}
                             </Flex>
                             <Flex flexDirection="column" px={2} alignItems="center" justifyContent="center" width={[1, 1, 1, 2 / 3, 5 / 12]} variant="scrollList">
-                                <Heading>This is where E-Mail will show</Heading>
+                                <EmailOverview labels={[]} />
                             </Flex>
                             <Flex flexDirection="column" px={2} alignItems="center" justifyContent="center" width={[1, 1, 1, 2 / 3, 5 / 12]} variant="scrollList">
                                 <Heading>This is where forms for printing will show</Heading>
@@ -132,7 +130,7 @@ export const FuneralSpecificOverview: React.FC<{}> = () => {
                         </Flex>
                         <Flex alignItems="center" flexGrow={0} pt={1} overflowY="auto" overflowX="hidden" flexDirection="column">
                             {menuGroups.map((menuGroup, index) => {
-                                const Test = menuGroup.icon || FaCalculator;
+                                const Icon = menuGroup.icon || FaCalculator;
                                 return (
                                     <Flex
                                         bg={selectedPage === index ? "primary" : "transparent"}
@@ -145,7 +143,7 @@ export const FuneralSpecificOverview: React.FC<{}> = () => {
                                         style={{ cursor: "pointer" }}
                                         onClick={() => goToPage(index)}
                                     >
-                                        <Test size="48" />
+                                        <Icon size="48" />
                                         <Heading level={3}>{menuGroup.title}</Heading>
                                     </Flex>
                                 );

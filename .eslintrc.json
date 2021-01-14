@@ -25,7 +25,8 @@
         }
     },
     "rules": {
-        "no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
+        "arrow-body-style": "warn",
+        "no-unused-vars": ["warn", { "argsIgnorePattern": "^_" }],
         "linebreak-style": "off",
         "no-use-before-define": "off",
         "@typescript-eslint/no-use-before-define": ["error"],
@@ -35,6 +36,10 @@
         "indent": ["error", 4],
         "react/jsx-indent": ["error", 4],
         "react/jsx-indent-props": ["error", 4],
+        "react/jsx-one-expression-per-line": "off",
+        "react/no-unused-prop-types": "off",
+        "react/self-closing-comp": "off",
+        "no-trailing-spaces": "warn",
         "object-curly-newline": "off",
         "camelcase": "off",
         "react/prop-types": "off",

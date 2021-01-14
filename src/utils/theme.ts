@@ -59,6 +59,14 @@ export const theme = {
         }
     },
     text: {
+        ellipsis: {
+            color: 'text',
+            fontSize: 2,
+            fontWeight: 600,
+            textOverflow: 'ellipsis',
+            whiteSpace: 'nowrap',
+            overflowX: 'hidden',
+        },
         text: {
             color: 'text',
             fontSize: 2,

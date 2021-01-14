@@ -19,6 +19,7 @@ import { CommemorativeCard } from '../forms/commemorativecard/commemorativecard'
 import { DrivingInfoFollowingCar } from '../forms/drivinginfofollowingcar/drivinginfofollowingcar';
 import { DrivingInfoFuneralCar } from '../forms/drivinginfofuneralcar/drivinginfofuneralcar';
 import { Farewell } from '../forms/farewell/farewell';
+import { FinalCare } from '../forms/finalcare/finalcare';
 import { Flowers } from '../forms/flowers/flowers';
 import { FuneralLetter } from '../forms/funeralletter/funeralletter';
 import { Insurance } from '../forms/insurance/insurance';
@@ -29,6 +30,7 @@ import { Transmission } from '../forms/transmission/transmission';
 import { Transport } from '../forms/transport/transport';
 import { Visiting } from '../forms/visiting/visiting';
 import { FlowersPDFIntegration } from '../pdf/flowers-pdf';
+import { BurialPDFIntegration } from '../pdf/burial-pdf';
 import { PersonaliaPDFIntegration } from '../pdf/personalia-pdf';
 
 const menuGroups: {
@@ -72,7 +74,7 @@ const menuGroups: {
     {
         title: 'Bezoek',
         icon: FaUserFriends,
-        forms: [Visiting, Nightguard]
+        forms: [Visiting, Nightguard, FinalCare]
     },
     {
         title: 'Locaties',
@@ -83,7 +85,8 @@ const menuGroups: {
     {
         title: 'Ceremonie',
         icon: GiTombstone,
-        forms: [BuryCremation]
+        forms: [BuryCremation],
+        pdfs: [BurialPDFIntegration]
     },
     {
         title: 'Plechtigheid',

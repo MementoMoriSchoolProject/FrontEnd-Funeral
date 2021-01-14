@@ -101,7 +101,7 @@ export const Flowers: React.FC<FormProps> = ({ shouldSubmit, setValues, values }
                 <LabelTextField id={wrapId("deliveryLocation")} label="Afleverlocatie" boxProps={{ mr: 2 }} />
             </Flex>
             <Flex>
-                <LabelTextField id={wrapId("adress")} label="Adres" boxProps={{ mr: 2 }} />
+                <LabelTextField id={wrapId("address")} label="Adres" boxProps={{ mr: 2 }} />
             </Flex>
             <Flex>
                 <LabelTextField id={wrapId("postalCode")} label="Postcode" boxProps={{ mr: 2 }} />

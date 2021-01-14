@@ -61,6 +61,12 @@ const FlowersPDF = (data: any) => (
                 <View>
                     <Text style={styles.subheading}>Gegevens t.b.v. rouwboeket</Text>
                 </View>
+                <View style={styles.padding}>
+                    <Text style={styles.text}>
+                        Leverancier:
+                        {data?.flowers?.supplier}
+                    </Text>
+                </View>
                 {data?.flowers.flowers.map((item: any) => (
                     <>
                         <View style={{ marginBottom: "10px" }}>

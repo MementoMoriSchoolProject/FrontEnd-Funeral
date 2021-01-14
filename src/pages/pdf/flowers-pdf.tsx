@@ -67,7 +67,7 @@ const FlowersPDF = (data: any) => (
                         {data?.flowers?.supplier}
                     </Text>
                 </View>
-                {data?.flowers.flowers.map((item: any) => (
+                {data?.flowers?.flowers.map((item: any) => (
                     <>
                         <View style={{ marginBottom: "10px" }}>
                             <View style={styles.padding}>

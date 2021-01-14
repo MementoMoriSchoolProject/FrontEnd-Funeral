@@ -24,7 +24,10 @@ export const Flowers: React.FC<FormProps> = ({ shouldSubmit, setValues, values }
             saveFlowers({
                 variables: {
                     id: selectedFuneral.id,
-                    flowers: _.omit(values.flowers, ['__typename']),
+                    flowers: {
+                        ..._.omit(values.flowers, ['__typename']),
+                        flowers: values.flowers.flowers.map((it: any) => _.omit(it, ['__typename']))
+                    }
                 }
             });
         }
@@ -59,7 +62,7 @@ export const Flowers: React.FC<FormProps> = ({ shouldSubmit, setValues, values }
                     return (
                         <Flex flexDirection="column" width="100%">
                             {flowers && flowers.length > 0 ? (
-                                flowers.map((flower, index) => (
+                                flowers.map((__: any, index: number) => (
                                     <>
                                         <ListItem key={index} onDelete={() => arrayHelpers.remove(index)}>
                                             <Heading level={2} mb={4}>{`Rouwboeket ${index + 1}`}</Heading>

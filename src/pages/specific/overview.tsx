@@ -79,7 +79,6 @@ const menuGroups: {
     {
         title: 'Locaties',
         icon: FaPlaceOfWorship,
-        // eslint-disable-next-line array-bracket-spacing
         forms: [Farewell, CoffeeRoom]
     },
     {

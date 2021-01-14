@@ -5,6 +5,13 @@ const GET_FLOWERS = gql`
 query getFlowers($id: String!) {
     flowers(id: $id) {
       supplier
+      deliveryDate
+      finalTime
+      totalCost
+      address
+      deliveryLocation
+      postalCode
+      location
       flowers {
         formatting
         textOnLint1
@@ -12,12 +19,6 @@ query getFlowers($id: String!) {
         colorOnLint
         costFlower
       }
-      deliveryDate
-      finalTime
-      totalCost
-      deliveryLocation
-      postalCode
-      location
     }
 }
 `;

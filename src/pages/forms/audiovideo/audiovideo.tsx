@@ -37,7 +37,7 @@ export const AudioVideo: React.FC<FormProps> = ({ shouldSubmit, values, ...rest 
     return (
         <>
             <Heading level={2} mx="auto" mb="4">
-                Audio and Video
+                Beeld en Geluid
             </Heading>
             <Flex>
                 <LabelTextField id={wrapId("musicDeliveredBy")} label="Muziek wordt aangeleverd door" boxProps={{ mr: 2 }} />

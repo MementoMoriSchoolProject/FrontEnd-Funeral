@@ -18,6 +18,7 @@ import { CommemorativeCard } from '../forms/commemorativecard/commemorativecard'
 import { Ceremony } from '../forms/ceremony';
 import { Nightguard } from '../forms/nightguard/nightguard';
 import { BuryCremation } from '../forms/buryCremation/buryCremation';
+import { Appointment } from '../forms/appointment';
 import { Transport } from '../forms/transport/transport';
 import { DrivingInfoFuneralCar } from '../forms/drivinginfofuneralcar/drivinginfofuneralcar';
 import { DrivingInfoFollowingCar } from '../forms/drivinginfofollowingcar/drivinginfofollowingcar';
@@ -27,6 +28,7 @@ import { layOut } from '../forms/layOut/layOut';
 import { useSaveLastPage } from './save-last-page';
 import { AudioVideo } from '../forms/audiovideo/audiovideo';
 import { Flowers } from '../forms/flowers/flowers';
+import { CoffeeRoom } from '../forms/coffeeroom/coffeeroom';
 
 export interface FormProps extends FormikProps<any> {
     shouldSubmit: boolean;
@@ -49,7 +51,7 @@ const pages: (React.FC<FormProps> | FormPage)[] = [
         parts: [
             Personalia,
             Insurance,
-            Circumstances,
+            Circumstances
         ]
     },
     {
@@ -59,15 +61,15 @@ const pages: (React.FC<FormProps> | FormPage)[] = [
         ]
     },
     {
-        title: 'Overbrenging',
-        parts: [
-            Transmission
-        ]
-    },
-    {
         title: 'Laatste verzorging',
         parts: [
             FinalCare
+        ]
+    },
+    {
+        title: 'Overbrenging',
+        parts: [
+            Transmission
         ]
     },
     {
@@ -102,6 +104,18 @@ const pages: (React.FC<FormProps> | FormPage)[] = [
         ]
     },
     {
+        title: 'Beeld en geluid',
+        parts: [
+            AudioVideo
+        ]
+    },
+    {
+        title: 'Koffiekamer',
+        parts: [
+            CoffeeRoom
+        ]
+    },
+    {
         title: 'Kist',
         parts: [
             Cascet
@@ -121,6 +135,12 @@ const pages: (React.FC<FormProps> | FormPage)[] = [
         ]
     },
     {
+        title: 'Advertentie',
+        parts: [
+            Advertisement
+        ]
+    },
+    {
         title: 'Vervoer',
         parts: [
             Transport,
@@ -129,17 +149,11 @@ const pages: (React.FC<FormProps> | FormPage)[] = [
         ]
     },
     {
-        title: 'Advertentie',
+        title: 'Afspraken',
         parts: [
-            Advertisement
+            Appointment
         ]
     },
-    {
-        title: 'Audio & Video',
-        parts: [
-            AudioVideo
-        ]
-    }
 ];
 
 const isReactComponent = (page: React.FC<FormProps> | FormPage): page is React.FC<FormProps> => page !== undefined && 'children' in page;

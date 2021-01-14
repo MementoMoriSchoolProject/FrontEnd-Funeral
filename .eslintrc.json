@@ -57,6 +57,7 @@
         "no-spaced-func": "off",
         "padded-blocks": "off",
         "react/jsx-max-props-per-line": "off",
-        "react/jsx-first-prop-new-line": "off"
+        "react/jsx-first-prop-new-line": "off",
+        "react/jsx-one-expression-per-line": "off"
     }
 }

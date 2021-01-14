@@ -8,16 +8,19 @@ import { useSelectedFuneral } from '../../utils/selected-funeral';
 import { FormProps } from '../create/creation-framework';
 import { EmailOverview } from '../email/email-overview';
 import { Advertisement } from '../forms/advertisement/advertisement';
+import { Appointment } from '../forms/appointment';
 import { AudioVideo } from '../forms/audiovideo/audiovideo';
 import { BuryCremation } from '../forms/buryCremation/buryCremation';
 import { Cascet } from '../forms/cascet/cascet';
 import { Ceremony } from '../forms/ceremony';
 import { Circumstances } from '../forms/circumstances';
 import { Client } from '../forms/client/client';
+import { CoffeeRoom } from '../forms/coffeeroom/coffeeroom';
 import { CommemorativeCard } from '../forms/commemorativecard/commemorativecard';
 import { DrivingInfoFollowingCar } from '../forms/drivinginfofollowingcar/drivinginfofollowingcar';
 import { DrivingInfoFuneralCar } from '../forms/drivinginfofuneralcar/drivinginfofuneralcar';
 import { Farewell } from '../forms/farewell/farewell';
+import { FinalCare } from '../forms/finalcare/finalcare';
 import { Flowers } from '../forms/flowers/flowers';
 import { FuneralLetter } from '../forms/funeralletter/funeralletter';
 import { Insurance } from '../forms/insurance/insurance';
@@ -27,11 +30,15 @@ import { Personalia } from '../forms/personalia/personalia';
 import { Transmission } from '../forms/transmission/transmission';
 import { Transport } from '../forms/transport/transport';
 import { Visiting } from '../forms/visiting/visiting';
+import { FlowersPDFIntegration } from '../pdf/flowers-pdf';
+import { BurialPDFIntegration } from '../pdf/burial-pdf';
+import { PersonaliaPDFIntegration } from '../pdf/personalia-pdf';
 
 const menuGroups: {
     title: string,
     icon: any | null,
-    forms: React.FC<FormProps>[]
+    forms: React.FC<FormProps>[],
+    pdfs?: React.FC<any>[]
 }[] = [
     {
         title: 'Terug',
@@ -41,7 +48,8 @@ const menuGroups: {
     {
         title: 'Overledene',
         icon: FaUser,
-        forms: [Personalia, Circumstances]
+        forms: [Personalia, Circumstances],
+        pdfs: [PersonaliaPDFIntegration]
     },
     {
         title: 'Kosten',
@@ -51,7 +59,7 @@ const menuGroups: {
     {
         title: 'Nabestaande',
         icon: FaUserFriends,
-        forms: [Client, FuneralLetter, CommemorativeCard, Advertisement]
+        forms: [Client, FuneralLetter, CommemorativeCard, Advertisement, Appointment]
     },
     {
         title: 'Vervoer',
@@ -61,23 +69,24 @@ const menuGroups: {
     {
         title: 'Opmaak',
         icon: GiFlowers,
-        forms: [layOut, Cascet, Flowers]
+        forms: [layOut, Cascet, Flowers],
+        pdfs: [FlowersPDFIntegration]
     },
     {
         title: 'Bezoek',
         icon: FaUserFriends,
-        forms: [Visiting, Nightguard]
+        forms: [Visiting, Nightguard, FinalCare]
     },
     {
         title: 'Locaties',
         icon: FaPlaceOfWorship,
-        // eslint-disable-next-line array-bracket-spacing
-        forms: [Farewell, /* Koffiekamer */]
+        forms: [Farewell, CoffeeRoom]
     },
     {
         title: 'Ceremonie',
         icon: GiTombstone,
-        forms: [BuryCremation]
+        forms: [BuryCremation],
+        pdfs: [BurialPDFIntegration]
     },
     {
         title: 'Plechtigheid',
@@ -125,7 +134,13 @@ export const FuneralSpecificOverview: React.FC<{}> = () => {
                                 <EmailOverview labels={[]} />
                             </Flex>
                             <Flex flexDirection="column" px={2} alignItems="center" justifyContent="center" width={[1, 1, 1, 2 / 3, 5 / 12]} variant="scrollList">
-                                <Heading>This is where forms for printing will show</Heading>
+                                {menuGroups[selectedPage].pdfs === undefined ? <p>Geen pdfs.</p> : ''}
+                                {menuGroups[selectedPage].pdfs?.map((PDF) => (
+                                    <>
+                                        <Heading level={2} mb={3}>PDF</Heading>
+                                        <PDF />
+                                    </>
+                                ))}
                             </Flex>
                         </Flex>
                         <Flex alignItems="center" flexGrow={0} pt={1} overflowY="auto" overflowX="hidden" flexDirection="column">

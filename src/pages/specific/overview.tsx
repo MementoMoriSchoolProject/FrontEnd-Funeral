@@ -7,12 +7,14 @@ import { Heading } from '../../atoms/heading';
 import { useSelectedFuneral } from '../../utils/selected-funeral';
 import { FormProps } from '../create/creation-framework';
 import { Advertisement } from '../forms/advertisement/advertisement';
+import { Appointment } from '../forms/appointment';
 import { AudioVideo } from '../forms/audiovideo/audiovideo';
 import { BuryCremation } from '../forms/buryCremation/buryCremation';
 import { Cascet } from '../forms/cascet/cascet';
 import { Ceremony } from '../forms/ceremony';
 import { Circumstances } from '../forms/circumstances';
 import { Client } from '../forms/client/client';
+import { CoffeeRoom } from '../forms/coffeeroom/coffeeroom';
 import { CommemorativeCard } from '../forms/commemorativecard/commemorativecard';
 import { DrivingInfoFollowingCar } from '../forms/drivinginfofollowingcar/drivinginfofollowingcar';
 import { DrivingInfoFuneralCar } from '../forms/drivinginfofuneralcar/drivinginfofuneralcar';
@@ -54,7 +56,7 @@ const menuGroups: {
     {
         title: 'Nabestaande',
         icon: FaUserFriends,
-        forms: [Client, FuneralLetter, CommemorativeCard, Advertisement]
+        forms: [Client, FuneralLetter, CommemorativeCard, Advertisement, Appointment]
     },
     {
         title: 'Vervoer',
@@ -76,7 +78,7 @@ const menuGroups: {
         title: 'Locaties',
         icon: FaPlaceOfWorship,
         // eslint-disable-next-line array-bracket-spacing
-        forms: [Farewell, /* Koffiekamer */]
+        forms: [Farewell, CoffeeRoom]
     },
     {
         title: 'Ceremonie',

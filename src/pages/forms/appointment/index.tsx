@@ -10,6 +10,7 @@ import { FormProps } from '../../create/creation-framework';
 import { useSaveAppointments } from './mutation/save-appointment';
 import { useGetAppointments } from './query/get-appointment';
 import { Text } from '../../../atoms/text';
+import { Heading } from '../../../atoms/heading';
 
 const wrapId = (htmlId: string) => `appointments.${htmlId}`;
 
@@ -58,28 +59,31 @@ export const Appointment: React.FC<FormProps> = ({ shouldSubmit, setValues, valu
 
     return (
         <>
+            <Heading level={2} mx="auto" mb="4">
+                Afspraken
+            </Heading>
+            <Flex mb="4" mx="auto">Laatste verzorging met familie</Flex>
             <Flex>
-                Laatste verzorging met familie
                 <LabelTextField id={wrapId("dateFinalCare")} label="Datum" placeholder="13-12-1901" type="date" />
                 <LabelTextField id={wrapId("timeFinalCare")} type="time" label="Tijdstip" placeholder="13-12-1901" boxProps={{ ml: 2 }} />
             </Flex>
+            <Flex mb="4" mx="auto">Bespreking inhoud dienst</Flex>
             <Flex>
-                Bespreking inhoud dienst
                 <LabelTextField id={wrapId("dateConferenceContent")} label="Datum" placeholder="13-12-1901" type="date" />
                 <LabelTextField id={wrapId("timeConferenceContent")} type="time" label="Tijdstip" placeholder="13-12-1901" boxProps={{ ml: 2 }} />
             </Flex>
+            <Flex mb="4" mx="auto">Aanleveren tekst kaart</Flex>
             <Flex>
-                Aanleveren tekst kaart
                 <LabelTextField id={wrapId("dateDeliveryCart")} label="Datum" placeholder="13-12-1901" type="date" />
                 <LabelTextField id={wrapId("timeDeliveryCart")} type="time" label="Tijdstip" placeholder="13-12-1901" boxProps={{ ml: 2 }} />
             </Flex>
+            <Flex mb="4" mx="auto">Aanleveren muziek</Flex>
             <Flex>
-                Aanleveren muziek
                 <LabelTextField id={wrapId("dateDeliveryMusic")} label="Datum" placeholder="13-12-1901" type="date" />
                 <LabelTextField id={wrapId("timeDeliveryMusic")} type="time" label="Tijdstip" placeholder="13-12-1901" boxProps={{ ml: 2 }} />
             </Flex>
+            <Flex mb="4" mx="auto">Aanleveren powerpoint-presentatie</Flex>
             <Flex>
-                Aanleveren powerpoint-presentatie
                 <LabelTextField id={wrapId("dateDeliveryPresentation")} label="Datum" placeholder="13-12-1901" type="date" />
                 <LabelTextField id={wrapId("timeDeliveryPresentation")} type="time" label="Tijdstip" placeholder="13-12-1901" boxProps={{ ml: 2 }} />
             </Flex>

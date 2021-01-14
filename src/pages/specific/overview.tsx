@@ -26,6 +26,7 @@ import { Personalia } from '../forms/personalia/personalia';
 import { Transmission } from '../forms/transmission/transmission';
 import { Transport } from '../forms/transport/transport';
 import { Visiting } from '../forms/visiting/visiting';
+import { FlowersPDFIntegration } from '../pdf/flowers-pdf';
 import { PersonaliaPDFIntegration } from '../pdf/personalia-pdf';
 
 const menuGroups: {
@@ -63,7 +64,8 @@ const menuGroups: {
     {
         title: 'Opmaak',
         icon: GiFlowers,
-        forms: [layOut, Cascet, Flowers]
+        forms: [layOut, Cascet, Flowers],
+        pdfs: [FlowersPDFIntegration]
     },
     {
         title: 'Bezoek',
